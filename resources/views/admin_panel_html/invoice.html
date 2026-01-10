@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+
+    <link rel="icon" type="image/png" href="uploads/favicon.png">
+
+    <title>Admin Panel</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/font_awesome_5_free.min.css">
+    <link rel="stylesheet" href="dist/css/select2.min.css">
+    <link rel="stylesheet" href="dist/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="dist/css/duotone-dark.css">
+    <link rel="stylesheet" href="dist/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="dist/css/iziToast.min.css">
+    <link rel="stylesheet" href="dist/css/fontawesome-iconpicker.min.css">
+    <link rel="stylesheet" href="dist/css/bootstrap4-toggle.min.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/components.css">
+    <link rel="stylesheet" href="dist/css/air-datepicker.min.css">
+    <link rel="stylesheet" href="dist/css/spacing.css">
+    <link rel="stylesheet" href="dist/css/custom.css">
+
+    <script src="dist/js/jquery-3.7.0.min.js"></script>
+    <script src="dist/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/popper.min.js"></script>
+    <script src="dist/js/tooltip.js"></script>
+    <script src="dist/js/jquery.nicescroll.min.js"></script>
+    <script src="dist/js/moment.min.js"></script>
+    <script src="dist/js/stisla.js"></script>
+    <script src="dist/js/jscolor.js"></script>
+    <script src="dist/js/bootstrap-tagsinput.min.js"></script>
+    <script src="dist/js/select2.full.min.js"></script>
+    <script src="dist/js/jquery.dataTables.min.js"></script>
+    <script src="dist/js/dataTables.bootstrap4.min.js"></script>
+    <script src="dist/js/iziToast.min.js"></script>
+    <script src="dist/js/fontawesome-iconpicker.js"></script>
+    <script src="dist/js/air-datepicker.min.js"></script>
+    <script src="dist/tinymce/tinymce.min.js"></script>
+    <script src="dist/js/bootstrap4-toggle.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <div class="main-wrapper">
+
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+            <form class="form-inline mr-auto">
+                <ul class="navbar-nav mr-3">
+                    <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                </ul>
+            </form>
+            <ul class="navbar-nav navbar-right justify-content-end rightsidetop">
+                <li class="nav-link">
+                    <a href="" target="_blank" class="btn btn-warning">Front End</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img alt="image" src="uploads/user.jpg" class="rounded-circle-custom">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="index.html">Admin Panel</a>
+                </div>
+                <div class="sidebar-brand sidebar-brand-sm">
+                    <a href="index.html"></a>
+                </div>
+
+                <ul class="sidebar-menu">
+
+                    <li class="active"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link has-dropdown"><i class="fas fa-vector-square"></i><span>Dropdown Items</span></a>
+                        <ul class="dropdown-menu">
+                            <li class="active"><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 1</a></li>
+                            <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 2</a></li>
+                        </ul>
+                    </li>
+
+                    <li class=""><a class="nav-link" href="setting-logo.html"><i class="fas fa-cog"></i> <span>Setting</span></a></li>
+
+                    <li class=""><a class="nav-link" href="form.html"><i class="fab fa-wpforms"></i> <span>Form</span></a></li>
+
+                    <li class=""><a class="nav-link" href="table.html"><i class="fas fa-border-all"></i> <span>Table</span></a></li>
+
+                    <li class=""><a class="nav-link" href="invoice.html"><i class="fas fa-receipt"></i> <span>Invoice</span></a></li>
+
+                </ul>
+            </aside>
+        </div>
+
+        <div class="main-content">
+            <section class="section">
+                <div class="section-header">
+                    <h1>Invoice</h1>
+                </div>
+                <div class="section-body">
+                    <div class="invoice-container" id="print_invoice">
+                        <div class="invoice-top">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-border-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w_50">
+                                                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="" class="w_100">
+                                                    </td>
+                                                    <td class="w_50">
+                                                        <div class="invoice-top-right">
+                                                            <h4>Invoice</h4>
+                                                            <h5>Order No: 12345</h5>
+                                                            <h5>Date: 2025-04-10</h5>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-middle">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-border-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w_50">
+                                                        <div class="invoice-middle-left">
+                                                            <h4>Invoice To:</h4>
+                                                            <p class="mb_0">Smith</p>
+                                                            <p class="mb_0">smith@gmail.com</p>
+                                                            <p class="mb_0">123-333-2233</p>
+                                                            <p class="mb_0">45 BN Street</p>
+                                                            <p class="mb_0">NYC, CA, 12033</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="w_50">
+                                                        <div class="invoice-middle-right">
+                                                            <h4>Invoice From:</h4>
+                                                            <p class="mb_0">Website</p>
+                                                            <p class="mb_0 color_6d6d6d">admin@gmail.com</p>
+                                                            <p class="mb_0">215-899-5780</p>
+                                                            <p class="mb_0">3145 Glen Falls Road</p>
+                                                            <p class="mb_0">Bensalem, PA 19020</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-item">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered invoice-item-table">
+                                            <tbody>
+                                                <tr>
+                                                    <th>SL</th>
+                                                    <th>Course</th>
+                                                    <th>Price</th>
+                                                    <th>Coupon Name</th>
+                                                    <th>Discount</th>
+                                                    <th>Final Price</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Laravel Course</td>
+                                                    <td>$29</td>
+                                                    <td>HGNAME00</td>
+                                                    <td>$10</td>
+                                                    <td>$19</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-bottom">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-border-0">
+                                            <tbody>
+                                                <td class="w_70_p invoice-bottom-payment">
+                                                    <h4>Payment Method</h4>
+                                                    <p>PayPal</p>
+                                                </td>
+                                                <td class="w_30_p tar invoice-bottom-total-box">
+                                                    <h4>Total</h4>
+                                                    <p>$19</p>
+                                                </td>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="print-button mt_25">
+                        <a onclick="printInvoice()" href="javascript:;" class="btn btn-primary"><i class="fas fa-print"></i> Print</a>
+                    </div>
+                    <script>
+                        function printInvoice() {
+                            let body = document.body.innerHTML;
+                            let data = document.getElementById('print_invoice').innerHTML;
+                            document.body.innerHTML = data;
+                            window.print();
+                            document.body.innerHTML = body;
+                        }
+                    </script>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>
+
+<script src="dist/js/scripts.js"></script>
+<script src="dist/js/custom.js"></script>
+
+</body>
+</html>
