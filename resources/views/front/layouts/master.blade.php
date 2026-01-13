@@ -58,7 +58,7 @@
     </script>
     @endif
 
-    @if( !request()->routeIs('login') && !request()->routeIs('password.request') && !request()->routeIs('password.reset') )
+    @if( !request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('password.request') && !request()->routeIs('password.reset') )
 
     @if(session('error'))
     <script>
