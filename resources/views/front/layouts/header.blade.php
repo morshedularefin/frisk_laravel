@@ -1,4 +1,4 @@
-<header class="nav-header header-layout2">
+<header class="nav-header header-{{ Request::is('/') || Request::is('home-3') ? 'layout1' : 'layout2' }}">
     <div class="sticky-wrapper">
         <!-- Main Menu Area -->
         <div class="menu-area">
@@ -6,7 +6,10 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto">
                         <div class="header-logo">
-                            <a href="{{ url('/') }}"><img src="{{ asset('dist/front/img/logo-white-sm.svg') }}" alt="logo"></a>
+                            @php
+                                $logo = (Request::is('/') || Request::is('home-3')) ? 'logo.svg' : 'logo-white-sm.svg';
+                            @endphp
+                            <a href="{{ url('/') }}"><img src="{{ asset('dist/front/img/'.$logo) }}" alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-auto ms-auto">
@@ -20,11 +23,11 @@
                                         </span>
                                     </a>
                                     <ul class="sub-menu">
-                                        <li class=""><a href="{{ url('/') }}">Digital Agency</a></li>
+                                        <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Digital Agency</a></li>
                                         <li class="{{ Request::is('home-2') ? 'active' : '' }}"><a href="{{ route('home_2') }}">Creative Agency</a></li>
-                                        <li class=""><a href="{{ route('home_3') }}">Design Studio</a></li>
+                                        <li class="{{ Request::is('home-3') ? 'active' : '' }}"><a href="{{ route('home_3') }}">Design Studio</a></li>
                                         <li class="{{ Request::is('home-4') ? 'active' : '' }}"><a href="{{ route('home_4') }}">Modern Agency</a></li>
-                                        <li class=""><a href="{{ route('home_5') }}">Startup Agency</a></li>
+                                        <li class="{{ Request::is('home-5') ? 'active' : '' }}"><a href="{{ route('home_5') }}">Startup Agency</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">

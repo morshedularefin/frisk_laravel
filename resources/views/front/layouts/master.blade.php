@@ -33,6 +33,8 @@
     
     @include('front.layouts.mobile_menu')
 
+    @include('front.layouts.header')
+
     @yield('main_content')
     
     <div class="scroll-top">
