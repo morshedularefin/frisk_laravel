@@ -98,12 +98,21 @@
                                     <span class="effect-1">CART <span>(02)</span></span>
                                 </span>
                             </button>
+                            @if(Auth::guard('web')->check())
+                            <a href="{{ route('dashboard') }}" class="btn">
+                                <span class="link-effect">
+                                    <span class="effect-1">DASHBOARD</span>
+                                    <span class="effect-1">DASHBOARD</span>
+                                </span>
+                            </a>
+                            @else
                             <a href="{{ route('login') }}" class="btn">
                                 <span class="link-effect">
                                     <span class="effect-1">LOG IN</span>
                                     <span class="effect-1">LOG IN</span>
                                 </span>
                             </a>
+                            @endif
                         </div>
                     </div>
                 </div>
