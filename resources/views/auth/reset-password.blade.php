@@ -1,39 +1,74 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+@extends('front.layouts.master')
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+@section('main_content')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<div class="auth-main-area">
+    <section class="space signin__area">
+        <div class="container">
+            <div class="row justify-content-center wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                <div class="col-xxl-5 col-md-9 col-lg-7 col-xl-6">
+                    <div class="cwa_sign_in_form mt_80 pb_115 xs_pb_95">
+                        @if(session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                        @endif
+                        <form method="POST" action="{{ route('password.store') }}" autocomplete="off">
+                            @csrf
+                            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                            <h3>Reset Password</h3>
+                            <div class="cwa_sign_in_input">
+                                <label>Email *</label>
+                                <input type="email" name="email" placeholder="Email" value="{{ old('email', $request->email) }}">
+                                @if ($errors->has('email'))
+                                    <div class="text-danger">
+                                        {{ $errors->first('email') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="cwa_sign_in_input">
+                                <label>Password *</label>
+                                <input type="password" name="password">
+                                @if ($errors->has('password'))
+                                    <div class="text-danger">
+                                        {{ $errors->first('password') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="cwa_sign_in_input">
+                                <label>Confirm Password *</label>
+                                <input type="password" name="password_confirmation">
+                                @if ($errors->has('password_confirmation'))
+                                    <div class="text-danger">
+                                        {{ $errors->first('password_confirmation') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <button class="btn mt-4 mb-40 w-100">
+                                <span class="link-effect text-uppercase">
+                                    <span class="effect-1">Submit</span>
+                                    <span class="effect-1">Submit</span>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+</div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+<div class="container-fluid p-0 overflow-hidden">
+    <div class="slider__marquee clearfix marquee-wrap">
+        <div class="marquee_mode marquee__group">
+            <h6 class="item m-item"><a href="#"><i class="fas fa-star-of-life"></i> We Give Unparalleled Flexibility</a></h6>
+            <h6 class="item m-item"><a href="#"><i class="fas fa-star-of-life"></i> We Give Unparalleled Flexibility</a></h6>
+            <h6 class="item m-item"><a href="#"><i class="fas fa-star-of-life"></i> We Give Unparalleled Flexibility</a></h6>
+            <h6 class="item m-item"><a href="#"><i class="fas fa-star-of-life"></i> We Give Unparalleled Flexibility</a></h6>
         </div>
+    </div>
+</div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@include('front.layouts.footer_1')
+@endsection

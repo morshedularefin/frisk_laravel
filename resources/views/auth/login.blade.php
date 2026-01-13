@@ -3,7 +3,6 @@
 @section('main_content')
 
 <div class="auth-main-area">
-    <!--  Sign in Area -->
     <section class="space signin__area">
         <div class="container">
             <div class="row justify-content-center wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
@@ -56,11 +55,6 @@
     </section>
 </div>
 
-
-
-<!--==============================
-Marquee Area
-==============================-->
 <div class="container-fluid p-0 overflow-hidden">
     <div class="slider__marquee clearfix marquee-wrap">
         <div class="marquee_mode marquee__group">

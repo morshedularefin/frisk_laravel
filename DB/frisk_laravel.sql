@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2026 at 09:21 AM
+-- Generation Time: Jan 13, 2026 at 05:10 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -63,6 +63,10 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+('frisk-cache-asasd@dsad.asd|127.0.0.1', 'i:1;', 1768278854),
+('frisk-cache-asasd@dsad.asd|127.0.0.1:timer', 'i:1768278854;', 1768278854),
+('frisk-cache-asd@das.asd|127.0.0.1', 'i:1;', 1768278547),
+('frisk-cache-asd@das.asd|127.0.0.1:timer', 'i:1768278547;', 1768278547),
 ('laravel-cache-1b6453892473a467d07372d45eb05abc2031647a', 'i:1;', 1767600375),
 ('laravel-cache-1b6453892473a467d07372d45eb05abc2031647a:timer', 'i:1767600375;', 1767600375),
 ('laravel-cache-asd@das.asd|127.0.0.1', 'i:1;', 1767752327),
@@ -187,8 +191,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('q232jQJ7oSVW20btoknpevnuJEwNBqkzx1opVWrr', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNlNheGVSbUxCZzRZeGNwbDZWMmRVVTZBbmtXWVFyRW9KRXlmM3VKTSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO3M6NToicm91dGUiO3M6MTU6ImFkbWluLmRhc2hib2FyZCI7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1767845218),
-('Sdb43EzW6OqwX4dnd7rm4ckxf1n8YOxD6I8kRvfJ', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidnhQT0cxNEZucDZCbXVKY1phRHhkSG9DMklZUDMyald0aE41Vlh1cCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7czo2OiJob21lXzEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768209515);
+('yxzx1pSx8gEgGeKJojSPjGAOEUNF63PvbDVxuASK', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoienNqeENiZzBWZnFBSko1NEd0c1FTT0lXVUxvUE8zRVJTb3pIdzNLaCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MTI3OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvcmVzZXQtcGFzc3dvcmQvYWQ0MDMwMDAyZWIyZWQwMzhkMWI5Y2Y3ZTZkOWYwYmMzNzA0MTkwMTljYzhiYjM4ZTNiNDlhOWFiODljYTMxYz9lbWFpbD1wZXRlciU0MGV4YW1wbGUuY29tIjtzOjU6InJvdXRlIjtzOjE0OiJwYXNzd29yZC5yZXNldCI7fX0=', 1768280981);
 
 -- --------------------------------------------------------
 
@@ -212,7 +215,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Peter', 'peter@example.com', '2026-01-05 02:07:08', '$2y$12$J37Sp3FBBEih5s1jNpPMe.FuGV1lRzuH9p3wCewMFACL.4V1Sao0u', NULL, '2026-01-05 02:00:10', '2026-01-05 02:07:08'),
+(2, 'Peter', 'peter@example.com', '2026-01-05 02:07:08', '$2y$12$JjrV8qdamku3C1cDZ7G.de0Gw9rimbmLnf37.xePLup5XdkwHUyuO', 'xDzqChSLIrkcmJusFb7oaHI5okQ0illpmrApmBem6r28pvfrtsuGBluHo5bo', '2026-01-05 02:00:10', '2026-01-12 23:02:26'),
 (4, 'Smith', 'smith@example.com', '2026-01-05 02:05:15', '$2y$12$AyVYI3G9vNS3dv2Pfh5mSuXGD022cjtLOIi646/jmV3BN2vfpdAri', NULL, '2026-01-05 02:03:25', '2026-01-05 02:05:15');
 
 --
