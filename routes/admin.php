@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminMarqueeController;
+use App\Http\Controllers\Admin\AdminTeamMemberController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -67,4 +68,9 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('marquee/store', [AdminMarqueeController::class, 'store'])->name('marquee.store');
     Route::post('marquee/update/{id}', [AdminMarqueeController::class, 'update'])->name('marquee.update');
     Route::post('marquee/destroy/{id}', [AdminMarqueeController::class, 'destroy'])->name('marquee.destroy');
+
+    Route::get('team-member/index', [AdminTeamMemberController::class, 'index'])->name('team-member.index');
+    Route::post('team-member/store', [AdminTeamMemberController::class, 'store'])->name('team-member.store');
+    Route::post('team-member/update/{id}', [AdminTeamMemberController::class, 'update'])->name('team-member.update');
+    Route::post('team-member/destroy/{id}', [AdminTeamMemberController::class, 'destroy'])->name('team-member.destroy');
 });

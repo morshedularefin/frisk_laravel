@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 14, 2026 at 06:34 AM
+-- Generation Time: Jan 14, 2026 at 01:07 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -190,7 +190,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2026_01_04_044511_create_admins_table', 2),
 (5, '2026_01_13_111526_add_extra_fields_to_users_table', 3),
 (6, '2026_01_14_014953_create_testimonials_table', 4),
-(7, '2026_01_14_061039_create_marquees_table', 5);
+(7, '2026_01_14_061039_create_marquees_table', 5),
+(8, '2026_01_14_123122_create_team_members_table', 6);
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,42 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('klExdpLz2c2S81rLcakOWzozqIW5bbdIaXU1ZgWS', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiY29TVFE3VjZJalhKSW0yQ2Nkb0dyTmMzVkFPZDR2ZEl6T29qU0tMaiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZWdpc3RlciI7czo1OiJyb3V0ZSI7czo4OiJyZWdpc3RlciI7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768372425);
+('UwFYCVyvqu87wpgbsQsAzbDvqjQwCHW7HMSWKR1B', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZThrcWtIZVRybjZ1alR2b0wwZkdTa3diWms5RTcxZ095QU1UQ3NMeiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQ1OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vdGVhbS1tZW1iZXIvaW5kZXgiO3M6NToicm91dGUiO3M6MjM6ImFkbWluLnRlYW0tbWVtYmVyLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1768395978);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team_members`
+--
+
+CREATE TABLE `team_members` (
+  `id` bigint UNSIGNED NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `biography` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `team_members`
+--
+
+INSERT INTO `team_members` (`id`, `photo`, `name`, `slug`, `position`, `biography`, `email`, `phone`, `facebook`, `twitter`, `youtube`, `linkedin`, `instagram`, `created_at`, `updated_at`) VALUES
+(1, 'team_member_1768395419.png', 'Joseph Carrington', 'joseph-carrington', 'Software Engineer', 'Lorem ipsum dolor sit amet, feugait lobortis ne cum. Tempor everti pri ex, nec periculis philosophia ne. Populo quodsi referrentur mea cu. Et sed sint mollis viderer, ex hinc veri percipit his. Eos ea agam posse ludus, est ei dicat luptatum contentiones, vix velit aeterno no. In qui summo nullam ceteros.\r\n\r\nPrimis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis delicatissimi. Sit no verear docendi denique, pri ad odio corpora apeirian. Ex has persius dolorem, vix clita contentiones at. Id albucius apeirian vis, sed id vero possit tacimates.', 'joseph@example.com', '650-384-3367', '#', '#', '#', '#', '#', '2026-01-14 06:56:59', '2026-01-14 06:56:59'),
+(2, 'team_member_1768395638.png', 'Anthony Kirkwood', 'anthony-kirkwood', 'Web Developer', 'Lorem ipsum dolor sit amet, feugait lobortis ne cum. Tempor everti pri ex, nec periculis philosophia ne. Populo quodsi referrentur mea cu. Et sed sint mollis viderer, ex hinc veri percipit his. Eos ea agam posse ludus, est ei dicat luptatum contentiones, vix velit aeterno no. In qui summo nullam ceteros.\r\n\r\nPrimis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis delicatissimi. Sit no verear docendi denique, pri ad odio corpora apeirian. Ex has persius dolorem, vix clita contentiones at. Id albucius apeirian vis, sed id vero possit tacimates.', 'anthony@example.com', '815-922-2180', '#', '#', '#', '#', '#', '2026-01-14 07:00:38', '2026-01-14 07:00:38'),
+(3, 'team_member_1768395691.png', 'Lester Lorenz', 'lester-lorenz', 'Web Designer', 'Lorem ipsum dolor sit amet, feugait lobortis ne cum. Tempor everti pri ex, nec periculis philosophia ne. Populo quodsi referrentur mea cu. Et sed sint mollis viderer, ex hinc veri percipit his. Eos ea agam posse ludus, est ei dicat luptatum contentiones, vix velit aeterno no. In qui summo nullam ceteros.\r\n\r\nPrimis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis delicatissimi. Sit no verear docendi denique, pri ad odio corpora apeirian. Ex has persius dolorem, vix clita contentiones at. Id albucius apeirian vis, sed id vero possit tacimates.', 'lester@example.com', '605-226-6251', '#', '#', '#', '#', '#', '2026-01-14 07:01:31', '2026-01-14 07:01:31'),
+(4, 'team_member_1768395743.png', 'Jacob Woods', 'jacob-woods', 'Product Manager', 'Lorem ipsum dolor sit amet, feugait lobortis ne cum. Tempor everti pri ex, nec periculis philosophia ne. Populo quodsi referrentur mea cu. Et sed sint mollis viderer, ex hinc veri percipit his. Eos ea agam posse ludus, est ei dicat luptatum contentiones, vix velit aeterno no. In qui summo nullam ceteros.\r\n\r\nPrimis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis delicatissimi. Sit no verear docendi denique, pri ad odio corpora apeirian. Ex has persius dolorem, vix clita contentiones at. Id albucius apeirian vis, sed id vero possit tacimates.', 'jacob@example.com', '615-360-9249', '#', '#', '#', '#', '#', '2026-01-14 07:02:23', '2026-01-14 07:02:23'),
+(5, 'team_member_1768395800.png', 'Gerald Cleveland', 'gerald-cleveland', 'Senior Engineer', 'Lorem ipsum dolor sit amet, feugait lobortis ne cum. Tempor everti pri ex, nec periculis philosophia ne. Populo quodsi referrentur mea cu. Et sed sint mollis viderer, ex hinc veri percipit his. Eos ea agam posse ludus, est ei dicat luptatum contentiones, vix velit aeterno no. In qui summo nullam ceteros.\r\n\r\nPrimis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis delicatissimi. Sit no verear docendi denique, pri ad odio corpora apeirian. Ex has persius dolorem, vix clita contentiones at. Id albucius apeirian vis, sed id vero possit tacimates.', 'gerald@example.com', '607-973-0647', '#', '#', '#', '#', NULL, '2026-01-14 07:03:20', '2026-01-14 07:03:20');
 
 -- --------------------------------------------------------
 
@@ -354,6 +390,13 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- Indexes for table `team_members`
+--
+ALTER TABLE `team_members`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `team_members_slug_unique` (`slug`);
+
+--
 -- Indexes for table `testimonials`
 --
 ALTER TABLE `testimonials`
@@ -398,7 +441,13 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `team_members`
+--
+ALTER TABLE `team_members`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `testimonials`

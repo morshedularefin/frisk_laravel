@@ -15,6 +15,8 @@
 
             <li class="{{ Route::is('admin.marquee.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.marquee.index') }}"><i class="fas fa-scroll"></i> <span>Marquee</span></a></li>
 
+            <li class="{{ Route::is('admin.team-member.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.team-member.index') }}"><i class="fas fa-users"></i> <span>Team Member</span></a></li>
+
             {{-- <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-vector-square"></i><span>Dropdown Items</span></a>
                 <ul class="dropdown-menu">
