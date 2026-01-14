@@ -13,4 +13,10 @@ class TeamMemberController extends Controller
         $team_members = TeamMember::paginate(20);
         return view('front.team_members', compact('team_members'));
     }
+
+    public function team_member($slug)
+    {
+        $team_member = TeamMember::where('slug', $slug)->first();
+        return view('front.team_member', compact('team_member'));
+    }
 }

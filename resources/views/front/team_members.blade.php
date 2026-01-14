@@ -20,7 +20,7 @@
                         <img src="{{ asset('uploads/'.$team_member->photo) }}" alt="Team Image">
                     </div>
                     <div class="team-card_content">
-                        <h3 class="team-card_title"><a href="team-details.html">{{ $team_member->name }}</a></h3>
+                        <h3 class="team-card_title"><a href="{{ route('team_member',$team_member->slug) }}">{{ $team_member->name }}</a></h3>
                         <span class="team-card_desig">{{ $team_member->position }}</span>
                     </div>
                 </div>

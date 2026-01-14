@@ -18,6 +18,7 @@ Route::get('/home-4', [HomeController::class, 'home_4'])->name('home_4');
 Route::get('/home-5', [HomeController::class, 'home_5'])->name('home_5');
 
 Route::get('/team-members', [TeamMemberController::class, 'team_members'])->name('team_members');
+Route::get('/team-member/{slug}', [TeamMemberController::class, 'team_member'])->name('team_member');
 
 // Route::get('/secret', [HomeController::class, 'secret'])->name('secret')->middleware(['auth','password.confirm']);
 
