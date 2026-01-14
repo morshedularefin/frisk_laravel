@@ -66,28 +66,55 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $testimonial->name }}</td>
                                             <td>{{ $testimonial->designation }}</td>
-                                            <td>{{ $testimonial->comment }}</td>
+                                            <td>{!! nl2br($testimonial->comment) !!}</td>
                                             <td class="pt_10 pb_10">
-                                                <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal_1"><i class="fas fa-eye"></i></a>
-                                                <a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                                                <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash"></i></a>
+                                                <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_edit_{{ $testimonial->id }}"><i class="fas fa-edit"></i></a>
+                                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal_delete_{{ $testimonial->id }}"><i class="fas fa-trash"></i></a>
                                             </td>
-                                            <div class="modal fade" id="modal_1" tabindex="-1" aria-hidden="true">
+                                            <div class="modal fade" id="modal_edit_{{ $testimonial->id }}" tabindex="-1" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Detail</h5>
+                                                            <h5 class="modal-title">Edit Item</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <div class="form-group row bdb1 pt_10 mb_0">
-                                                                <div class="col-md-4"><label class="form-label">Item Name</label></div>
-                                                                <div class="col-md-8">Laptop</div>
+                                                            <form action="{{ route('admin.testimonial.update', $testimonial->id) }}" method="post">
+                                                            @csrf
+                                                            <div class="mb-3">
+                                                                <label for="">Name *</label>
+                                                                <input type="text" class="form-control" name="name" value="{{ $testimonial->name }}">
                                                             </div>
-                                                            <div class="form-group row bdb1 pt_10 mb_0">
-                                                                <div class="col-md-4"><label class="form-label">Description</label></div>
-                                                                <div class="col-md-8">This is a very good product. This is a very good product. This is a very good product. This is a very good product. This is a very good product. This is a very good product. </div>
+                                                            <div class="mb-3">
+                                                                <label for="">Designation *</label>
+                                                                <input type="text" class="form-control" name="designation" value="{{ $testimonial->designation }}">
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <label for="">Comment *</label>
+                                                                <textarea class="form-control h_200" name="comment">{{ $testimonial->comment }}</textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal fade" id="modal_delete_{{ $testimonial->id }}" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Delete Item</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ route('admin.testimonial.destroy', $testimonial->id) }}" method="post">
+                                                            @csrf
+                                                            <div class="mb-3">
+                                                                <label for="">Do you want to delete this item?</label>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
                                                         </div>
                                                     </div>
                                                 </div>

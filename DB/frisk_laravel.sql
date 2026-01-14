@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 14, 2026 at 02:17 AM
+-- Generation Time: Jan 14, 2026 at 02:29 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -199,7 +199,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('klExdpLz2c2S81rLcakOWzozqIW5bbdIaXU1ZgWS', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiY29TVFE3VjZJalhKSW0yQ2Nkb0dyTmMzVkFPZDR2ZEl6T29qU0tMaiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi90ZXN0aW1vbmlhbC9pbmRleCI7czo1OiJyb3V0ZSI7czoyMzoiYWRtaW4udGVzdGltb25pYWwuaW5kZXgiO31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768356937);
+('klExdpLz2c2S81rLcakOWzozqIW5bbdIaXU1ZgWS', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiY29TVFE3VjZJalhKSW0yQ2Nkb0dyTmMzVkFPZDR2ZEl6T29qU0tMaiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi90ZXN0aW1vbmlhbC9pbmRleCI7czo1OiJyb3V0ZSI7czoyMzoiYWRtaW4udGVzdGltb25pYWwuaW5kZXgiO31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768357716);
 
 -- --------------------------------------------------------
 
@@ -221,8 +221,8 @@ CREATE TABLE `testimonials` (
 --
 
 INSERT INTO `testimonials` (`id`, `name`, `designation`, `comment`, `created_at`, `updated_at`) VALUES
-(1, 'Daniyel Karlos', 'Senior Director of Marketing', '“It’s a pleasure working with Bunker. They understood our new brand positioning guidelines and translated them beautifully and consistently into our on-going marketing comms. The team is responsive, quick and always willing help winning partnership”', '2026-01-13 20:12:38', '2026-01-13 20:12:38'),
-(2, 'Chris Williams', 'Personnel technician, Cardinal Stores', 'Lorem ipsum dolor sit amet, feugait lobortis ne cum. Tempor everti pri ex, nec periculis philosophia ne. Populo quodsi referrentur mea cu. Et sed sint mollis viderer, ex hinc veri percipit his. Eos ea agam posse ludus, est ei dicat luptatum contentiones, vix velit aeterno no. In qui summo nullam ceteros.', '2026-01-13 20:14:19', '2026-01-13 20:14:19'),
+(1, 'Daniyel Karlos', 'Senior Director of Marketing', 'Discere impedit ei has, his aperiri antiopam contentiones at. An errem laoreet vix, ei ridens prompta phaedrum pri. In harum delenit ocurreret sea. \r\n\r\nNullam tacimates quo at, ea vim libris meliore. Nulla partiendo te vis.', '2026-01-13 20:12:38', '2026-01-13 20:26:05'),
+(2, 'Chris Williams', 'Personnel technician, Cardinal Stores', 'Lorem ipsum dolor sit amet, feugait lobortis ne cum. Tempor everti pri ex, nec periculis philosophia ne. Populo quodsi referrentur mea cu. Et sed sint mollis viderer, ex hinc veri percipit his. Eos ea agam posse', '2026-01-13 20:14:19', '2026-01-13 20:24:58'),
 (3, 'Jerry Rivera', 'Deckhand, Luskin', 'Primis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis delicatissimi. Sit no verear docendi denique, pri ad odio corpora apeirian. Ex has persius dolorem, vix clita contentiones at.', '2026-01-13 20:15:12', '2026-01-13 20:15:12');
 
 -- --------------------------------------------------------
@@ -366,7 +366,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

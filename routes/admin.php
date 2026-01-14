@@ -58,4 +58,6 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
     Route::get('testimonial/index', [AdminTestimonialController::class, 'index'])->name('testimonial.index');
     Route::post('testimonial/store', [AdminTestimonialController::class, 'store'])->name('testimonial.store');
+    Route::post('testimonial/update/{id}', [AdminTestimonialController::class, 'update'])->name('testimonial.update');
+    Route::post('testimonial/destroy/{id}', [AdminTestimonialController::class, 'destroy'])->name('testimonial.destroy');
 });
