@@ -380,33 +380,19 @@ Testimonial Area
                     <img src="{{ asset('dist/front/img/icon/quote.svg') }}" alt="icon">
                 </div>
                 <div class="row global-carousel testi-slider1" data-slide-show="1" data-dots="true" data-xl-dots="true" data-ml-dots="true">
+                    @foreach($testimonials as $testimonial)
                     <div class="col-lg-4">
-                        <div class="testi-box">
-                            <p class="testi-box_text">“It’s a pleasure working with Bunker. They understood our new brand positioning guidelines and translated them beautifully and consistently into our on-going marketing comms. The team is responsive, quick and always willing help winning partnership”</p>
+                        <div class="testi-box ">
+                            <p class="testi-box_text">
+                                {!! nl2br($testimonial->comment) !!}
+                            </p>
                             <div class="testi-box_profile">
-                                <h4 class="testi-box_name">Daniyel Karlos</h4>
-                                <span class="testi-box_desig">Senior Director of Marketing</span>
+                                <h4 class="testi-box_name">{{ $testimonial->name }}</h4>
+                                <span class="testi-box_desig">{{ $testimonial->designation }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="testi-box">
-                            <p class="testi-box_text">“It’s a pleasure working with Bunker. They understood our new brand positioning guidelines and translated them beautifully and consistently into our on-going marketing comms. The team is responsive, quick and always willing help winning partnership”</p>
-                            <div class="testi-box_profile">
-                                <h4 class="testi-box_name">Daniyel Karlos</h4>
-                                <span class="testi-box_desig">Senior Director of Marketing</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testi-box">
-                            <p class="testi-box_text">“It’s a pleasure working with Bunker. They understood our new brand positioning guidelines and translated them beautifully and consistently into our on-going marketing comms. The team is responsive, quick and always willing help winning partnership”</p>
-                            <div class="testi-box_profile">
-                                <h4 class="testi-box_name">Daniyel Karlos</h4>
-                                <span class="testi-box_desig">Senior Director of Marketing</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
