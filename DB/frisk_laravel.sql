@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 14, 2026 at 01:37 PM
+-- Generation Time: Jan 15, 2026 at 02:28 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -225,7 +225,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('UwFYCVyvqu87wpgbsQsAzbDvqjQwCHW7HMSWKR1B', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZThrcWtIZVRybjZ1alR2b0wwZkdTa3diWms5RTcxZ095QU1UQ3NMeiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjM0OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdGVhbS1tZW1iZXJzIjtzOjU6InJvdXRlIjtzOjEyOiJ0ZWFtX21lbWJlcnMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768397853);
+('7nd2BkTECwLjxpIswdzwKIro4h661KolJW3RksKD', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiS1ZWQ244UGIxSXRtOHhvbnRQN0JPT0VuUTh1RUhraHJ4OE1tY2F6WCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQ2OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdGVhbS1tZW1iZXIvYW50aG9ueS13b29kIjtzOjU6InJvdXRlIjtzOjExOiJ0ZWFtX21lbWJlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768444055);
 
 -- --------------------------------------------------------
 

@@ -80,21 +80,23 @@
                         <h3 class="sec-title">Contact with Me</h3>
                         <p>Your email address will not be published. Required fields are marked *</p>
                     </div>
-                    <form action="" method="POST" class="contact-form ajax-contact">
+                    <form action="{{ route('team_member_send_email') }}" method="POST" class="contact-form ajax-contact">
+                        @csrf
+                        <input type="hidden" name="slug" value="{{ $team_member->slug }}">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" name="name" id="name" placeholder="Full name *">
+                                    <input type="text" class="form-control style-border" name="name" placeholder="Full name *">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" name="email" id="email" placeholder="Email address *">
+                                    <input type="text" class="form-control style-border" name="email" placeholder="Email address *">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="message" placeholder="Write your comment *" id="contactForm" class="form-control style-border style2"></textarea>
+                                    <textarea name="message" placeholder="Write your comment *" class="form-control style-border style2"></textarea>
                                 </div>
                             </div>
                         </div>
