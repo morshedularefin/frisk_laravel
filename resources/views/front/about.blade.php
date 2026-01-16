@@ -276,20 +276,7 @@ Client Area
     </div>
 </div>
 
-<!--==============================
-Marquee Area
-==============================-->
-<div class="container-fluid p-0 overflow-hidden">
-    <div class="slider__marquee clearfix marquee-wrap">
-        <div class="marquee_mode marquee__group">
-            <h6 class="item m-item"><a href="#"><i class="fas fa-star-of-life"></i> We Give Unparalleled Flexibility</a></h6>
-            <h6 class="item m-item"><a href="#"><i class="fas fa-star-of-life"></i> We Give Unparalleled Flexibility</a></h6>
-            <h6 class="item m-item"><a href="#"><i class="fas fa-star-of-life"></i> We Give Unparalleled Flexibility</a></h6>
-            <h6 class="item m-item"><a href="#"><i class="fas fa-star-of-life"></i> We Give Unparalleled Flexibility</a></h6>
-        </div>
-    </div>
-</div>
-
+@include('front.layouts.marquee')
 
 @include('front.layouts.footer_1')
 @endsection

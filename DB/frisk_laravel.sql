@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2026 at 03:15 AM
+-- Generation Time: Jan 16, 2026 at 04:33 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -218,9 +218,9 @@ CREATE TABLE `packages` (
 --
 
 INSERT INTO `packages` (`id`, `name`, `price`, `duration`, `description`, `button_text`, `button_link`, `item_order`, `created_at`, `updated_at`) VALUES
-(1, 'Standard', 39.00, 'month', 'We care about their success. For us real relationships fuel real', 'Contact Us', '#', 1, '2026-01-15 21:11:54', '2026-01-15 21:14:29'),
-(2, 'Premium', 79.00, 'month', 'We care about their success. For us real relationships fuel real', 'Contact Us', '#', 2, '2026-01-15 21:12:25', '2026-01-15 21:14:34'),
-(3, 'Gold', 99.00, 'month', 'We care about their success. For us real relationships fuel real', 'Contact Us', '#', 3, '2026-01-15 21:12:44', '2026-01-15 21:12:44');
+(1, 'Standard', 39.00, 'mo', 'Discere impedit ei has, his aperiri antiopam contentiones at.', 'CONTACT US', '#', 1, '2026-01-15 21:11:54', '2026-01-15 22:32:04'),
+(2, 'Premium', 79.00, 'mo', 'Vim no facilisi gloriatur. Et mel accommodare philosophiae.', 'CONTACT US', '#', 2, '2026-01-15 21:12:25', '2026-01-15 22:32:07'),
+(3, 'Gold', 99.00, 'mo', 'Cum ipsum eleifend repudiare at, cu eam integre interpre.', 'CONTACT US', '#', 3, '2026-01-15 21:12:44', '2026-01-15 22:32:11');
 
 -- --------------------------------------------------------
 
@@ -254,7 +254,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('CC3AdiCLimKy6G9mfSQpC2tSGjkCTLCyPeUBvr1m', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTHljS2JWVXR5bTBwRkNFWHN5ZE5DTGJiM3dKbFFiVm5xdFU5czFyYyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQ2OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vcHJpY2luZy1wbGFuL2luZGV4IjtzOjU6InJvdXRlIjtzOjI0OiJhZG1pbi5wcmljaW5nLXBsYW4uaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768533274);
+('CC3AdiCLimKy6G9mfSQpC2tSGjkCTLCyPeUBvr1m', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTHljS2JWVXR5bTBwRkNFWHN5ZE5DTGJiM3dKbFFiVm5xdFU5czFyYyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjI5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvcHJpY2luZyI7czo1OiJyb3V0ZSI7czo3OiJwcmljaW5nIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1768537967);
 
 -- --------------------------------------------------------
 

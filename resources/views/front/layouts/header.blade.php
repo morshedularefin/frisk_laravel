@@ -41,7 +41,7 @@
                                         <li><a href="{{ route('about') }}">About Page</a></li>
                                         <li><a href="service.html">Service Page</a></li>
                                         <li><a href="{{ route('team_members') }}">Team Members</a></li>
-                                        <li><a href="pricing.html">Pricing Page</a></li>
+                                        <li><a href="{{ route('pricing') }}">Pricing Page</a></li>
                                         <li><a href="cart.html">Cart Page</a></li>
                                         <li><a href="checkout.html">Checkout Page</a></li>
                                         <li><a href="faq.html">FAQ Page</a></li>
