@@ -299,51 +299,21 @@ Faq Area
             <div class="col-xl-8">
                 <div class="accordion-area accordion" id="faqAccordion">
 
-                    <div class="accordion-card style2 active">
-                        <div class="accordion-header" id="collapse-item-1">
-                            <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">Will you be updating the program?</button>
+
+                    @foreach($faqs as $faq)
+                    <div class="accordion-card style2 {{ $loop->first ? 'active' : '' }}">
+                        <div class="accordion-header" id="collapse-item-{{ $faq->id }}">
+                            <button class="accordion-button {{ $loop->first ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $faq->id }}" aria-expanded="true" aria-controls="collapse-{{ $faq->id }}">{{ $faq->question }}</button>
                         </div>
-                        <div id="collapse-1" class="accordion-collapse collapse show" aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
+                        <div id="collapse-{{ $faq->id }}" class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}" aria-labelledby="collapse-item-{{ $faq->id }}" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                <p class="faq-text">We design high quality websites that make users come back for more. A good website tells a story that will make users fully immerse themselves operating</p>
+                                <p class="faq-text">
+                                    {!! nl2br($faq->answer) !!}
+                                </p>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="accordion-card style2">
-                        <div class="accordion-header" id="collapse-item-2">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">What happens to my data if I cancel?</button>
-                        </div>
-                        <div id="collapse-2" class="accordion-collapse collapse " aria-labelledby="collapse-item-2" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p class="faq-text">We design high quality websites that make users come back for more. A good website tells a story that will make users fully immerse themselves operating</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="accordion-card style2">
-                        <div class="accordion-header" id="collapse-item-3">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">How I can optimize voice search?</button>
-                        </div>
-                        <div id="collapse-3" class="accordion-collapse collapse " aria-labelledby="collapse-item-3" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p class="faq-text">We design high quality websites that make users come back for more. A good website tells a story that will make users fully immerse themselves operating</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-card style2">
-                        <div class="accordion-header" id="collapse-item-4">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">If I have questions, where can I find answers?</button>
-                        </div>
-                        <div id="collapse-4" class="accordion-collapse collapse " aria-labelledby="collapse-item-4" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p class="faq-text">We design high quality websites that make users come back for more. A good website tells a story that will make users fully immerse themselves operating</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>

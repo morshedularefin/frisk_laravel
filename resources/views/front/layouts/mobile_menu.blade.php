@@ -28,7 +28,7 @@ Mobile Menu
                         <li><a href="{{ route('pricing') }}">Pricing Page</a></li>
                         <li><a href="cart.html">Cart Page</a></li>
                         <li><a href="checkout.html">Checkout Page</a></li>
-                        <li><a href="faq.html">FAQ Page</a></li>
+                        <li><a href="{{ route('faq') }}">FAQ Page</a></li>
                         <li><a href="error.html">Error Page</a></li>
                     </ul>
                 </li>

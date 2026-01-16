@@ -81,51 +81,20 @@ Faq Area
             <div class="col-xl-8">
                 <div class="accordion-area accordion" id="faqAccordion">
 
-                    <div class="accordion-card active">
+                    @foreach($faqs as $faq)
+                    <div class="accordion-card {{ $loop->first ? 'active' : '' }}">
                         <div class="accordion-header" id="collapse-item-1">
-                            <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1"> <span class="faq-number">01</span> Branding Design</button>
+                            <button class="accordion-button {{ $loop->first ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1"> <span class="faq-number">{{ (strlen($loop->iteration) == 1) ? '0'.$loop->iteration : $loop->iteration }}</span> {{ $faq->question }}</button>
                         </div>
-                        <div id="collapse-1" class="accordion-collapse collapse show" aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
+                        <div id="collapse-1" class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}" aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                <p class="faq-text">We design high quality websites that make users come back for more. A good website tells a story that will make users fully immerse themselves operating</p>
+                                <p class="faq-text">
+                                    {!! nl2br($faq->answer) !!}
+                                </p>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="accordion-card ">
-                        <div class="accordion-header" id="collapse-item-2">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2"><span class="faq-number">02</span> Illustration Modelling</button>
-                        </div>
-                        <div id="collapse-2" class="accordion-collapse collapse " aria-labelledby="collapse-item-2" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p class="faq-text">We design high quality websites that make users come back for more. A good website tells a story that will make users fully immerse themselves operating</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="accordion-card ">
-                        <div class="accordion-header" id="collapse-item-3">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3"> <span class="faq-number">03</span> Website Development</button>
-                        </div>
-                        <div id="collapse-3" class="accordion-collapse collapse " aria-labelledby="collapse-item-3" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p class="faq-text">We design high quality websites that make users come back for more. A good website tells a story that will make users fully immerse themselves operating</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-card ">
-                        <div class="accordion-header" id="collapse-item-4">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4"> <span class="faq-number">04</span> Digital Marketing</button>
-                        </div>
-                        <div id="collapse-4" class="accordion-collapse collapse " aria-labelledby="collapse-item-4" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p class="faq-text">We design high quality websites that make users come back for more. A good website tells a story that will make users fully immerse themselves operating</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
