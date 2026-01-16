@@ -33,54 +33,16 @@ Client Area
         <div class="row justify-content-center">
             <div class="col-xl-12">
                 <ul class="client-list-wrap style2">
+                    @foreach($clients as $client)
                     <li>
-                        <a href="#">
+                        <a href="{{ $client->url!='' ? $client->url : 'javascript:void(0)' }}">
                             <span class="link-effect">
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-1.svg') }}" alt="img"></span>
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-1.svg') }}" alt="img"></span>
+                                <span class="effect-1"><img src="{{ asset('uploads/'.$client->photo) }}" alt="img"></span>
+                                <span class="effect-1"><img src="{{ asset('uploads/'.$client->photo) }}" alt="img"></span>
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <span class="link-effect">
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-2.svg') }}" alt="img"></span>
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-2.svg') }}" alt="img"></span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="link-effect">
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-3.svg') }}" alt="img"></span>
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-3.svg') }}" alt="img"></span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="link-effect">
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-4.svg') }}" alt="img"></span>
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-4.svg') }}" alt="img"></span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="link-effect">
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-7.svg') }}" alt="img"></span>
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-7.svg') }}" alt="img"></span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="link-effect">
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-5.svg') }}" alt="img"></span>
-                                <span class="effect-1"><img src="{{ asset('dist/front/img/client/client-1-5.svg') }}" alt="img"></span>
-                            </span>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2026 at 06:38 AM
+-- Generation Time: Jan 16, 2026 at 11:50 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -101,7 +101,10 @@ CREATE TABLE `cache_locks` (
 CREATE TABLE `clients` (
   `id` bigint UNSIGNED NOT NULL,
   `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `home_page_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_page_5` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about_page` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -110,15 +113,15 @@ CREATE TABLE `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`id`, `photo`, `url`, `created_at`, `updated_at`) VALUES
-(1, 'client_1768545349.svg', '#', '2026-01-16 00:35:49', '2026-01-16 00:35:49'),
-(2, 'client_1768545359.svg', '#', '2026-01-16 00:35:59', '2026-01-16 00:35:59'),
-(3, 'client_1768545365.svg', '#', '2026-01-16 00:36:05', '2026-01-16 00:36:05'),
-(4, 'client_1768545371.svg', '#', '2026-01-16 00:36:11', '2026-01-16 00:36:11'),
-(5, 'client_1768545377.svg', '#', '2026-01-16 00:36:17', '2026-01-16 00:36:17'),
-(6, 'client_1768545383.svg', '#', '2026-01-16 00:36:23', '2026-01-16 00:36:23'),
-(7, 'client_1768545389.svg', '#', '2026-01-16 00:36:29', '2026-01-16 00:36:29'),
-(8, 'client_1768545396.svg', '#', '2026-01-16 00:36:36', '2026-01-16 00:36:36');
+INSERT INTO `clients` (`id`, `photo`, `url`, `home_page_2`, `home_page_5`, `about_page`, `created_at`, `updated_at`) VALUES
+(1, 'client_1768545349.svg', NULL, 'Yes', 'Yes', 'Yes', '2026-01-16 00:35:49', '2026-01-16 17:49:37'),
+(2, 'client_1768545359.svg', '#', 'Yes', 'Yes', 'Yes', '2026-01-16 00:35:59', '2026-01-16 17:47:03'),
+(3, 'client_1768545365.svg', '#', 'Yes', 'Yes', 'Yes', '2026-01-16 00:36:05', '2026-01-16 17:47:06'),
+(4, 'client_1768545371.svg', '#', 'Yes', 'Yes', 'Yes', '2026-01-16 00:36:11', '2026-01-16 17:47:15'),
+(5, 'client_1768545377.svg', '#', 'Yes', 'Yes', 'Yes', '2026-01-16 00:36:17', '2026-01-16 17:47:20'),
+(6, 'client_1768545383.svg', '#', 'Yes', 'Yes', 'Yes', '2026-01-16 00:36:23', '2026-01-16 17:47:25'),
+(7, 'client_1768545389.svg', '#', 'Yes', 'No', 'Yes', '2026-01-16 00:36:29', '2026-01-16 17:47:31'),
+(8, 'client_1768545396.svg', '#', 'Yes', 'No', 'Yes', '2026-01-16 00:36:36', '2026-01-16 17:47:36');
 
 -- --------------------------------------------------------
 
@@ -363,7 +366,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('CC3AdiCLimKy6G9mfSQpC2tSGjkCTLCyPeUBvr1m', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTHljS2JWVXR5bTBwRkNFWHN5ZE5DTGJiM3dKbFFiVm5xdFU5czFyYyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQwOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vY2xpZW50L2luZGV4IjtzOjU6InJvdXRlIjtzOjE4OiJhZG1pbi5jbGllbnQuaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768545494);
+('yaDfl8XBHpqFRv4Sg0RvBhzI91n0kYOzhjCfHOkI', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaVBWdGdJMGprQ2RKT2R3S2NZa0NMR1dGU2UybkZCZHFtakxKUlgxZyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hYm91dCI7czo1OiJyb3V0ZSI7czo1OiJhYm91dCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768607390);
 
 -- --------------------------------------------------------
 
@@ -588,7 +591,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('photo');
-            $table->string('url');
+            $table->string('url')->nullable();
+            $table->string('home_page_2');
+            $table->string('home_page_5');
+            $table->string('about_page');
             $table->timestamps();
         });
     }

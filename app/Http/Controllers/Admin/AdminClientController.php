@@ -17,7 +17,6 @@ class AdminClientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'url' => 'required|string|max:255',
             'photo' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -27,6 +26,9 @@ class AdminClientController extends Controller
         $client = new Client();
         $client->photo = $final_name;
         $client->url = $request->url;
+        $client->home_page_2 = $request->home_page_2;
+        $client->home_page_5 = $request->home_page_5;
+        $client->about_page = $request->about_page;
         $client->save();
 
         return redirect()->route('admin.client.index')->with('success', 'Client added successfully.');
@@ -34,10 +36,6 @@ class AdminClientController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'url' => 'required|string|max:255',
-        ]);
-
         $client = Client::where('id', $id)->first();
 
         if($request->hasFile('photo')) {
@@ -53,6 +51,9 @@ class AdminClientController extends Controller
         }
 
         $client->url = $request->url;
+        $client->home_page_2 = $request->home_page_2;
+        $client->home_page_5 = $request->home_page_5;
+        $client->about_page = $request->about_page;
         $client->save();
 
         return redirect()->route('admin.client.index')->with('success', 'Client updated successfully.');
