@@ -24,11 +24,9 @@
                     <p>{!! nl2br($package->description) !!}</p>
                     <div class="checklist">
                         <ul>
-                            <li><i class="fas fa-check"></i> Web & Mobile</li>
-                            <li><i class="fas fa-check"></i> Free Custom Domain</li>
-                            <li><i class="fas fa-check"></i> Best Hosting Ever</li>
-                            <li><i class="fas fa-times"></i> Outstanding Support</li>
-                            <li><i class="fas fa-times"></i> Web Design</li>
+                            @foreach($package->features as $feature)
+                            <li><i class="fas fa-{{ $feature->availability == 'Yes' ? 'check' : 'times' }}"></i> {{ $feature->name }}</li>
+                            @endforeach
                         </ul>
                     </div>
                     <a href="{{ $package->button_link }}" class="btn">

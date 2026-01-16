@@ -68,7 +68,7 @@ class AdminPricingController extends Controller
     public function features($id)
     {
         $package = Package::where('id', $id)->first();
-        $package_features = PackageFeature::where('package_id', $id)->get();
+        $package_features = PackageFeature::orderBy('item_order','asc')->where('package_id', $id)->get();
         return view('admin.pricing-plan.feature', compact('package', 'package_features'));
     }
 

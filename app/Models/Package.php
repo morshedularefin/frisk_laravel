@@ -8,6 +8,6 @@ class Package extends Model
 {
     public function features()
     {
-        return $this->hasMany(PackageFeature::class);
+        return $this->hasMany(PackageFeature::class)->orderBy('item_order', 'asc');
     }
 }
