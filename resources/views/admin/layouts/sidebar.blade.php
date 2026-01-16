@@ -17,6 +17,8 @@
 
             <li class="{{ Route::is('admin.team-member.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.team-member.index') }}"><i class="fas fa-users"></i> <span>Team Member</span></a></li>
 
+            <li class="{{ Route::is('admin.pricing-plan.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.pricing-plan.index') }}"><i class="fas fa-dollar-sign"></i> <span>Pricing Plan</span></a></li>
+
             {{-- <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-vector-square"></i><span>Dropdown Items</span></a>
                 <ul class="dropdown-menu">

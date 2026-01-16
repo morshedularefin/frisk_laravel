@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminMarqueeController;
 use App\Http\Controllers\Admin\AdminTeamMemberController;
+use App\Http\Controllers\Admin\AdminPricingController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -73,4 +74,9 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('team-member/store', [AdminTeamMemberController::class, 'store'])->name('team-member.store');
     Route::post('team-member/update/{id}', [AdminTeamMemberController::class, 'update'])->name('team-member.update');
     Route::post('team-member/destroy/{id}', [AdminTeamMemberController::class, 'destroy'])->name('team-member.destroy');
+
+    Route::get('pricing-plan/index', [AdminPricingController::class, 'index'])->name('pricing-plan.index');
+    Route::post('pricing-plan/store', [AdminPricingController::class, 'store'])->name('pricing-plan.store');
+    Route::post('pricing-plan/update/{id}', [AdminPricingController::class, 'update'])->name('pricing-plan.update');
+    Route::post('pricing-plan/destroy/{id}', [AdminPricingController::class, 'destroy'])->name('pricing-plan.destroy');
 });
