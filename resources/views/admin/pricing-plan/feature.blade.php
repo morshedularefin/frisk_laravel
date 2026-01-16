@@ -9,47 +9,35 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header justify-content-between">
-            <h1>Packages</h1>
+            <h1>Features of {{ $package->name }}</h1>
             <div class="ml-auto">
                 <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_add"><i class="fas fa-plus"></i> Add New</a>
             </div>
             <!-- Add Modal -->
             <div class="modal fade" id="modal_add" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Add Item</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="{{ route('admin.pricing-plan.store') }}" method="post">
+                            <form action="{{ route('admin.pricing-plan.feature_store') }}" method="post">
                                 @csrf
+                                <input type="hidden" name="package_id" value="{{ $package->id }}">
                                 <div class="row">
-                                    <div class="col-lg-4 mb-3">
+                                    <div class="col-lg-12 mb-3">
                                         <label for="">Name *</label>
                                         <input type="text" class="form-control" name="name">
                                     </div>
-                                    <div class="col-lg-4 mb-3">
-                                        <label for="">Price *</label>
-                                        <input type="text" class="form-control" name="price">
-                                    </div>
-                                    <div class="col-lg-4 mb-3">
-                                        <label for="">Duration</label>
-                                        <input type="text" class="form-control" name="duration">
+                                    <div class="col-lg-12 mb-3">
+                                        <label for="">Availability *</label>
+                                        <select name="availability" class="form-select">
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
                                     </div>
                                     <div class="col-lg-12 mb-3">
-                                        <label for="">Description</label>
-                                        <textarea class="form-control h_100" name="description"></textarea>
-                                    </div>
-                                    <div class="col-lg-4 mb-3">
-                                        <label for="">Button Text</label>
-                                        <input type="text" class="form-control" name="button_text">
-                                    </div>
-                                    <div class="col-lg-4 mb-3">
-                                        <label for="">Button Link</label>
-                                        <input type="text" class="form-control" name="button_link">
-                                    </div>
-                                    <div class="col-lg-4 mb-3">
                                         <label for="">Item Order</label>
                                         <input type="text" class="form-control" name="item_order">
                                     </div>
@@ -73,66 +61,53 @@
                                         <tr>
                                             <th>SL</th>
                                             <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Duration</th>
+                                            <th>Availability</th>
                                             <th>Order</th>
-                                            <th>Features</th>
                                             <th class="w_100">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($packages as $package)
+                                        @foreach($package_features as $package_feature)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $package->name }}</td>
-                                            <td>${{ $package->price }}</td>
-                                            <td>{{ $package->duration }}</td>
-                                            <td>{{ $package->item_order }}</td>
+                                            <td>{{ $package_feature->name }}</td>
                                             <td>
-                                                <a href="{{ route('admin.pricing-plan.features', $package->id) }}" class="btn btn-primary btn-sm">Manage Features</a>
+                                                @if($package_feature->availability == 'Yes')
+                                                    <span class="badge bg-success">Yes</span>
+                                                @else
+                                                    <span class="badge bg-danger">No</span>
+                                                @endif
                                             </td>
+                                            <td>{{ $package_feature->item_order }}</td>
                                             <td class="pt_10 pb_10">
-                                                <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal_edit_{{ $package->id }}"><i class="fas fa-edit"></i></a>
-                                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal_delete_{{ $package->id }}"><i class="fas fa-trash"></i></a>
+                                                <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal_edit_{{ $package_feature->id }}"><i class="fas fa-edit"></i></a>
+                                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal_delete_{{ $package_feature->id }}"><i class="fas fa-trash"></i></a>
                                             </td>
-            <div class="modal fade" id="modal_edit_{{ $package->id }}" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+            <div class="modal fade" id="modal_edit_{{ $package_feature->id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Edit Item</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="{{ route('admin.pricing-plan.update', $package->id) }}" method="post">
+                            <form action="{{ route('admin.pricing-plan.feature_update', $package_feature->id) }}" method="post">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-4 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label for="">Name *</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $package->name }}">
-                                </div>
-                                <div class="col-lg-4 mb-3">
-                                    <label for="">Price *</label>
-                                    <input type="text" class="form-control" name="price" value="{{ $package->price }}">
-                                </div>
-                                <div class="col-lg-4 mb-3">
-                                    <label for="">Duration *</label>
-                                    <input type="text" class="form-control" name="duration" value="{{ $package->duration }}">
+                                    <input type="text" class="form-control" name="name" value="{{ $package_feature->name }}">
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label for="">Description</label>
-                                    <textarea class="form-control h_100" name="description">{{ $package->description }}</textarea>
+                                    <label for="">Availability *</label>
+                                    <select name="availability" class="form-select">
+                                        <option value="Yes" {{ $package_feature->availability == 'Yes' ? 'selected' : '' }}>Yes</option>
+                                        <option value="No" {{ $package_feature->availability == 'No' ? 'selected' : '' }}>No</option>
+                                    </select>
                                 </div>
-                                <div class="col-lg-4 mb-3">
-                                    <label for="">Button Text</label>
-                                    <input type="text" class="form-control" name="button_text" value="{{ $package->button_text }}">
-                                </div>
-                                <div class="col-lg-4 mb-3">
-                                    <label for="">Button Link</label>
-                                    <input type="text" class="form-control" name="button_link" value="{{ $package->button_link }}">
-                                </div>
-                                <div class="col-lg-4 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label for="">Item Order</label>
-                                    <input type="text" class="form-control" name="item_order" value="{{ $package->item_order }}">
+                                    <input type="text" class="form-control" name="item_order" value="{{ $package_feature->item_order }}">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
@@ -142,7 +117,7 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="modal_delete_{{ $package->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="modal_delete_{{ $package_feature->id }}" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -150,7 +125,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="{{ route('admin.pricing-plan.destroy', $package->id) }}" method="post">
+                            <form action="{{ route('admin.pricing-plan.feature_destroy', $package_feature->id) }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="">Do you want to delete this item?</label>

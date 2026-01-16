@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2026 at 04:33 AM
+-- Generation Time: Jan 16, 2026 at 05:01 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -192,7 +192,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2026_01_14_014953_create_testimonials_table', 4),
 (7, '2026_01_14_061039_create_marquees_table', 5),
 (8, '2026_01_14_123122_create_team_members_table', 6),
-(9, '2026_01_16_025630_create_packages_table', 7);
+(9, '2026_01_16_025630_create_packages_table', 7),
+(10, '2026_01_16_043546_create_package_features_table', 8);
 
 -- --------------------------------------------------------
 
@@ -221,6 +222,46 @@ INSERT INTO `packages` (`id`, `name`, `price`, `duration`, `description`, `butto
 (1, 'Standard', 39.00, 'mo', 'Discere impedit ei has, his aperiri antiopam contentiones at.', 'CONTACT US', '#', 1, '2026-01-15 21:11:54', '2026-01-15 22:32:04'),
 (2, 'Premium', 79.00, 'mo', 'Vim no facilisi gloriatur. Et mel accommodare philosophiae.', 'CONTACT US', '#', 2, '2026-01-15 21:12:25', '2026-01-15 22:32:07'),
 (3, 'Gold', 99.00, 'mo', 'Cum ipsum eleifend repudiare at, cu eam integre interpre.', 'CONTACT US', '#', 3, '2026-01-15 21:12:44', '2026-01-15 22:32:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `package_features`
+--
+
+CREATE TABLE `package_features` (
+  `id` bigint UNSIGNED NOT NULL,
+  `package_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `availability` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_order` int NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `package_features`
+--
+
+INSERT INTO `package_features` (`id`, `package_id`, `name`, `availability`, `item_order`, `created_at`, `updated_at`) VALUES
+(1, 1, 'WEB & MOBILE', 'Yes', 1, '2026-01-15 22:49:05', '2026-01-15 22:53:11'),
+(2, 1, 'FREE CUSTOM DOMAIN', 'Yes', 2, '2026-01-15 22:53:18', '2026-01-15 22:53:29'),
+(3, 1, 'HOSTING SETUP', 'No', 3, '2026-01-15 22:53:43', '2026-01-15 22:55:48'),
+(4, 1, 'DIRECT SUPPORT', 'No', 4, '2026-01-15 22:54:04', '2026-01-15 22:55:56'),
+(5, 1, 'WEB DESIGN', 'No', 5, '2026-01-15 22:54:17', '2026-01-15 22:54:17'),
+(6, 1, 'WEB DEVELOPMENT', 'No', 6, '2026-01-15 22:54:28', '2026-01-15 22:54:49'),
+(7, 2, 'WEB & MOBILE', 'Yes', 1, '2026-01-15 22:55:27', '2026-01-15 22:55:27'),
+(8, 2, 'FREE CUSTOM DOMAIN', 'Yes', 2, '2026-01-15 22:55:35', '2026-01-15 22:55:35'),
+(9, 2, 'HOSTING SETUP', 'Yes', 3, '2026-01-15 22:56:06', '2026-01-15 22:56:06'),
+(10, 2, 'DIRECT SUPPORT', 'Yes', 4, '2026-01-15 22:56:14', '2026-01-15 22:56:14'),
+(11, 2, 'WEB DESIGN', 'No', 5, '2026-01-15 22:56:23', '2026-01-15 22:56:23'),
+(12, 2, 'WEB DEVELOPMENT', 'No', 6, '2026-01-15 22:56:32', '2026-01-15 22:56:32'),
+(13, 3, 'WEB & MOBILE', 'Yes', 1, '2026-01-15 22:56:52', '2026-01-15 22:56:52'),
+(14, 3, 'FREE CUSTOM DOMAIN', 'Yes', 2, '2026-01-15 22:56:58', '2026-01-15 22:56:58'),
+(15, 3, 'HOSTING SETUP', 'Yes', 3, '2026-01-15 22:57:04', '2026-01-15 22:57:04'),
+(16, 3, 'DIRECT SUPPORT', 'Yes', 4, '2026-01-15 22:57:11', '2026-01-15 22:57:11'),
+(17, 3, 'WEB DESIGN', 'Yes', 5, '2026-01-15 22:57:17', '2026-01-15 22:57:17'),
+(18, 3, 'WEB DEVELOPMENT', 'Yes', 6, '2026-01-15 22:57:23', '2026-01-15 22:57:23');
 
 -- --------------------------------------------------------
 
@@ -254,7 +295,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('CC3AdiCLimKy6G9mfSQpC2tSGjkCTLCyPeUBvr1m', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTHljS2JWVXR5bTBwRkNFWHN5ZE5DTGJiM3dKbFFiVm5xdFU5czFyYyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjI5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvcHJpY2luZyI7czo1OiJyb3V0ZSI7czo3OiJwcmljaW5nIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1768537967);
+('CC3AdiCLimKy6G9mfSQpC2tSGjkCTLCyPeUBvr1m', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTHljS2JWVXR5bTBwRkNFWHN5ZE5DTGJiM3dKbFFiVm5xdFU5czFyYyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQ2OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vcHJpY2luZy1wbGFuL2luZGV4IjtzOjU6InJvdXRlIjtzOjI0OiJhZG1pbi5wcmljaW5nLXBsYW4uaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768539684);
 
 -- --------------------------------------------------------
 
@@ -414,6 +455,12 @@ ALTER TABLE `packages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `package_features`
+--
+ALTER TABLE `package_features`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
@@ -479,13 +526,19 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `package_features`
+--
+ALTER TABLE `package_features`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `team_members`

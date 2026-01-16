@@ -79,4 +79,8 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('pricing-plan/store', [AdminPricingController::class, 'store'])->name('pricing-plan.store');
     Route::post('pricing-plan/update/{id}', [AdminPricingController::class, 'update'])->name('pricing-plan.update');
     Route::post('pricing-plan/destroy/{id}', [AdminPricingController::class, 'destroy'])->name('pricing-plan.destroy');
+    Route::get('pricing-plan/features/{id}', [AdminPricingController::class, 'features'])->name('pricing-plan.features');
+    Route::post('pricing-plan/feature_store', [AdminPricingController::class, 'feature_store'])->name('pricing-plan.feature_store');
+    Route::post('pricing-plan/feature_update/{id}', [AdminPricingController::class, 'feature_update'])->name('pricing-plan.feature_update');
+    Route::post('pricing-plan/feature_destroy/{id}', [AdminPricingController::class, 'feature_destroy'])->name('pricing-plan.feature_destroy');
 });
