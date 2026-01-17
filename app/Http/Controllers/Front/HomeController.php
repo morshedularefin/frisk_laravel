@@ -9,6 +9,7 @@ use App\Models\TeamMember;
 use App\Models\Faq;
 use App\Models\Client;
 use App\Models\Award;
+use App\Models\Counter;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,8 @@ class HomeController extends Controller
 
     public function home_3()
     {
-        return view('front.home_3');
+        $counter_data = Counter::where('id',1)->first();
+        return view('front.home_3', compact('counter_data'));
     }
 
     public function home_4()

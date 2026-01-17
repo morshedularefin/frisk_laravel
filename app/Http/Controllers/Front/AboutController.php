@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\TeamMember;
 use App\Models\Client;
 use App\Models\Award;
+use App\Models\Counter;
 
 class AboutController extends Controller
 {
@@ -15,6 +16,7 @@ class AboutController extends Controller
         $team_members = TeamMember::get()->take(4);
         $clients = Client::where('about_page', 'Yes')->get();
         $awards = Award::orderBy('item_order','asc')->get();
-        return view('front.about', compact('team_members', 'clients', 'awards'));
+        $counter_data = Counter::where('id',1)->first();
+        return view('front.about', compact('team_members', 'clients', 'awards', 'counter_data'));
     }
 }

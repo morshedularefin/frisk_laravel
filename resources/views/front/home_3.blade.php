@@ -33,28 +33,34 @@ Counter Area 02
             <div class="col-xl-auto col-lg-4 col-md-6 counter-divider">
                 <div class="counter-card">
                     <h3 class="counter-card_number">
-                        <span class="counter-number">26</span>+
+                        <span class="counter-number">{{ $counter_data->number1 }}</span>+
                     </h3>
-                    <h4 class="counter-card_title">Years of Experience</h4>
-                    <p class="counter-card_text">We are a creative agency brands building insightful strategy, creating unique designs helping</p>
+                    <h4 class="counter-card_title">{{ $counter_data->title1 }}</h4>
+                    <p class="counter-card_text">
+                        {!! nl2br($counter_data->text1) !!}
+                    </p>
                 </div>
             </div>
             <div class="col-xl-auto col-lg-4 col-md-6 counter-divider">
                 <div class="counter-card">
                     <h3 class="counter-card_number">
-                        <span class="counter-number">347</span>+
+                        <span class="counter-number">{{ $counter_data->number2 }}</span>+
                     </h3>
-                    <h4 class="counter-card_title">Successful Projects</h4>
-                    <p class="counter-card_text">We are a creative agency brands building insightful strategy, creating unique designs helping</p>
+                    <h4 class="counter-card_title">{{ $counter_data->title2 }}</h4>
+                    <p class="counter-card_text">
+                        {!! nl2br($counter_data->text2) !!}
+                    </p>
                 </div>
             </div>
             <div class="col-xl-auto col-lg-4 col-md-6 counter-divider">
                 <div class="counter-card">
                     <h3 class="counter-card_number">
-                        <span class="counter-number">139</span>+
+                        <span class="counter-number">{{ $counter_data->number3 }}</span>+
                     </h3>
-                    <h4 class="counter-card_title">Satisfied Customers</h4>
-                    <p class="counter-card_text">We are a creative agency brands building insightful strategy, creating unique designs helping</p>
+                    <h4 class="counter-card_title">{{ $counter_data->title3 }}</h4>
+                    <p class="counter-card_text">
+                        {!! nl2br($counter_data->text3) !!}
+                    </p>
                 </div>
             </div>
         </div>
