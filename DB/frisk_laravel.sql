@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2026 at 11:09 AM
+-- Generation Time: Jan 17, 2026 at 01:26 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -426,6 +426,7 @@ CREATE TABLE `sessions` (
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
 ('7JliwOcG8IfoTVDnHImTwLXodmkxMHkhnKJjtwc7', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRExtcmpxeXA5Mno4eU5tSzdMd2RjSkUyQlRFRHlLeXpVQlg2RjhGRSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vY291bnRlci9pbmRleCI7czo1OiJyb3V0ZSI7czoxOToiYWRtaW4uY291bnRlci5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768632003),
+('fdyKzbWEeqCbBNp7Y9nbGPLJPwqCx454Djt8IB5D', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiQ1VIYkJBV0hiNXhzdmxaam11bWllRDhWRGhqWkpRamJVNGZibkpaZCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ob21lLTUiO3M6NToicm91dGUiO3M6NjoiaG9tZV81Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768656303),
 ('qDOm8fXNiUz2x5xiCLfKwNLeNIdKc276tUXu5CRa', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRGo2Q2M5T3FDTGNiUXFmTjV4QUZERnZycno1Wm51Z1BhalZPYVdDWCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjM5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vc2tpbGwvaW5kZXgiO3M6NToicm91dGUiO3M6MTc6ImFkbWluLnNraWxsLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1768648092);
 
 -- --------------------------------------------------------
@@ -450,7 +451,7 @@ CREATE TABLE `skills` (
 INSERT INTO `skills` (`id`, `name`, `percentage`, `item_order`, `created_at`, `updated_at`) VALUES
 (1, 'Branding', 84, 1, '2026-01-17 05:06:47', '2026-01-17 05:06:47'),
 (2, 'Development', 69, 2, '2026-01-17 05:07:20', '2026-01-17 05:07:20'),
-(3, 'ADVERTISING', 72, 3, '2026-01-17 05:07:31', '2026-01-17 05:07:31'),
+(3, 'Advertising', 79, 3, '2026-01-17 05:07:31', '2026-01-17 07:23:45'),
 (4, 'Marketing', 94, 4, '2026-01-17 05:07:46', '2026-01-17 05:07:46');
 
 -- --------------------------------------------------------
@@ -754,7 +755,7 @@ ALTER TABLE `package_features`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `team_members`

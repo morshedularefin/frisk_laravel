@@ -147,38 +147,16 @@ Service Area
                     <div class="title-area mb-0">
                         <h2 class="sec-title">We Offer a Wide Range of Brand Services</h2>
                         <p class="sec-text mt-35 mb-40">We are a creative agency working with brands building insightful strategy, creating unique designs and crafting value</p>
+                        @foreach($skills as $skill)
                         <div class="skill-feature">
-                            <h3 class="skill-feature_title">Branding</h3>
+                            <h3 class="skill-feature_title">{{ $skill->name }}</h3>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 86%;">
+                                <div class="progress-bar" style="width: {{ $skill->percentage }}%;">
                                 </div>
-                                <div class="progress-value"><span class="counter-number">86</span>%</div>
+                                <div class="progress-value"><span class="counter-number">{{ $skill->percentage }}</span>%</div>
                             </div>
                         </div>
-                        <div class="skill-feature">
-                            <h3 class="skill-feature_title">Development</h3>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 69%;">
-                                </div>
-                                <div class="progress-value"><span class="counter-number">69</span>%</div>
-                            </div>
-                        </div>
-                        <div class="skill-feature">
-                            <h3 class="skill-feature_title">ADVERTISING</h3>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 72%;">
-                                </div>
-                                <div class="progress-value"><span class="counter-number">72</span>%</div>
-                            </div>
-                        </div>
-                        <div class="skill-feature">
-                            <h3 class="skill-feature_title">Marketing</h3>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 94%;">
-                                </div>
-                                <div class="progress-value"><span class="counter-number">94</span>%</div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

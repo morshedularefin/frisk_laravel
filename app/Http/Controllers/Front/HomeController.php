@@ -10,6 +10,7 @@ use App\Models\Faq;
 use App\Models\Client;
 use App\Models\Award;
 use App\Models\Counter;
+use App\Models\Skill;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
     {
         $clients = Client::where('home_page_2', 'Yes')->get();
         $awards = Award::orderBy('item_order','asc')->get();
-        return view('front.home_2', compact('clients', 'awards'));
+        $skills = Skill::orderBy('item_order','asc')->get();
+        return view('front.home_2', compact('clients', 'awards', 'skills'));
     }
 
     public function home_3()
@@ -45,6 +47,7 @@ class HomeController extends Controller
         $testimonials = Testimonial::get();
         $faqs = Faq::orderBy('item_order','asc')->where('home_page_5', 'Yes')->get();
         $clients = Client::where('home_page_5', 'Yes')->get();
-        return view('front.home_5', compact('testimonials', 'faqs', 'clients'));
+        $skills = Skill::orderBy('item_order','asc')->get();
+        return view('front.home_5', compact('testimonials', 'faqs', 'clients', 'skills'));
     }
 }
