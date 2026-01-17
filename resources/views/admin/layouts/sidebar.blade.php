@@ -23,6 +23,8 @@
 
             <li class="{{ Route::is('admin.client.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.client.index') }}"><i class="fas fa-user-graduate"></i> <span>Client</span></a></li>
 
+            <li class="{{ Route::is('admin.award.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.award.index') }}"><i class="fas fa-trophy"></i> <span>Award</span></a></li>
+
             {{-- <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-vector-square"></i><span>Dropdown Items</span></a>
                 <ul class="dropdown-menu">

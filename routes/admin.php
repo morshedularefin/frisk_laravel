@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminTeamMemberController;
 use App\Http\Controllers\Admin\AdminPricingController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminClientController;
+use App\Http\Controllers\Admin\AdminAwardController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -95,4 +96,9 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('client/store', [AdminClientController::class, 'store'])->name('client.store');
     Route::post('client/update/{id}', [AdminClientController::class, 'update'])->name('client.update');
     Route::post('client/destroy/{id}', [AdminClientController::class, 'destroy'])->name('client.destroy');
+
+    Route::get('award/index', [AdminAwardController::class, 'index'])->name('award.index');
+    Route::post('award/store', [AdminAwardController::class, 'store'])->name('award.store');
+    Route::post('award/update/{id}', [AdminAwardController::class, 'update'])->name('award.update');
+    Route::post('award/destroy/{id}', [AdminAwardController::class, 'destroy'])->name('award.destroy');
 });
