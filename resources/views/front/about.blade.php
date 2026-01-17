@@ -75,38 +75,18 @@ Award Area
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <ul class="award-wrap-area">
+                    @foreach($awards as $award)
                     <li class="single-award-list">
-                        <span class="award-year">2017</span>
+                        <span class="award-year">{{ $award->year }}</span>
                         <div class="award-details">
-                            <h4><a href="about.html">New York Design Week</a></h4>
-                            <p>We bring to life the most complex projects, specialize</p>
+                            <h4><a href="{{ $award->url=='' ? 'javascript:void(0);' : $award->url }}">{{ $award->title }}</a></h4>
+                            <p>
+                                {!! nl2br($award->description) !!}
+                            </p>
                         </div>
-                        <span class="award-tag">Main developer</span>
+                        <span class="award-tag">{{ $award->tag }}</span>
                     </li>
-                    <li class="single-award-list">
-                        <span class="award-year">2019</span>
-                        <div class="award-details">
-                            <h4><a href="about.html">The Blue Design Awards</a></h4>
-                            <p>We bring to life the most complex projects, specialize</p>
-                        </div>
-                        <span class="award-tag">Animator</span>
-                    </li>
-                    <li class="single-award-list">
-                        <span class="award-year">2019</span>
-                        <div class="award-details">
-                            <h4><a href="about.html">Best Web Flow</a></h4>
-                            <p>We bring to life the most complex projects, specialize</p>
-                        </div>
-                        <span class="award-tag">Main developer</span>
-                    </li>
-                    <li class="single-award-list">
-                        <span class="award-year">2019</span>
-                        <div class="award-details">
-                            <h4><a href="about.html">Berlin Interactive Award</a></h4>
-                            <p>We bring to life the most complex projects, specialize</p>
-                        </div>
-                        <span class="award-tag">Best innovations</span>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

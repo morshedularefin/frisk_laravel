@@ -10,7 +10,7 @@ class AdminAwardController extends Controller
 {
     public function index()
     {
-        $awards = Award::get();
+        $awards = Award::orderBy('item_order','asc')->get();
         return view('admin.award.index', compact('awards'));
     }
 
@@ -28,6 +28,8 @@ class AdminAwardController extends Controller
         $award->description = $request->description;
         $award->year = $request->year;
         $award->tag = $request->tag;
+        $award->url = $request->url;
+        $award->item_order = $request->item_order;
         $award->save();
 
         return redirect()->route('admin.award.index')->with('success', 'Award added successfully.');
@@ -47,6 +49,8 @@ class AdminAwardController extends Controller
         $award->description = $request->description;
         $award->year = $request->year;
         $award->tag = $request->tag;
+        $award->url = $request->url;
+        $award->item_order = $request->item_order;
         $award->save();
 
         return redirect()->route('admin.award.index')->with('success', 'Award updated successfully.');

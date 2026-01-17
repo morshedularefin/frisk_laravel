@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('year');
             $table->string('tag');
+            $table->string('url')->nullable();
+            $table->integer('item_order')->default(0);
             $table->timestamps();
         });
     }

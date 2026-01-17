@@ -41,6 +41,14 @@
                                         <label for="">Tag *</label>
                                         <input type="text" class="form-control" name="tag">
                                     </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label for="">URL</label>
+                                        <input type="text" class="form-control" name="url">
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label for="">Item Order</label>
+                                        <input type="text" class="form-control" name="item_order">
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
@@ -63,6 +71,8 @@
                                             <th>Title</th>
                                             <th>Year</th>
                                             <th>Tag</th>
+                                            <th>URL</th>
+                                            <th>Order</th>
                                             <th class="w_100">Action</th>
                                         </tr>
                                     </thead>
@@ -73,12 +83,18 @@
                                             <td>{{ $award->title }}</td>
                                             <td>{{ $award->year }}</td>
                                             <td>{{ $award->tag }}</td>
+                                            <td>
+                                                @if($award->url!='')
+                                                <a href="{{ $award->url }}" target="_blank">Click Here</a>
+                                                @endif
+                                            </td>
+                                            <td>{{ $award->item_order }}</td>
                                             <td class="pt_10 pb_10">
                                                 <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal_edit_{{ $award->id }}"><i class="fas fa-edit"></i></a>
                                                 <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal_delete_{{ $award->id }}"><i class="fas fa-trash"></i></a>
                                             </td>
                 <div class="modal fade" id="modal_edit_{{ $award->id }}" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Edit Item</h5>
@@ -103,6 +119,14 @@
                                     <div class="col-lg-12 mb-3">
                                         <label for="">Tag *</label>
                                         <input type="text" class="form-control" name="tag" value="{{ $award->tag }}">
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label for="">URL</label>
+                                        <input type="text" class="form-control" name="url" value="{{ $award->url }}">
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label for="">Item Order</label>
+                                        <input type="text" class="form-control" name="item_order" value="{{ $award->item_order }}">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Update</button>

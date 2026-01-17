@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2026 at 05:04 AM
+-- Generation Time: Jan 17, 2026 at 05:26 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -58,6 +58,8 @@ CREATE TABLE `awards` (
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `item_order` int NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -66,11 +68,11 @@ CREATE TABLE `awards` (
 -- Dumping data for table `awards`
 --
 
-INSERT INTO `awards` (`id`, `title`, `description`, `year`, `tag`, `created_at`, `updated_at`) VALUES
-(1, 'New York Design Week', 'Primis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis.', '2017', 'MAIN DEVELOPER', '2026-01-16 23:01:42', '2026-01-16 23:01:42'),
-(2, 'The Blue Design Awards', 'Primis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis.', '2021', 'ANIMATOR', '2026-01-16 23:02:14', '2026-01-16 23:02:14'),
-(3, 'Best Web Flow', 'Primis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis.', '2023', 'MAIN DESIGNER', '2026-01-16 23:02:40', '2026-01-16 23:02:40'),
-(4, 'Berlin Interactive Award', 'Primis malorum an pri. Meliore nostrum ex nam, quando mediocrem id eam, vim te periculis.', '2025', 'BEST INNOVATIONS', '2026-01-16 23:03:10', '2026-01-16 23:03:10');
+INSERT INTO `awards` (`id`, `title`, `description`, `year`, `tag`, `url`, `item_order`, `created_at`, `updated_at`) VALUES
+(1, 'New York Design Week', 'Primis malorum an pri. Meliore nostrum ex nam quando.', '2017', 'MAIN DEVELOPER', NULL, 1, '2026-01-16 23:01:42', '2026-01-16 23:24:13'),
+(2, 'The Blue Design Awards', 'Primis malorum an pri. Meliore nostrum ex nam quando.', '2021', 'ANIMATOR', NULL, 2, '2026-01-16 23:02:14', '2026-01-16 23:24:16'),
+(3, 'Best Web Flow', 'Primis malorum an pri. Meliore nostrum ex nam quando.', '2023', 'MAIN DESIGNER', NULL, 3, '2026-01-16 23:02:40', '2026-01-16 23:24:18'),
+(4, 'Berlin Interactive Award', 'Primis malorum an pri. Meliore nostrum ex nam quando.', '2025', 'BEST INNOVATIONS', NULL, 4, '2026-01-16 23:03:10', '2026-01-16 23:24:21');
 
 -- --------------------------------------------------------
 
@@ -393,7 +395,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('7JliwOcG8IfoTVDnHImTwLXodmkxMHkhnKJjtwc7', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRExtcmpxeXA5Mno4eU5tSzdMd2RjSkUyQlRFRHlLeXpVQlg2RjhGRSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjM5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vYXdhcmQvaW5kZXgiO3M6NToicm91dGUiO3M6MTc6ImFkbWluLmF3YXJkLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1768626224);
+('7JliwOcG8IfoTVDnHImTwLXodmkxMHkhnKJjtwc7', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRExtcmpxeXA5Mno4eU5tSzdMd2RjSkUyQlRFRHlLeXpVQlg2RjhGRSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjI3OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWJvdXQiO3M6NToicm91dGUiO3M6NToiYWJvdXQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768627511);
 
 -- --------------------------------------------------------
 

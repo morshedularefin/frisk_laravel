@@ -8,6 +8,7 @@ use App\Models\Testimonial;
 use App\Models\TeamMember;
 use App\Models\Faq;
 use App\Models\Client;
+use App\Models\Award;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,8 @@ class HomeController extends Controller
     public function home_2()
     {
         $clients = Client::where('home_page_2', 'Yes')->get();
-        return view('front.home_2', compact('clients'));
+        $awards = Award::orderBy('item_order','asc')->get();
+        return view('front.home_2', compact('clients', 'awards'));
     }
 
     public function home_3()

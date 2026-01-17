@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TeamMember;
 use App\Models\Client;
+use App\Models\Award;
 
 class AboutController extends Controller
 {
@@ -13,6 +14,7 @@ class AboutController extends Controller
     {
         $team_members = TeamMember::get()->take(4);
         $clients = Client::where('about_page', 'Yes')->get();
-        return view('front.about', compact('team_members', 'clients'));
+        $awards = Award::orderBy('item_order','asc')->get();
+        return view('front.about', compact('team_members', 'clients', 'awards'));
     }
 }
