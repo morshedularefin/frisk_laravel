@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2026 at 07:16 AM
+-- Generation Time: Jan 18, 2026 at 07:54 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -325,7 +325,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2026_01_17_060524_create_counters_table', 12),
 (15, '2026_01_17_105958_create_skills_table', 13),
 (16, '2026_01_18_012328_create_services_table', 14),
-(17, '2026_01_18_044301_create_portfolios_table', 15);
+(17, '2026_01_18_044301_create_portfolios_table', 15),
+(18, '2026_01_18_074801_create_portfolio_photos_table', 16);
 
 -- --------------------------------------------------------
 
@@ -445,6 +446,20 @@ INSERT INTO `portfolios` (`id`, `photo`, `title`, `slug`, `description`, `catego
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `portfolio_photos`
+--
+
+CREATE TABLE `portfolio_photos` (
+  `id` bigint UNSIGNED NOT NULL,
+  `portfolio_id` bigint UNSIGNED NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `services`
 --
 
@@ -496,7 +511,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('PBUKOzWcSBrOR8KtCC5oOzlCpp7M14bjY0NmThkB', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRFVKZ0xZV1NsWDhQOVdWbEtpVmF6dkZ4MzZZdEN2cURId01PdFVCViI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjU0OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvcG9ydGZvbGlvL3RyYWRpbmctd2Vic2l0ZS1kZXNpZ24iO3M6NToicm91dGUiO3M6OToicG9ydGZvbGlvIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1768720559);
+('PBUKOzWcSBrOR8KtCC5oOzlCpp7M14bjY0NmThkB', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRFVKZ0xZV1NsWDhQOVdWbEtpVmF6dkZ4MzZZdEN2cURId01PdFVCViI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQzOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vcG9ydGZvbGlvL2luZGV4IjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5wb3J0Zm9saW8uaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768722245);
 
 -- --------------------------------------------------------
 
@@ -724,6 +739,12 @@ ALTER TABLE `portfolios`
   ADD UNIQUE KEY `portfolios_slug_unique` (`slug`);
 
 --
+-- Indexes for table `portfolio_photos`
+--
+ALTER TABLE `portfolio_photos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -820,7 +841,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -839,6 +860,12 @@ ALTER TABLE `package_features`
 --
 ALTER TABLE `portfolios`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `portfolio_photos`
+--
+ALTER TABLE `portfolio_photos`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `services`

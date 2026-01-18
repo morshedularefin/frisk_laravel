@@ -123,4 +123,8 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('portfolio/store', [AdminPortfolioController::class, 'store'])->name('portfolio.store');
     Route::post('portfolio/update/{id}', [AdminPortfolioController::class, 'update'])->name('portfolio.update');
     Route::post('portfolio/destroy/{id}', [AdminPortfolioController::class, 'destroy'])->name('portfolio.destroy');
+    Route::get('portfolio/photos/{id}', [AdminPortfolioController::class, 'photos'])->name('portfolio.photos');
+    Route::post('portfolio/photo_store', [AdminPortfolioController::class, 'photo_store'])->name('portfolio.photo_store');
+    Route::post('portfolio/photo_update/{id}', [AdminPortfolioController::class, 'photo_update'])->name('portfolio.photo_update');
+    Route::post('portfolio/photo_destroy/{id}', [AdminPortfolioController::class, 'photo_destroy'])->name('portfolio.photo_destroy');
 });

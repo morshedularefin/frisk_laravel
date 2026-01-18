@@ -92,6 +92,7 @@
                                             <th>Title</th>
                                             <th>Category</th>
                                             <th>Order</th>
+                                            <th>Photo Gallery</th>
                                             <th class="w_100">Action</th>
                                         </tr>
                                     </thead>
@@ -105,6 +106,9 @@
                                             <td>{{ $portfolio->title }}</td>
                                             <td>{{ $portfolio->category }}</td>
                                             <td>{{ $portfolio->item_order }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.portfolio.photos', $portfolio->id) }}">Photo Gallery</a>
+                                            </td>
                                             <td class="pt_10 pb_10">
                                                 <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal_edit_{{ $portfolio->id }}"><i class="fas fa-edit"></i></a>
                                                 <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal_delete_{{ $portfolio->id }}"><i class="fas fa-trash"></i></a>
