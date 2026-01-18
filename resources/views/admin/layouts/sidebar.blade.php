@@ -35,6 +35,15 @@
                 </ul>
             </li>
 
+            <li class="nav-item dropdown {{ Route::is('admin.post-category.*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-edit"></i><span>Blog</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Route::is('admin.post-category.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.post-category.index') }}""><i class="fas fa-angle-right"></i> Post Category</a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="{{ Route::is('admin.team-member.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.team-member.index') }}"><i class="fas fa-users"></i> <span>Team Page</span></a></li>
 
             <li class="{{ Route::is('admin.pricing-plan.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.pricing-plan.index') }}"><i class="fas fa-dollar-sign"></i> <span>Pricing Page</span></a></li>

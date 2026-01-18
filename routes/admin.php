@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AdminCounterController;
 use App\Http\Controllers\Admin\AdminSkillController;
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminPortfolioController;
+use App\Http\Controllers\Admin\AdminPostCategoryController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -127,4 +128,9 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('portfolio/photo_store', [AdminPortfolioController::class, 'photo_store'])->name('portfolio.photo_store');
     Route::post('portfolio/photo_update/{id}', [AdminPortfolioController::class, 'photo_update'])->name('portfolio.photo_update');
     Route::post('portfolio/photo_destroy/{id}', [AdminPortfolioController::class, 'photo_destroy'])->name('portfolio.photo_destroy');
+
+    Route::get('post-category/index', [AdminPostCategoryController::class, 'index'])->name('post-category.index');
+    Route::post('post-category/store', [AdminPostCategoryController::class, 'store'])->name('post-category.store');
+    Route::post('post-category/update/{id}', [AdminPostCategoryController::class, 'update'])->name('post-category.update');
+    Route::post('post-category/destroy/{id}', [AdminPostCategoryController::class, 'destroy'])->name('post-category.destroy');
 });
