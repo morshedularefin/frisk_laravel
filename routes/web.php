@@ -10,6 +10,7 @@ use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\PricingController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\ServiceController;
+use App\Http\Controllers\Front\PortfolioController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -31,6 +32,9 @@ Route::post('/team-member/send-email', [TeamMemberController::class, 'team_membe
 
 Route::get('/services', [ServiceController::class, 'services'])->name('services');
 Route::get('/service/{slug}', [ServiceController::class, 'service'])->name('service');
+
+Route::get('/portfolios', [PortfolioController::class, 'portfolios'])->name('portfolios');
+Route::get('/portfolio/{slug}', [PortfolioController::class, 'portfolio'])->name('portfolio');
 
 // Route::get('/secret', [HomeController::class, 'secret'])->name('secret')->middleware(['auth','password.confirm']);
 

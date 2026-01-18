@@ -108,21 +108,44 @@ Faq Area
 <div class="portfolio-area-1 space-bottom overflow-hidden" data-bg-src="{{ asset('dist/front/img/bg/portfolio-1-bg.png') }}">
     <div class="container">
         <div class="row justify-content-between masonary-active">
-            <div class="col-lg-6 filter-item">
-                <div class="portfolio-wrap mt-lg-140">
-                    <div class="portfolio-thumb wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                        <a href="project-details.html">
-                            <img src="{{ asset('dist/front/img/portfolio/portfolio1_1.jpg') }}" alt="portfolio">
+
+            @foreach($portfolios as $portfolio)
+            @php
+                if($loop->iteration == 1) {
+                    $m_top = "mt-lg-140";
+                    $anim = "img-custom-anim-top";
+                    $col_length = "6";
+                    $gap_right = "";
+                } elseif($loop->iteration == 2) {
+                    $m_top = "mt-140 mt-lg-0";
+                    $anim = "img-custom-anim-left";
+                    $col_length = "6";
+                    $gap_right = "";
+                } elseif($loop->iteration == 3) {
+                    $m_top = "mt-140";
+                    $anim = "img-custom-anim-top";
+                    $col_length = "7";
+                    $gap_right = "margin-right:60px;";
+                } else {
+                    $m_top = "mt-140";
+                    $anim = "img-custom-anim-left";
+                    $col_length = "5";
+                    $gap_right = "";
+                }
+            @endphp
+            <div class="col-lg-{{ $col_length }} filter-item">
+                <div class="portfolio-wrap {{ $m_top }}">
+                    <div class="portfolio-thumb wow {{ $anim }}" data-wow-duration="1.5s" data-wow-delay="0.2s" style="{{ $gap_right }}">
+                        <a href="{{ route('portfolio',$portfolio->slug) }}">
+                            <img src="{{ asset('uploads/'.$portfolio->photo) }}" alt="portfolio">
                         </a>
                     </div>
                     <div class="portfolio-details">
                         <ul class="portfolio-meta">
-                            <li><a href="blog.html">Branding</a></li>
-                            <li><a href="blog.html">Development</a></li>
-                            <li><a href="blog.html">Marketing</a></li>
+                            <li><a href="javascript:void(0)">{{ $portfolio->category }}</a></li>
                         </ul>
-                        <h3 class="portfolio-title"><a href="project-details.html">Money Laundering Compliance Scanner</a></h3>
-                        <a href="project-details.html" class="link-btn">
+                        <h3 class="portfolio-title"><a href="{{ route('portfolio',$portfolio->slug) }}">{{ $portfolio->title }}</a></h3>
+                        <a href="{{ route('portfolio',$portfolio->slug) }}" class="link-btn">
                             <span class="link-effect">
                                 <span class="effect-1">VIEW PROJECT</span>
                                 <span class="effect-1">VIEW PROJECT</span>
@@ -132,81 +155,10 @@ Faq Area
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 filter-item">
-                <div class="portfolio-wrap mt-140 mt-lg-0">
-                    <div class="portfolio-thumb wow img-custom-anim-left" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                        <a href="project-details.html">
-                            <img src="{{ asset('dist/front/img/portfolio/portfolio1_2.jpg') }}" alt="portfolio">
-                        </a>
-                    </div>
-                    <div class="portfolio-details">
-                        <ul class="portfolio-meta">
-                            <li><a href="blog.html">Branding</a></li>
-                            <li><a href="blog.html">Development</a></li>
-                            <li><a href="blog.html">Marketing</a></li>
-                        </ul>
-                        <h3 class="portfolio-title"><a href="project-details.html">Decentralized Lending Platform for Students</a></h3>
-                        <a href="project-details.html" class="link-btn">
-                            <span class="link-effect">
-                                <span class="effect-1">VIEW PROJECT</span>
-                                <span class="effect-1">VIEW PROJECT</span>
-                            </span>
-                            <img src="{{ asset('dist/front/img/icon/arrow-left-top.svg') }}" alt="icon">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7 filter-item">
-                <div class="portfolio-wrap mt-140">
-                    <div class="portfolio-thumb wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                        <a href="project-details.html">
-                            <img src="{{ asset('dist/front/img/portfolio/portfolio1_3.jpg') }}" alt="portfolio">
-                        </a>
-                    </div>
-                    <div class="portfolio-details">
-                        <ul class="portfolio-meta">
-                            <li><a href="blog.html">Branding</a></li>
-                            <li><a href="blog.html">Development</a></li>
-                            <li><a href="blog.html">Marketing</a></li>
-                        </ul>
-                        <h3 class="portfolio-title"><a href="project-details.html">Anti Money Laundering Compliance Scanner</a></h3>
-                        <a href="project-details.html" class="link-btn">
-                            <span class="link-effect">
-                                <span class="effect-1">VIEW PROJECT</span>
-                                <span class="effect-1">VIEW PROJECT</span>
-                            </span>
-                            <img src="{{ asset('dist/front/img/icon/arrow-left-top.svg') }}" alt="icon">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 filter-item">
-                <div class="portfolio-wrap mt-140">
-                    <div class="portfolio-thumb wow img-custom-anim-left" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                        <a href="project-details.html">
-                            <img src="{{ asset('dist/front/img/portfolio/portfolio1_4.jpg') }}" alt="portfolio">
-                        </a>
-                    </div>
-                    <div class="portfolio-details">
-                        <ul class="portfolio-meta">
-                            <li><a href="blog.html">Branding</a></li>
-                            <li><a href="blog.html">Development</a></li>
-                            <li><a href="blog.html">Marketing</a></li>
-                        </ul>
-                        <h3 class="portfolio-title"><a href="project-details.html">Shopify Redesign for a Nova Scotia Winery</a></h3>
-                        <a href="project-details.html" class="link-btn">
-                            <span class="link-effect">
-                                <span class="effect-1">VIEW PROJECT</span>
-                                <span class="effect-1">VIEW PROJECT</span>
-                            </span>
-                            <img src="{{ asset('dist/front/img/icon/arrow-left-top.svg') }}" alt="icon">
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
             <div class="col-auto filter-item">
                 <div class="btn-wrap mt-140">
-                    <a class="circle-btn btn gsap-magnetic mx-lg-5" href="project.html">
+                    <a class="circle-btn btn gsap-magnetic mx-lg-5" href="{{ route('portfolios') }}">
                         <span class="link-effect">
                             <span class="effect-1">VIEW ALL</span>
                             <span class="effect-1">VIEW ALL</span>

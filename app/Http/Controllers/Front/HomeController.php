@@ -12,6 +12,7 @@ use App\Models\Award;
 use App\Models\Counter;
 use App\Models\Skill;
 use App\Models\Service;
+use App\Models\Portfolio;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,8 @@ class HomeController extends Controller
         $testimonials = Testimonial::get();
         $team_members = TeamMember::get()->take(4);
         $faqs = Faq::orderBy('item_order','asc')->where('home_page_1', 'Yes')->get();
-        return view('front.home_1', compact('testimonials', 'team_members', 'faqs'));
+        $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(4);
+        return view('front.home_1', compact('testimonials', 'team_members', 'faqs', 'portfolios'));
     }
 
     public function home_2()
