@@ -35,11 +35,14 @@
                 </ul>
             </li>
 
-            <li class="nav-item dropdown {{ Route::is('admin.post-category.*') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Route::is('admin.post-category.*')||Route::is('admin.post.*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-edit"></i><span>Blog</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Route::is('admin.post-category.*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.post-category.index') }}""><i class="fas fa-angle-right"></i> Post Category</a>
+                    </li>
+                    <li class="{{ Route::is('admin.post.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.post.index') }}""><i class="fas fa-angle-right"></i> Post</a>
                     </li>
                 </ul>
             </li>

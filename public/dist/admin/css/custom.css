@@ -18,6 +18,13 @@ body {
     position: static;
 }
 
+/* Select2 dropdown high z-index to appear above TinyMCE iframes and all overlays */
+.select2-dropdown-high-z.select2-dropdown {
+    z-index: 99999 !important;
+}
+.select2-dropdown-high-z.select2-dropdown--above {
+    z-index: 99999 !important;
+}
 table.t1 tr td {
     border-top: 1px solid #e3e3e3;
 }

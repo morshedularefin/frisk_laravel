@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\AdminSkillController;
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminPortfolioController;
 use App\Http\Controllers\Admin\AdminPostCategoryController;
+use App\Http\Controllers\Admin\AdminPostController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -133,4 +134,9 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('post-category/store', [AdminPostCategoryController::class, 'store'])->name('post-category.store');
     Route::post('post-category/update/{id}', [AdminPostCategoryController::class, 'update'])->name('post-category.update');
     Route::post('post-category/destroy/{id}', [AdminPostCategoryController::class, 'destroy'])->name('post-category.destroy');
+
+    Route::get('post/index', [AdminPostController::class, 'index'])->name('post.index');
+    Route::post('post/store', [AdminPostController::class, 'store'])->name('post.store');
+    Route::post('post/update/{id}', [AdminPostController::class, 'update'])->name('post.update');
+    Route::post('post/destroy/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
 });

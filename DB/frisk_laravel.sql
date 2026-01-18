@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2026 at 10:06 AM
+-- Generation Time: Jan 18, 2026 at 11:05 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -327,7 +327,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2026_01_18_012328_create_services_table', 14),
 (17, '2026_01_18_044301_create_portfolios_table', 15),
 (18, '2026_01_18_074801_create_portfolio_photos_table', 16),
-(19, '2026_01_18_095159_create_post_categories_table', 17);
+(19, '2026_01_18_095159_create_post_categories_table', 17),
+(20, '2026_01_18_102722_create_posts_table', 18);
 
 -- --------------------------------------------------------
 
@@ -479,6 +480,33 @@ INSERT INTO `portfolio_photos` (`id`, `portfolio_id`, `photo`, `created_at`, `up
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` bigint UNSIGNED NOT NULL,
+  `post_category_id` bigint UNSIGNED NOT NULL,
+  `admin_id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tags` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `post_category_id`, `admin_id`, `title`, `slug`, `short_description`, `description`, `photo`, `tags`, `created_at`, `updated_at`) VALUES
+(1, 3, 2, 'Blog Title Here', 'blog-title-here', 'Test data', '<p>Test data</p>', 'post_1768734173.png', 'company,color,brand', '2026-01-18 05:02:53', '2026-01-18 05:02:53');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `post_categories`
 --
 
@@ -555,7 +583,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('PBUKOzWcSBrOR8KtCC5oOzlCpp7M14bjY0NmThkB', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRFVKZ0xZV1NsWDhQOVdWbEtpVmF6dkZ4MzZZdEN2cURId01PdFVCViI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQ3OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vcG9zdC1jYXRlZ29yeS9pbmRleCI7czo1OiJyb3V0ZSI7czoyNToiYWRtaW4ucG9zdC1jYXRlZ29yeS5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768730740);
+('PBUKOzWcSBrOR8KtCC5oOzlCpp7M14bjY0NmThkB', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRFVKZ0xZV1NsWDhQOVdWbEtpVmF6dkZ4MzZZdEN2cURId01PdFVCViI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjM4OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vcG9zdC9pbmRleCI7czo1OiJyb3V0ZSI7czoxNjoiYWRtaW4ucG9zdC5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768734297);
 
 -- --------------------------------------------------------
 
@@ -789,6 +817,13 @@ ALTER TABLE `portfolio_photos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `posts_slug_unique` (`slug`);
+
+--
 -- Indexes for table `post_categories`
 --
 ALTER TABLE `post_categories`
@@ -892,7 +927,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -917,6 +952,12 @@ ALTER TABLE `portfolios`
 --
 ALTER TABLE `portfolio_photos`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `post_categories`
