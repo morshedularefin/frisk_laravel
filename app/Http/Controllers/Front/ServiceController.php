@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function services()
     {
-        $services = Service::paginate(3);
+        $services = Service::paginate(15);
         return view('front.services', compact('services'));
     }
 

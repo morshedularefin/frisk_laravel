@@ -39,7 +39,7 @@
                                     </a>
                                     <ul class="sub-menu">
                                         <li><a href="{{ route('about') }}">About Page</a></li>
-                                        <li><a href="service.html">Service Page</a></li>
+                                        <li><a href="{{ route('services') }}">Service Page</a></li>
                                         <li><a href="{{ route('team_members') }}">Team Members</a></li>
                                         <li><a href="{{ route('pricing') }}">Pricing Page</a></li>
                                         <li><a href="cart.html">Cart Page</a></li>
