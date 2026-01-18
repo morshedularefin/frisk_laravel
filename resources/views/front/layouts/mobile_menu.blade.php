@@ -36,7 +36,7 @@ Mobile Menu
                     <a href="shop.html">Shop</a>
                 </li>
                 <li>
-                    <a href="project.html">Portfolio</a>
+                    <a href="{{ route('portfolios') }}">Portfolio</a>
                 </li>
                 <li>
                     <a href="blog.html">Blog</a>

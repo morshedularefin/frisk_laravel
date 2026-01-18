@@ -10,7 +10,7 @@ class PortfolioController extends Controller
 {
     public function portfolios()
     {
-        $portfolios = Portfolio::paginate(15);
+        $portfolios = Portfolio::orderBy('item_order','asc')->paginate(4);
         return view('front.portfolios', compact('portfolios'));
     }
 

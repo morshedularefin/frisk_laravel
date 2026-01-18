@@ -12996,3 +12996,28 @@ blockquote p {
     padding-top: 80px;
     padding-bottom: 80px;
 }
+
+.portfolio-slider .portfolio-thumb img {
+    height: 470px;
+    object-fit: cover;
+}
+.project-area-5 .portfolio-thumb {
+    display: block!important;
+}
+.project-area-5 .portfolio-thumb img {
+    height: 470px;
+    object-fit: cover;
+}
+.portfolio-area-1 .portfolio-thumb {
+    display: block!important;
+}
+.portfolio-area-1 .portfolio-thumb img {
+    width: 100%;
+    height: 470px;
+    object-fit: cover;
+}
+.project-details-page-area .project-inner-thumb img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+}

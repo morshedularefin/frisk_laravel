@@ -131,63 +131,33 @@ Service Area
 <!--==============================
 Project Area
 ==============================-->
-<div class="project-area-4 space overflow-hidden">
+<div class="portfolio-area-1 space overflow-hidden">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-8">
+            <div class="col-xl-7 col-lg-9">
                 <div class="title-area text-center">
                     <h2 class="sec-title">Discover Our Selected Projects</h2>
                 </div>
             </div>
         </div>
-        <div class="row gy-4 justify-content-center masonary-active">
-            <div class="col-xxl-auto col-lg-7 filter-item">
-                <a href="project-details.html" class="portfolio-wrap style3">
+    </div>
+    <div class="container-fluid p-0">
+        <div class="row global-carousel gx-60 portfolio-slider" data-slide-show="1" data-center-mode="true" data-xl-center-mode="true" data-ml-center-mode="true" data-lg-center-mode="true" data-center-padding="600px" data-xl-center-padding="400px" data-ml-center-padding="400px" data-lg-center-padding="300px" data-dots="true" data-xl-dots="true" data-ml-dots="true">
+            @foreach($portfolios as $portfolio)
+            <div class="col-lg-4">
+                <a href="{{ route('portfolio',$portfolio->slug) }}" class="portfolio-wrap style2">
                     <div class="portfolio-thumb">
-                        <img src="{{ asset('dist/front/img/portfolio/portfolio3_1.jpg') }}" alt="portfolio">
+                        <img src="{{ asset('uploads/'.$portfolio->photo) }}" alt="portfolio">
                     </div>
                     <div class="portfolio-details">
                         <ul class="portfolio-meta">
-                            <li>Branding</li>
+                            <li>{{ $portfolio->category }}</li>
                         </ul>
-                        <h3 class="portfolio-title">Decentralized Platform</h3>
+                        <h3 class="portfolio-title">{{ $portfolio->title }}</h3>
                     </div>
                 </a>
             </div>
-            <div class="col-xxl-auto col-lg-5 filter-item">
-                <a href="project-details.html" class="portfolio-wrap style3">
-                    <div class="portfolio-thumb">
-                        <img src="{{ asset('dist/front/img/portfolio/portfolio3_2.jpg') }}" alt="portfolio">
-                    </div>
-                    <div class="portfolio-details">
-                        <ul class="portfolio-meta">
-                            <li>Branding</li>
-                        </ul>
-                        <h3 class="portfolio-title">Laundering Compliance</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xxl-auto filter-item">
-                <a href="project-details.html" class="portfolio-wrap style3">
-                    <div class="portfolio-thumb">
-                        <img src="{{ asset('dist/front/img/portfolio/portfolio3_3.jpg') }}" alt="portfolio">
-                    </div>
-                    <div class="portfolio-details">
-                        <ul class="portfolio-meta">
-                            <li>Branding</li>
-                        </ul>
-                        <h3 class="portfolio-title">Anti Money Laundering</h3>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="btn-wrap mt-50 justify-content-center">
-            <a href="project.html" class="btn">
-                <span class="link-effect">
-                    <span class="effect-1">VIEW ALL PROJECTS</span>
-                    <span class="effect-1">VIEW ALL PROJECTS</span>
-                </span>
-            </a>
+            @endforeach
         </div>
     </div>
 </div>

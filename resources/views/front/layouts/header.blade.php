@@ -57,7 +57,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="project.html">
+                                    <a href="{{ route('portfolios') }}">
                                         <span class="link-effect">
                                             <span class="effect-1">PORTFOLIO</span>
                                             <span class="effect-1">PORTFOLIO</span>

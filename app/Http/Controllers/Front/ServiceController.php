@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function services()
     {
-        $services = Service::paginate(15);
+        $services = Service::orderBy('item_order','asc')->paginate(15);
         return view('front.services', compact('services'));
     }
 

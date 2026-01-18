@@ -31,20 +31,23 @@ class HomeController extends Controller
         $awards = Award::orderBy('item_order','asc')->get();
         $skills = Skill::orderBy('item_order','asc')->get();
         $services = Service::orderBy('item_order','asc')->where('home_page_2', 'Yes')->get();
-        return view('front.home_2', compact('clients', 'awards', 'skills', 'services'));
+        $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(5);
+        return view('front.home_2', compact('clients', 'awards', 'skills', 'services', 'portfolios'));
     }
 
     public function home_3()
     {
         $counter_data = Counter::where('id',1)->first();
         $services = Service::orderBy('item_order','asc')->where('home_page_3', 'Yes')->get();
-        return view('front.home_3', compact('counter_data', 'services'));
+        $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(6);
+        return view('front.home_3', compact('counter_data', 'services', 'portfolios'));
     }
 
     public function home_4()
     {
         $testimonials = Testimonial::get();
-        return view('front.home_4', compact('testimonials'));
+        $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(6);
+        return view('front.home_4', compact('testimonials', 'portfolios'));
     }
 
     public function home_5()
@@ -54,6 +57,7 @@ class HomeController extends Controller
         $clients = Client::where('home_page_5', 'Yes')->get();
         $skills = Skill::orderBy('item_order','asc')->get();
         $services = Service::orderBy('item_order','asc')->where('home_page_5', 'Yes')->get();
-        return view('front.home_5', compact('testimonials', 'faqs', 'clients', 'skills', 'services'));
+        $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(3);
+        return view('front.home_5', compact('testimonials', 'faqs', 'clients', 'skills', 'services', 'portfolios'));
     }
 }

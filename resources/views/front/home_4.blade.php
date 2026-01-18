@@ -158,75 +158,26 @@ Project Area
             </div>
         </div>
         <div class="row gy-60 gx-60 justify-content-center">
+            @foreach($portfolios as $portfolio)
             <div class="col-xl-6 col-lg-6">
                 <div class="portfolio-wrap style4">
                     <div class="portfolio-thumb wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                        <a href="project-details.html">
-                            <img src="{{ asset('dist/front/img/portfolio/portfolio4_1.png') }}" alt="portfolio">
+                        <a href="{{ route('portfolio', $portfolio->slug) }}">
+                            <img src="{{ asset('uploads/'.$portfolio->photo) }}" alt="portfolio" style="width:100%;">
                         </a>
                     </div>
                     <div class="portfolio-details">
-                        <h3 class="portfolio-title"><a href="project-details.html">Decentralized Platform</a></h3>
+                        <h3 class="portfolio-title"><a href="{{ route('portfolio', $portfolio->slug) }}">{{ $portfolio->title }}</a></h3>
                         <ul class="portfolio-meta">
-                            <li><a href="blog.html">Branding</a></li>
-                            <li><a href="blog.html">Development</a></li>
-                            <li><a href="blog.html">Marketing</a></li>
+                            <li><a href="javascript:void(0);">{{ $portfolio->category }}</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="portfolio-wrap style4">
-                    <div class="portfolio-thumb wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                        <a href="project-details.html">
-                            <img src="{{ asset('dist/front/img/portfolio/portfolio4_2.png') }}" alt="portfolio">
-                        </a>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3 class="portfolio-title"><a href="project-details.html">App for Business</a></h3>
-                        <ul class="portfolio-meta">
-                            <li><a href="blog.html">Development</a></li>
-                            <li><a href="blog.html">Marketing</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="portfolio-wrap style4">
-                    <div class="portfolio-thumb wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                        <a href="project-details.html">
-                            <img src="{{ asset('dist/front/img/portfolio/portfolio4_3.png') }}" alt="portfolio">
-                        </a>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3 class="portfolio-title"><a href="project-details.html">Educational Platform</a></h3>
-                        <ul class="portfolio-meta">
-                            <li><a href="blog.html">Marketing</a></li>
-                            <li><a href="blog.html">Branding</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="portfolio-wrap style4">
-                    <div class="portfolio-thumb wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                        <a href="project-details.html">
-                            <img src="{{ asset('dist/front/img/portfolio/portfolio4_4.png') }}" alt="portfolio">
-                        </a>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3 class="portfolio-title"><a href="project-details.html">Nova Scotia Winery</a></h3>
-                        <ul class="portfolio-meta">
-                            <li><a href="blog.html">Branding</a></li>
-                            <li><a href="blog.html">Development</a></li>
-                            <li><a href="blog.html">Marketing</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="btn-wrap mt-50 justify-content-center">
-            <a href="project.html" class="btn bg-theme text-title">
+            <a href="{{ route('portfolios') }}" class="btn bg-theme text-title">
                 <span class="link-effect">
                     <span class="effect-1">VIEW ALL PROJECTS</span>
                     <span class="effect-1">VIEW ALL PROJECTS</span>
