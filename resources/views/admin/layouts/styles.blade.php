@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{{ asset('dist/admin/css/bootstrap4-toggle.min.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/admin/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/admin/css/components.css') }}">
-<link rel="stylesheet" href="{{ asset('dist/admin/css/air-datepicker.min.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('dist/admin/css/air-datepicker.min.css') }}"> --}}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="{{ asset('dist/admin/css/spacing.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/admin/css/custom.css') }}">

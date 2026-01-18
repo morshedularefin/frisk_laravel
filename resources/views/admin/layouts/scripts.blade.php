@@ -12,6 +12,7 @@
 <script src="{{ asset('dist/admin/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('dist/admin/js/iziToast.min.js') }}"></script>
 <script src="{{ asset('dist/admin/js/fontawesome-iconpicker.js') }}"></script>
-<script src="{{ asset('dist/admin/js/air-datepicker.min.js') }}"></script>
+{{-- <script src="{{ asset('dist/admin/js/air-datepicker.min.js') }}"></script> --}}
 <script src="{{ asset('dist/admin/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('dist/admin/js/bootstrap4-toggle.min.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>

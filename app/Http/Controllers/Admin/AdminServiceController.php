@@ -10,7 +10,7 @@ class AdminServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::get();
+        $services = Service::orderBy('item_order','asc')->get();
         return view('admin.service.index', compact('services'));
     }
 

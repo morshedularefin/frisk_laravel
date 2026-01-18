@@ -43,6 +43,8 @@
 
             <li class="{{ Route::is('admin.service.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.service.index') }}"><i class="fas fa-cogs"></i> <span>Service Page</span></a></li>
 
+            <li class="{{ Route::is('admin.portfolio.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.portfolio.index') }}"><i class="fas fa-project-diagram"></i> <span>Portfolio Page</span></a></li>
+
         </ul>
     </aside>
 </div>

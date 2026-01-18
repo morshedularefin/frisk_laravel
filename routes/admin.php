@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminAwardController;
 use App\Http\Controllers\Admin\AdminCounterController;
 use App\Http\Controllers\Admin\AdminSkillController;
 use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\AdminPortfolioController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -117,4 +118,9 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('service/store', [AdminServiceController::class, 'store'])->name('service.store');
     Route::post('service/update/{id}', [AdminServiceController::class, 'update'])->name('service.update');
     Route::post('service/destroy/{id}', [AdminServiceController::class, 'destroy'])->name('service.destroy');
+
+    Route::get('portfolio/index', [AdminPortfolioController::class, 'index'])->name('portfolio.index');
+    Route::post('portfolio/store', [AdminPortfolioController::class, 'store'])->name('portfolio.store');
+    Route::post('portfolio/update/{id}', [AdminPortfolioController::class, 'update'])->name('portfolio.update');
+    Route::post('portfolio/destroy/{id}', [AdminPortfolioController::class, 'destroy'])->name('portfolio.destroy');
 });

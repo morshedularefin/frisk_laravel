@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->string('icon');
             $table->string('photo');
-            $table->string('name');
+            $table->string('title');
             $table->string('slug')->unique();
-            $table->text('short_description');
             $table->text('description');
+            $table->string('category');
+
+            $table->string('software')->nullable();
+            $table->date('project_start_date')->nullable();
+            $table->date('project_end_date')->nullable();
+            $table->string('client')->nullable();
+            $table->string('website')->nullable();
             $table->integer('item_order')->default(0)->nullable();
-            $table->string('home_page_2');
-            $table->string('home_page_3');
-            $table->string('home_page_5');
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('portfolios');
     }
 };

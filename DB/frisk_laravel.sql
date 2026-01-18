@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2026 at 03:40 AM
+-- Generation Time: Jan 18, 2026 at 05:29 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -324,7 +324,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2026_01_17_045359_create_awards_table', 11),
 (14, '2026_01_17_060524_create_counters_table', 12),
 (15, '2026_01_17_105958_create_skills_table', 13),
-(16, '2026_01_18_012328_create_services_table', 14);
+(16, '2026_01_18_012328_create_services_table', 14),
+(17, '2026_01_18_044301_create_portfolios_table', 15);
 
 -- --------------------------------------------------------
 
@@ -409,6 +410,41 @@ CREATE TABLE `password_reset_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `portfolios`
+--
+
+CREATE TABLE `portfolios` (
+  `id` bigint UNSIGNED NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `software` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `project_start_date` date DEFAULT NULL,
+  `project_end_date` date DEFAULT NULL,
+  `client` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `item_order` int DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `portfolios`
+--
+
+INSERT INTO `portfolios` (`id`, `photo`, `title`, `slug`, `description`, `category`, `software`, `project_start_date`, `project_end_date`, `client`, `website`, `item_order`, `created_at`, `updated_at`) VALUES
+(1, 'portfolio_1768712693.jpg', 'Decentralized Platform', 'decentralized-platform', '<p>Ea unum admodum periculis mea, ludus detracto duo ea. Usu dicunt vocibus no. Et vim harum menandri, habeo complectitur per te. Usu ea suas iudico evertitur, in nam possim atomorum. Sed ad munere corpora scaevola, clita assentior ne nec. Vis nobis omnium ullamcorper et.</p>\r\n<p>At nihil clita eos, graeci molestiae aliquando ea has. Nec tamquam accusata intellegebat ei, mel quem diam ut. Sit modus utinam ea. Has at nullam moderatius, ea natum porro ponderum eam. Sint repudiandae vix ei, ius persius civibus et.</p>\r\n<p>Minim libris iuvaret ex qui. Ne cotidieque referrentur philosophia duo, sit ea maluisset splendide definitiones. Esse senserit mea at, mea ei quas molestie elaboraret, has ad erat numquam perpetua. Accusata maluisset appellantur sed ad, reque erroribus complectitur an eum.</p>\r\n<p>Pri no fabulas maiestatis reprehendunt, nisl nusquam vivendum eu qui. Dolorum noluisse probatus at cum. Vis decore labore et. Quo accumsan percipit efficiantur te, assum singulis abhorreant mea in, esse atqui moderatius te usu. Vix et sint persius efficiendi.</p>', 'Branding / Development / Marketing', 'Figma, PHP, Laravel', '2025-02-13', '2025-08-24', 'ABC Company', 'https://www.google.com', 1, '2026-01-17 23:04:53', '2026-01-17 23:27:52'),
+(2, 'portfolio_1768713416.png', 'App for Business', 'app-for-business', '<p>Ea unum admodum periculis mea, ludus detracto duo ea. Usu dicunt vocibus no. Et vim harum menandri, habeo complectitur per te. Usu ea suas iudico evertitur, in nam possim atomorum. Sed ad munere corpora scaevola, clita assentior ne nec. Vis nobis omnium ullamcorper et.</p>\r\n<p>At nihil clita eos, graeci molestiae aliquando ea has. Nec tamquam accusata intellegebat ei, mel quem diam ut. Sit modus utinam ea. Has at nullam moderatius, ea natum porro ponderum eam. Sint repudiandae vix ei, ius persius civibus et.</p>\r\n<p>Minim libris iuvaret ex qui. Ne cotidieque referrentur philosophia duo, sit ea maluisset splendide definitiones. Esse senserit mea at, mea ei quas molestie elaboraret, has ad erat numquam perpetua. Accusata maluisset appellantur sed ad, reque erroribus complectitur an eum.</p>\r\n<p>Pri no fabulas maiestatis reprehendunt, nisl nusquam vivendum eu qui. Dolorum noluisse probatus at cum. Vis decore labore et. Quo accumsan percipit efficiantur te, assum singulis abhorreant mea in, esse atqui moderatius te usu. Vix et sint persius efficiendi.</p>', 'Development / Marketing', 'PHP, Laravel', '2025-07-18', '2026-01-06', 'ABC Company', 'https://www.google.com', 2, '2026-01-17 23:16:56', '2026-01-17 23:27:57'),
+(3, 'portfolio_1768713506.jpg', 'Educational Platform', 'educational-platform', '<p>Ea unum admodum periculis mea, ludus detracto duo ea. Usu dicunt vocibus no. Et vim harum menandri, habeo complectitur per te. Usu ea suas iudico evertitur, in nam possim atomorum. Sed ad munere corpora scaevola, clita assentior ne nec. Vis nobis omnium ullamcorper et.</p>\r\n<p>At nihil clita eos, graeci molestiae aliquando ea has. Nec tamquam accusata intellegebat ei, mel quem diam ut. Sit modus utinam ea. Has at nullam moderatius, ea natum porro ponderum eam. Sint repudiandae vix ei, ius persius civibus et.</p>\r\n<p>Minim libris iuvaret ex qui. Ne cotidieque referrentur philosophia duo, sit ea maluisset splendide definitiones. Esse senserit mea at, mea ei quas molestie elaboraret, has ad erat numquam perpetua. Accusata maluisset appellantur sed ad, reque erroribus complectitur an eum.</p>\r\n<p>Pri no fabulas maiestatis reprehendunt, nisl nusquam vivendum eu qui. Dolorum noluisse probatus at cum. Vis decore labore et. Quo accumsan percipit efficiantur te, assum singulis abhorreant mea in, esse atqui moderatius te usu. Vix et sint persius efficiendi.</p>', 'Development / Marketing', 'PHP, Figma, Laravel', '2024-09-26', '2025-04-02', 'ABC Company', 'https://www.google.com', 3, '2026-01-17 23:18:26', '2026-01-17 23:26:26'),
+(4, 'portfolio_1768713595.jpg', 'Nova Scotia Winery', 'nova-scotia-winery', '<p>Ea unum admodum periculis mea, ludus detracto duo ea. Usu dicunt vocibus no. Et vim harum menandri, habeo complectitur per te. Usu ea suas iudico evertitur, in nam possim atomorum. Sed ad munere corpora scaevola, clita assentior ne nec. Vis nobis omnium ullamcorper et.</p>\r\n<p>At nihil clita eos, graeci molestiae aliquando ea has. Nec tamquam accusata intellegebat ei, mel quem diam ut. Sit modus utinam ea. Has at nullam moderatius, ea natum porro ponderum eam. Sint repudiandae vix ei, ius persius civibus et.</p>\r\n<p>Minim libris iuvaret ex qui. Ne cotidieque referrentur philosophia duo, sit ea maluisset splendide definitiones. Esse senserit mea at, mea ei quas molestie elaboraret, has ad erat numquam perpetua. Accusata maluisset appellantur sed ad, reque erroribus complectitur an eum.</p>\r\n<p>Pri no fabulas maiestatis reprehendunt, nisl nusquam vivendum eu qui. Dolorum noluisse probatus at cum. Vis decore labore et. Quo accumsan percipit efficiantur te, assum singulis abhorreant mea in, esse atqui moderatius te usu. Vix et sint persius efficiendi.</p>', 'Branding / Development / Marketing', 'PHP, Laravel, Figma', '2025-05-21', '2025-11-28', 'ABC Company', 'https://www.google.com', 4, '2026-01-17 23:19:55', '2026-01-17 23:26:35'),
+(5, 'portfolio_1768713668.jpg', 'Caramba Product', 'caramba-product', '<p>Ea unum admodum periculis mea, ludus detracto duo ea. Usu dicunt vocibus no. Et vim harum menandri, habeo complectitur per te. Usu ea suas iudico evertitur, in nam possim atomorum. Sed ad munere corpora scaevola, clita assentior ne nec. Vis nobis omnium ullamcorper et.</p>\r\n<p>At nihil clita eos, graeci molestiae aliquando ea has. Nec tamquam accusata intellegebat ei, mel quem diam ut. Sit modus utinam ea. Has at nullam moderatius, ea natum porro ponderum eam. Sint repudiandae vix ei, ius persius civibus et.</p>\r\n<p>Minim libris iuvaret ex qui. Ne cotidieque referrentur philosophia duo, sit ea maluisset splendide definitiones. Esse senserit mea at, mea ei quas molestie elaboraret, has ad erat numquam perpetua. Accusata maluisset appellantur sed ad, reque erroribus complectitur an eum.</p>\r\n<p>Pri no fabulas maiestatis reprehendunt, nisl nusquam vivendum eu qui. Dolorum noluisse probatus at cum. Vis decore labore et. Quo accumsan percipit efficiantur te, assum singulis abhorreant mea in, esse atqui moderatius te usu. Vix et sint persius efficiendi.</p>', 'Branding / Development / Marketing', 'Figma, Laravel', '2026-12-03', '2025-12-30', 'ABC Company', 'https://www.google.com', 5, '2026-01-17 23:21:08', '2026-01-17 23:26:43'),
+(6, 'portfolio_1768713751.png', 'Trading Website Design', 'trading-website-design', '<p>Ea unum admodum periculis mea, ludus detracto duo ea. Usu dicunt vocibus no. Et vim harum menandri, habeo complectitur per te. Usu ea suas iudico evertitur, in nam possim atomorum. Sed ad munere corpora scaevola, clita assentior ne nec. Vis nobis omnium ullamcorper et.</p>\r\n<p>At nihil clita eos, graeci molestiae aliquando ea has. Nec tamquam accusata intellegebat ei, mel quem diam ut. Sit modus utinam ea. Has at nullam moderatius, ea natum porro ponderum eam. Sint repudiandae vix ei, ius persius civibus et.</p>\r\n<p>Minim libris iuvaret ex qui. Ne cotidieque referrentur philosophia duo, sit ea maluisset splendide definitiones. Esse senserit mea at, mea ei quas molestie elaboraret, has ad erat numquam perpetua. Accusata maluisset appellantur sed ad, reque erroribus complectitur an eum.</p>\r\n<p>Pri no fabulas maiestatis reprehendunt, nisl nusquam vivendum eu qui. Dolorum noluisse probatus at cum. Vis decore labore et. Quo accumsan percipit efficiantur te, assum singulis abhorreant mea in, esse atqui moderatius te usu. Vix et sint persius efficiendi.</p>', 'Branding / Development / Marketing', 'Laravel, Figma', '2026-01-10', NULL, 'ABC Company', 'https://www.google.com', 6, '2026-01-17 23:22:31', '2026-01-17 23:26:52');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `services`
 --
 
@@ -420,7 +456,7 @@ CREATE TABLE `services` (
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `short_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `item_order` int NOT NULL DEFAULT '0',
+  `item_order` int DEFAULT '0',
   `home_page_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `home_page_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `home_page_5` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -460,7 +496,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('PBUKOzWcSBrOR8KtCC5oOzlCpp7M14bjY0NmThkB', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRFVKZ0xZV1NsWDhQOVdWbEtpVmF6dkZ4MzZZdEN2cURId01PdFVCViI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvc2VydmljZXMiO3M6NToicm91dGUiO3M6ODoic2VydmljZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768707602);
+('PBUKOzWcSBrOR8KtCC5oOzlCpp7M14bjY0NmThkB', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRFVKZ0xZV1NsWDhQOVdWbEtpVmF6dkZ4MzZZdEN2cURId01PdFVCViI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjQzOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vcG9ydGZvbGlvL2luZGV4IjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5wb3J0Zm9saW8uaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1768714077);
 
 -- --------------------------------------------------------
 
@@ -681,6 +717,13 @@ ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
+-- Indexes for table `portfolios`
+--
+ALTER TABLE `portfolios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `portfolios_slug_unique` (`slug`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -777,7 +820,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -790,6 +833,12 @@ ALTER TABLE `packages`
 --
 ALTER TABLE `package_features`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `portfolios`
+--
+ALTER TABLE `portfolios`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `services`
