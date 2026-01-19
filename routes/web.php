@@ -11,6 +11,7 @@ use App\Http\Controllers\Front\PricingController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\Front\PortfolioController;
+use App\Http\Controllers\Front\PostController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -35,6 +36,9 @@ Route::get('/service/{slug}', [ServiceController::class, 'service'])->name('serv
 
 Route::get('/portfolios', [PortfolioController::class, 'portfolios'])->name('portfolios');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'portfolio'])->name('portfolio');
+
+Route::get('/blog', [PostController::class, 'blog'])->name('blog');
+Route::get('/post/{slug}', [PostController::class, 'post'])->name('post');
 
 // Route::get('/secret', [HomeController::class, 'secret'])->name('secret')->middleware(['auth','password.confirm']);
 

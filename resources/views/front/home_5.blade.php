@@ -245,20 +245,21 @@ Blog Area
             </div>
         </div>
         <div class="row gy-40 justify-content-center">
+            @foreach($posts as $post)
             <div class="col-lg-4 col-md-6">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <a href="blog-details.html">
-                            <img src="{{ asset('dist/front/img/blog/blog_1_1.png') }}" alt="blog image">
+                        <a href="{{ route('post', $post->slug) }}">
+                            <img src="{{ asset('uploads/'.$post->photo) }}" alt="blog image">
                         </a>
                     </div>
                     <div class="blog-content">
                         <div class="post-meta-item blog-meta">
-                            <a href="blog.html">March 26, 2024</a>
-                            <a href="blog.html">Branding</a>
+                            <a href="javascript:void(0);">{{ $post->created_at->format('F d, Y') }}</a>
+                            <a href="javascript:void(0);">{{ $post->post_category->name }}</a>
                         </div>
-                        <h4 class="blog-title"><a href="blog-details.html">Everything You Should Know About Return</a></h4>
-                        <a href="blog-details.html" class="link-btn">
+                        <h4 class="blog-title"><a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a></h4>
+                        <a href="{{ route('post', $post->slug) }}" class="link-btn">
                             <span class="link-effect">
                                 <span class="effect-1">READ MORE</span>
                                 <span class="effect-1">READ MORE</span>
@@ -268,52 +269,7 @@ Blog Area
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <a href="blog-details.html">
-                            <img src="{{ asset('dist/front/img/blog/blog_1_2.png') }}" alt="blog image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="post-meta-item blog-meta">
-                            <a href="blog.html">March 26, 2024</a>
-                            <a href="blog.html">Branding</a>
-                        </div>
-                        <h4 class="blog-title"><a href="blog-details.html">6 Big Commerce Design Tips For Big Results</a></h4>
-                        <a href="blog-details.html" class="link-btn">
-                            <span class="link-effect">
-                                <span class="effect-1">READ MORE</span>
-                                <span class="effect-1">READ MORE</span>
-                            </span>
-                            <img src="{{ asset('dist/front/img/icon/arrow-left-top.svg') }}" alt="icon">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <a href="blog-details.html">
-                            <img src="{{ asset('dist/front/img/blog/blog_1_3.png') }}" alt="blog image">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="post-meta-item blog-meta">
-                            <a href="blog.html">March 26, 2024</a>
-                            <a href="blog.html">Branding</a>
-                        </div>
-                        <h4 class="blog-title"><a href="blog-details.html">Four Steps to Conduct a Successful Usability</a></h4>
-                        <a href="blog-details.html" class="link-btn">
-                            <span class="link-effect">
-                                <span class="effect-1">READ MORE</span>
-                                <span class="effect-1">READ MORE</span>
-                            </span>
-                            <img src="{{ asset('dist/front/img/icon/arrow-left-top.svg') }}" alt="icon">
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

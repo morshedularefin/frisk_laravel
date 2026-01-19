@@ -13,6 +13,8 @@ use App\Models\Counter;
 use App\Models\Skill;
 use App\Models\Service;
 use App\Models\Portfolio;
+use App\Models\Post;
+use App\Models\PostCategory;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,8 @@ class HomeController extends Controller
         $team_members = TeamMember::get()->take(4);
         $faqs = Faq::orderBy('item_order','asc')->where('home_page_1', 'Yes')->get();
         $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(4);
-        return view('front.home_1', compact('testimonials', 'team_members', 'faqs', 'portfolios'));
+        $posts = Post::orderBy('id','desc')->get()->take(3);
+        return view('front.home_1', compact('testimonials', 'team_members', 'faqs', 'portfolios', 'posts'));
     }
 
     public function home_2()
@@ -32,7 +35,8 @@ class HomeController extends Controller
         $skills = Skill::orderBy('item_order','asc')->get();
         $services = Service::orderBy('item_order','asc')->where('home_page_2', 'Yes')->get();
         $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(5);
-        return view('front.home_2', compact('clients', 'awards', 'skills', 'services', 'portfolios'));
+        $posts = Post::orderBy('id','desc')->get()->take(3);
+        return view('front.home_2', compact('clients', 'awards', 'skills', 'services', 'portfolios', 'posts'));
     }
 
     public function home_3()
@@ -40,14 +44,16 @@ class HomeController extends Controller
         $counter_data = Counter::where('id',1)->first();
         $services = Service::orderBy('item_order','asc')->where('home_page_3', 'Yes')->get();
         $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(6);
-        return view('front.home_3', compact('counter_data', 'services', 'portfolios'));
+        $posts = Post::orderBy('id','desc')->get()->take(3);
+        return view('front.home_3', compact('counter_data', 'services', 'portfolios', 'posts'));
     }
 
     public function home_4()
     {
         $testimonials = Testimonial::get();
         $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(6);
-        return view('front.home_4', compact('testimonials', 'portfolios'));
+        $posts = Post::orderBy('id','desc')->get()->take(3);
+        return view('front.home_4', compact('testimonials', 'portfolios', 'posts'));
     }
 
     public function home_5()
@@ -58,6 +64,7 @@ class HomeController extends Controller
         $skills = Skill::orderBy('item_order','asc')->get();
         $services = Service::orderBy('item_order','asc')->where('home_page_5', 'Yes')->get();
         $portfolios = Portfolio::orderBy('item_order','asc')->get()->take(3);
-        return view('front.home_5', compact('testimonials', 'faqs', 'clients', 'skills', 'services', 'portfolios'));
+        $posts = Post::orderBy('id','desc')->get()->take(3);
+        return view('front.home_5', compact('testimonials', 'faqs', 'clients', 'skills', 'services', 'portfolios', 'posts'));
     }
 }
