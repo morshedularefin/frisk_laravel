@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\Comment;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserCommentMail;
 
 class PostController extends Controller
 {
@@ -51,7 +54,7 @@ class PostController extends Controller
 
     public function comment_store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'comment' => 'required',
@@ -62,9 +65,15 @@ class PostController extends Controller
         $comment->name = $request->name;
         $comment->email = $request->email;
         $comment->comment = $request->comment;
-        $comment->comment_by = 'User';
         $comment->status = 'Pending';
         $comment->save();
+
+        // Send email to admin as notification
+        $admin_data = Admin::where('id',1)->first();
+        $admin_email = $admin_data->email;
+
+        Mail::to($admin_email)->send(new UserCommentMail($validated));
+
 
         return redirect()->back()->with('success', 'Comment submitted successfully and is pending for the admin approval.');
     }

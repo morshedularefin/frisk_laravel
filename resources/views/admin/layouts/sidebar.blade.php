@@ -44,6 +44,9 @@
                     <li class="{{ Route::is('admin.post.*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.post.index') }}""><i class="fas fa-angle-right"></i> Post</a>
                     </li>
+                    <li class="{{ Route::is('admin.post.comments') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.post.comments') }}""><i class="fas fa-angle-right"></i> Comments</a>
+                    </li>
                 </ul>
             </li>
 

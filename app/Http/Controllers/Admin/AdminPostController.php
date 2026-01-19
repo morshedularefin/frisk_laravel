@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AdminCommentStatusChangeMail;
 
 class AdminPostController extends Controller
 {
@@ -93,5 +96,39 @@ class AdminPostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.post.index')->with('success', 'Post deleted successfully.');
+    }
+
+    public function comments()
+    {
+        $comments = Comment::orderBy('id','desc')->get();
+        return view('admin.post.comment', compact('comments'));
+    }
+
+    public function change_comment_status(Request $request, $id)
+    {
+        $comment = Comment::where('id', $id)->first();
+        if($comment->status == 'Approved') {
+            $comment->status = 'Pending';
+        } else {
+            $comment->status = 'Approved';
+            // Send email to commenter when approved
+            $data = [
+                'name' => $comment->name,
+                'email' => $comment->email,
+                'post_slug' => $comment->post->slug,
+            ];
+            Mail::to($comment->email)->send(new AdminCommentStatusChangeMail($data));
+        }
+        $comment->save();
+
+        return back()->with('success', 'Comment status changed successfully.');
+    }
+
+    public function destroy_comment(Request $request, $id)
+    {
+        $comment = Comment::where('id', $id)->first();
+        $comment->delete();
+
+        return back()->with('success', 'Comment deleted successfully.');
     }
 }

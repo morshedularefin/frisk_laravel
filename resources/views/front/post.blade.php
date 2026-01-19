@@ -117,6 +117,8 @@
                         </div>
                         <div class="comments-wrap">
                             <h3 class="comments-wrap-title">{{ (strlen($total_comments) == 1 && $total_comments!=0) ? '0'.$total_comments : $total_comments }} Comments</h3>
+
+                            @if($total_comments != 0)
                             <div class="latest-comments">
                                 <ul class="list-wrap">
 
@@ -201,8 +203,12 @@
 
                                 </ul>
                             </div>
+                            @else
+                            <p class="text-danger" style="margin-bottom:40px;">No comments found.</p>
+                            @endif
+
                         </div>
-                            <div class="comment-respond">
+                        <div class="comment-respond">
                             <h3 class="comment-reply-title">Leave a Reply</h3>
                             <form action="{{ route('comment_store') }}" class="comment-form" method="POST">
                                 @csrf

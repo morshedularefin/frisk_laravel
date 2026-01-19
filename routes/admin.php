@@ -139,4 +139,7 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('post/store', [AdminPostController::class, 'store'])->name('post.store');
     Route::post('post/update/{id}', [AdminPostController::class, 'update'])->name('post.update');
     Route::post('post/destroy/{id}', [AdminPostController::class, 'destroy'])->name('post.destroy');
+    Route::get('post/comments', [AdminPostController::class, 'comments'])->name('post.comments');
+    Route::post('post/comment/change/{id}', [AdminPostController::class, 'change_comment_status'])->name('post.comment.change');
+    Route::post('post/comment/destroy/{id}', [AdminPostController::class, 'destroy_comment'])->name('post.comment.destroy');
 });
