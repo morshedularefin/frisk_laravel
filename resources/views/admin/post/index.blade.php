@@ -29,7 +29,7 @@
                                         <label for="">Photo *</label>
                                         <div><input type="file" name="photo"></div>
                                     </div>
-                                    <div class="col-lg-4 mb-3">
+                                    <div class="col-lg-12 mb-3">
                                         <label for="">Select Post Category *</label>
                                         <select name="post_category_id" class="form-select">
                                             @foreach($post_categories as $post_category)
@@ -37,11 +37,11 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-lg-4 mb-3">
+                                    <div class="col-lg-12 mb-3">
                                         <label for="">Title *</label>
                                         <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                                     </div>
-                                    <div class="col-lg-4 mb-3">
+                                    <div class="col-lg-12 mb-3">
                                         <label for="">Slug *</label>
                                         <input type="text" class="form-control" name="slug" value="{{ old('slug') }}">
                                     </div>
@@ -53,7 +53,7 @@
                                         <label for="">Description *</label>
                                         <textarea class="form-control editor" name="description">{{ old('description') }}</textarea>
                                     </div>
-                                    <div class="col-lg-6 mb-3">
+                                    <div class="col-lg-12 mb-3">
                                         <label for="">Tags</label>
                                         <select name="tags[]" class="form-select select2_multiple" multiple="multiple"></select>
                                     </div>
@@ -117,7 +117,7 @@
                                             <label for="">Change Photo</label>
                                             <div><input type="file" name="photo"></div>
                                         </div>
-                                        <div class="col-lg-4 mb-3">
+                                        <div class="col-lg-12 mb-3">
                                             <label for="">Select Post Category *</label>
                                             <select name="post_category_id" class="form-select">
                                                 @foreach($post_categories as $post_category)
@@ -125,11 +125,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-lg-4 mb-3">
+                                        <div class="col-lg-12 mb-3">
                                             <label for="">Title *</label>
                                             <input type="text" class="form-control" name="title" value="{{ $post->title }}">
                                         </div>
-                                        <div class="col-lg-4 mb-3">
+                                        <div class="col-lg-12 mb-3">
                                             <label for="">Slug *</label>
                                             <input type="text" class="form-control" name="slug" value="{{ $post->slug }}">
                                         </div>
@@ -141,9 +141,16 @@
                                             <label for="">Description *</label>
                                             <textarea class="form-control editor" name="description">{{ $post->description }}</textarea>
                                         </div>
-                                        <div class="col-lg-6 mb-3">
+                                        <div class="col-lg-12 mb-3">
                                             <label for="">Tags</label>
-                                            <select name="tags[]" class="form-select select2" multiple></select>
+                                            <select name="tags[]" class="form-select select2_multiple" multiple="multiple">
+                                                @php
+                                                    $tag_array = explode(',', $post->tags);
+                                                @endphp
+                                                @foreach($tag_array as $tag)
+                                                    <option value="{{ $tag }}" selected>{{ $tag }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>

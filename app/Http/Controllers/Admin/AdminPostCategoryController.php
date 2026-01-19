@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PostCategory;
+use App\Models\Post;
 
 class AdminPostCategoryController extends Controller
 {
@@ -46,6 +47,11 @@ class AdminPostCategoryController extends Controller
 
     public function destroy(Request $request, $id)
     {
+        $check = Post::where('post_category_id', $id)->count();
+        if($check > 0){
+            return back()->with('error', 'This post category is assigned to some posts. You can not delete this post category.');
+        }
+
         $post_category = PostCategory::where('id', $id)->first();
         $post_category->delete();
 
