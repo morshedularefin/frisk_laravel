@@ -13027,3 +13027,7 @@ blockquote p {
 .blog__avatar-img img {
     width: 140px;
 }
+
+.modal .form-control {
+    border: 1px solid #d1d1d1!important;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2026 at 03:36 AM
+-- Generation Time: Jan 19, 2026 at 08:50 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -150,6 +150,32 @@ INSERT INTO `clients` (`id`, `photo`, `url`, `home_page_2`, `home_page_5`, `abou
 (6, 'client_1768545383.svg', '#', 'Yes', 'Yes', 'Yes', '2026-01-16 00:36:23', '2026-01-16 17:47:25'),
 (7, 'client_1768545389.svg', '#', 'Yes', 'No', 'Yes', '2026-01-16 00:36:29', '2026-01-16 17:47:31'),
 (8, 'client_1768545396.svg', '#', 'Yes', 'No', 'Yes', '2026-01-16 00:36:36', '2026-01-16 17:47:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` bigint UNSIGNED NOT NULL,
+  `post_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'User',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_id`, `name`, `email`, `comment`, `comment_by`, `status`, `created_at`, `updated_at`) VALUES
+(1, 4, 'Uta Medina', 'uta_medina@example.com', 'An aperiri eligendi antiopam sed, novum maiorum qui et. Et cum verear regione sensibus, te autem novum tritani quo. Ut qui dolor efficiantur, sed solet instructior et. Autem sonet affert est an, an vix iuvaret bonorum elaboraret.', 'User', 'Approved', '2026-01-19 02:31:10', '2026-01-19 02:31:10'),
+(2, 4, 'TaShya Boyle', 'wacoqygom@mailinator.com', 'Eos et solum dolor fierent, dicit choro definitiones ei mei. Eu persius fabellas perfecto est. Bonorum delectus urbanitas eos ei. Est primis habemus conclusionemque et, quodsi saperet necessitatibus ea mei, elitr tollit voluptaria vis id.', 'User', 'Approved', '2026-01-19 02:32:35', '2026-01-19 02:32:35');
 
 -- --------------------------------------------------------
 
@@ -328,7 +354,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2026_01_18_044301_create_portfolios_table', 15),
 (18, '2026_01_18_074801_create_portfolio_photos_table', 16),
 (19, '2026_01_18_095159_create_post_categories_table', 17),
-(20, '2026_01_18_102722_create_posts_table', 18);
+(20, '2026_01_18_102722_create_posts_table', 18),
+(21, '2026_01_19_082034_create_comments_table', 19);
 
 -- --------------------------------------------------------
 
@@ -586,7 +613,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('RH00idERPxW1dmESybk8RgdCOOa62OFuV7Kc5rUm', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiN3BvUkl3ZUtsdlNUOGtzYUtJd0N5cDNPM3lGSmdDOXl2WU83RzJRUyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wb3N0L2JpZy1jb21tZXJjZS1kZXNpZ24tdGlwcyI7czo1OiJyb3V0ZSI7czo0OiJwb3N0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768793669);
+('38FJcnDzUOjYatT1ClMyzpt9DJtVOSdWD3D1cqpU', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWE50b0pZRlViYjBReFBaa21vM2xhajZEWmRYODlxZEV4N1hIZkVKciI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wb3N0L2luZGV4IjtzOjU6InJvdXRlIjtzOjE2OiJhZG1pbi5wb3N0LmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768812574),
+('RH00idERPxW1dmESybk8RgdCOOa62OFuV7Kc5rUm', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiN3BvUkl3ZUtsdlNUOGtzYUtJd0N5cDNPM3lGSmdDOXl2WU83RzJRUyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZWFyY2g/c2VhcmNoX3RleHQ9dm9pY2UiO3M6NToicm91dGUiO3M6Njoic2VhcmNoIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768801365);
 
 -- --------------------------------------------------------
 
@@ -745,6 +773,12 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `counters`
 --
 ALTER TABLE `counters`
@@ -897,6 +931,12 @@ ALTER TABLE `clients`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `counters`
 --
 ALTER TABLE `counters`
@@ -930,7 +970,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `packages`

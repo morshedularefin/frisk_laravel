@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -20,7 +21,9 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->first();
         $next_post = Post::where('id', '>', $post->id)->orderBy('id','asc')->first();
         $previous_post = Post::where('id', '<', $post->id)->orderBy('id','desc')->first();
-        return view('front.post', compact('post', 'next_post', 'previous_post'));
+        $comments = Comment::where('post_id', $post->id)->where('status', 'Approved')->orderBy('id','desc')->get();
+        $total_comments = Comment::where('post_id', $post->id)->where('status', 'Approved')->count();
+        return view('front.post', compact('post', 'next_post', 'previous_post', 'comments', 'total_comments'));
     }
 
     public function post_by_category($slug)
@@ -44,5 +47,25 @@ class PostController extends Controller
                      ->orderBy('id','desc')
                      ->paginate(3);
         return view('front.search', compact('posts', 'search_text'));
+    }
+
+    public function comment_store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'comment' => 'required',
+        ]);
+
+        $comment = new Comment();
+        $comment->post_id = $request->post_id;
+        $comment->name = $request->name;
+        $comment->email = $request->email;
+        $comment->comment = $request->comment;
+        $comment->comment_by = 'User';
+        $comment->status = 'Pending';
+        $comment->save();
+
+        return redirect()->back()->with('success', 'Comment submitted successfully and is pending for the admin approval.');
     }
 }
