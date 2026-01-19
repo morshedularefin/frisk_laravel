@@ -25,7 +25,9 @@ class PostController extends Controller
 
     public function post_by_category($slug)
     {
-
+        $post_category = PostCategory::where('slug', $slug)->first();
+        $posts = Post::orderBy('id','desc')->where('post_category_id', $post_category->id)->paginate(3);
+        return view('front.category', compact('posts', 'post_category'));
     }
 
     public function post_by_tag($tag_name)
