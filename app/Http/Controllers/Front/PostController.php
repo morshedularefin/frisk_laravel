@@ -18,11 +18,18 @@ class PostController extends Controller
     public function post($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        return view('front.post', compact('post'));
+        $next_post = Post::where('id', '>', $post->id)->orderBy('id','asc')->first();
+        $previous_post = Post::where('id', '<', $post->id)->orderBy('id','desc')->first();
+        return view('front.post', compact('post', 'next_post', 'previous_post'));
     }
 
     public function post_by_category($slug)
     {
-        
+
+    }
+
+    public function post_by_tag($tag_name)
+    {
+
     }
 }

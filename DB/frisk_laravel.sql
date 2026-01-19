@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2026 at 01:51 AM
+-- Generation Time: Jan 19, 2026 at 03:36 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -44,7 +44,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `avatar`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'admin_1767838824.jpg', 'Super Admin', 'admin@example.com', '2026-01-05 02:56:17', '$2y$12$3hi30oSUpg0vr8LsnLi.9.pTZ3EOSn.uS/zBn2bBw0nPwanG5oNSy', 'KzMKoiIomS3w8hYXUEscLpoJSfjBTDJWbfLj7SG08AF9Ocml8Eg19JE6sDWE', '2026-01-05 02:56:17', '2026-01-07 20:21:42');
+(2, 'admin_1767838824.jpg', 'Morshedul Arefin', 'admin@example.com', '2026-01-05 02:56:17', '$2y$12$3hi30oSUpg0vr8LsnLi.9.pTZ3EOSn.uS/zBn2bBw0nPwanG5oNSy', 'KzMKoiIomS3w8hYXUEscLpoJSfjBTDJWbfLj7SG08AF9Ocml8Eg19JE6sDWE', '2026-01-05 02:56:17', '2026-01-18 21:15:23');
 
 -- --------------------------------------------------------
 
@@ -586,7 +586,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('RH00idERPxW1dmESybk8RgdCOOa62OFuV7Kc5rUm', 2, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiN3BvUkl3ZUtsdlNUOGtzYUtJd0N5cDNPM3lGSmdDOXl2WU83RzJRUyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wb3N0L2luZGV4IjtzOjU6InJvdXRlIjtzOjE2OiJhZG1pbi5wb3N0LmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768787384);
+('RH00idERPxW1dmESybk8RgdCOOa62OFuV7Kc5rUm', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiN3BvUkl3ZUtsdlNUOGtzYUtJd0N5cDNPM3lGSmdDOXl2WU83RzJRUyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wb3N0L2JpZy1jb21tZXJjZS1kZXNpZ24tdGlwcyI7czo1OiJyb3V0ZSI7czo0OiJwb3N0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9', 1768793669);
 
 -- --------------------------------------------------------
 

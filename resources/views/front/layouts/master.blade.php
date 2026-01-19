@@ -15,6 +15,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Unbounded:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    @if(Route::is('post'))
+    <meta property="og:title" content="{{ $post->title }}" />
+    <meta property="og:description" content="{{ $post->short_description }}" />
+    <meta property="og:image" content="{{ asset('uploads/'.$post->photo) }}" />
+    <meta property="og:url" content="{{ request()->fullUrl() }}" />
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="{{ $post->title }}">
+    <meta name="twitter:site" content="@yourusername">
+    <meta name="twitter:title" content="{{ $post->title }}">
+    <meta name="twitter:description" content="{{ $post->short_description }}">
+    <meta name="twitter:image" content="{{ asset('uploads/'.$post->photo) }}">
+    @endif
+
     @include('front.layouts.styles')
 
 </head>

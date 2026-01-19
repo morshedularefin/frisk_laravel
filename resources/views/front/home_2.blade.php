@@ -223,7 +223,7 @@ Blog Area
                     <div class="blog-content">
                         <div class="post-meta-item blog-meta">
                             <a href="javascript:void(0);">{{ $post->created_at->format('F d, Y') }}</a>
-                            <a href="javascript:void(0);">{{ $post->post_category->name }}</a>
+                            <a href="{{ route('post_by_category',$post->post_category->slug) }}">{{ $post->post_category->name }}</a>
                         </div>
                         <h4 class="blog-title"><a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a></h4>
                         <a href="{{ route('post', $post->slug) }}" class="link-btn">

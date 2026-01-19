@@ -13021,3 +13021,9 @@ blockquote p {
     height: 700px;
     object-fit: cover;
 }
+.blog__details-thumb img {
+    width: 100%;
+}
+.blog__avatar-img img {
+    width: 140px;
+}

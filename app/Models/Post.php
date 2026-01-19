@@ -10,4 +10,9 @@ class Post extends Model
     {
         return $this->belongsTo(PostCategory::class);
     }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 }
