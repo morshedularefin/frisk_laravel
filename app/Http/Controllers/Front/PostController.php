@@ -32,6 +32,7 @@ class PostController extends Controller
 
     public function post_by_tag($tag_name)
     {
-
+        $posts = Post::where('tags', 'LIKE', '%' . $tag_name . '%')->orderBy('id','desc')->paginate(3);
+        return view('front.tag', compact('posts', 'tag_name'));
     }
 }
