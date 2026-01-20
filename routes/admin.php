@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminPortfolioController;
 use App\Http\Controllers\Admin\AdminPostCategoryController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminProductCategoryController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -146,4 +148,9 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('post/reply/change/{id}', [AdminPostController::class, 'change_reply_status'])->name('post.reply.change');
     Route::post('post/reply/destroy/{id}', [AdminPostController::class, 'destroy_reply'])->name('post.reply.destroy');
     Route::post('post/reply/admin_reply', [AdminPostController::class, 'admin_reply'])->name('post.reply.admin_reply');
+
+    Route::get('product-category/index', [AdminProductCategoryController::class, 'index'])->name('product-category.index');
+    Route::post('product-category/store', [AdminProductCategoryController::class, 'store'])->name('product-category.store');
+    Route::post('product-category/update/{id}', [AdminProductCategoryController::class, 'update'])->name('product-category.update');
+    Route::post('product-category/destroy/{id}', [AdminProductCategoryController::class, 'destroy'])->name('product-category.destroy');
 });

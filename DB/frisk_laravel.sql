@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2026 at 10:56 AM
+-- Generation Time: Jan 20, 2026 at 01:59 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -356,7 +356,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2026_01_18_095159_create_post_categories_table', 17),
 (20, '2026_01_18_102722_create_posts_table', 18),
 (21, '2026_01_19_082034_create_comments_table', 19),
-(22, '2026_01_19_101802_create_replies_table', 20);
+(22, '2026_01_19_101802_create_replies_table', 20),
+(23, '2026_01_20_015012_create_product_categories_table', 21);
 
 -- --------------------------------------------------------
 
@@ -563,6 +564,30 @@ INSERT INTO `post_categories` (`id`, `name`, `slug`, `created_at`, `updated_at`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_categories`
+--
+
+CREATE TABLE `product_categories` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_categories`
+--
+
+INSERT INTO `product_categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Development & Tech', '2026-01-19 19:57:40', '2026-01-19 19:57:40'),
+(2, 'Design & Creative', '2026-01-19 19:57:48', '2026-01-19 19:57:48'),
+(3, 'Strategy & Consulting', '2026-01-19 19:57:54', '2026-01-19 19:57:54'),
+(4, 'User Experience', '2026-01-19 19:58:07', '2026-01-19 19:58:07'),
+(5, 'FinTech Services', '2026-01-19 19:58:23', '2026-01-19 19:58:30');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `replies`
 --
 
@@ -642,7 +667,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('KC2luuQD1eBGiNR70i5f8IkQOlSMLcmIZUaZeZre', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRjMyOFVWS3BtVFdSYVZjcHZ1TjFWQVIxUkZ0OEJZd1RTdU5lclBWRSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Njc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wb3N0L2ZpdmUtd2lubmluZy12b2ljZS1zZWFyY2gtbWFya2V0aW5nLXRpcHMiO3M6NToicm91dGUiO3M6NDoicG9zdCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1768820064);
+('KC2luuQD1eBGiNR70i5f8IkQOlSMLcmIZUaZeZre', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRjMyOFVWS3BtVFdSYVZjcHZ1TjFWQVIxUkZ0OEJZd1RTdU5lclBWRSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Njc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wb3N0L2ZpdmUtd2lubmluZy12b2ljZS1zZWFyY2gtbWFya2V0aW5nLXRpcHMiO3M6NToicm91dGUiO3M6NDoicG9zdCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1768820064),
+('upVNe7Rh2BjyFzVJn1tkkp9936r12EpmQD47b3Nv', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic3JEUTZ1U3JTQmZCc081SWNhbHJ2VW94V0RaOGY3dk1JanhoMkxibiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NTA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0LWNhdGVnb3J5L2luZGV4IjtzOjU6InJvdXRlIjtzOjI4OiJhZG1pbi5wcm9kdWN0LWNhdGVnb3J5LmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1768874326);
 
 -- --------------------------------------------------------
 
@@ -896,6 +922,13 @@ ALTER TABLE `post_categories`
   ADD UNIQUE KEY `post_categories_slug_unique` (`slug`);
 
 --
+-- Indexes for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `product_categories_name_unique` (`name`);
+
+--
 -- Indexes for table `replies`
 --
 ALTER TABLE `replies`
@@ -1004,7 +1037,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -1041,6 +1074,12 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `post_categories`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `replies`
