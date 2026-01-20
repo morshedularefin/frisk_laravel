@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2026 at 02:30 AM
+-- Generation Time: Jan 20, 2026 at 06:42 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -357,7 +357,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2026_01_18_102722_create_posts_table', 18),
 (21, '2026_01_19_082034_create_comments_table', 19),
 (22, '2026_01_19_101802_create_replies_table', 20),
-(23, '2026_01_20_015012_create_product_categories_table', 21);
+(23, '2026_01_20_015012_create_product_categories_table', 21),
+(24, '2026_01_20_034302_create_products_table', 22);
 
 -- --------------------------------------------------------
 
@@ -564,6 +565,30 @@ INSERT INTO `post_categories` (`id`, `name`, `slug`, `created_at`, `updated_at`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint UNSIGNED NOT NULL,
+  `product_category_id` bigint UNSIGNED NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `regular_price` decimal(8,2) DEFAULT NULL,
+  `sale_price` decimal(8,2) NOT NULL,
+  `view_count` int NOT NULL DEFAULT '0',
+  `total_rating` decimal(3,2) NOT NULL DEFAULT '0.00',
+  `total_reviews` int NOT NULL DEFAULT '0',
+  `average_rating` decimal(3,2) NOT NULL DEFAULT '0.00',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product_categories`
 --
 
@@ -667,7 +692,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('upVNe7Rh2BjyFzVJn1tkkp9936r12EpmQD47b3Nv', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic3JEUTZ1U3JTQmZCc081SWNhbHJ2VW94V0RaOGY3dk1JanhoMkxibiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0cyI7czo1OiJyb3V0ZSI7czo4OiJwcm9kdWN0cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1768876184);
+('upVNe7Rh2BjyFzVJn1tkkp9936r12EpmQD47b3Nv', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoic3JEUTZ1U3JTQmZCc081SWNhbHJ2VW94V0RaOGY3dk1JanhoMkxibiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0L2luZGV4IjtzOjU6InJvdXRlIjtzOjE5OiJhZG1pbi5wcm9kdWN0LmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1768881088);
 
 -- --------------------------------------------------------
 
@@ -921,6 +946,13 @@ ALTER TABLE `post_categories`
   ADD UNIQUE KEY `post_categories_slug_unique` (`slug`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `products_slug_unique` (`slug`);
+
+--
 -- Indexes for table `product_categories`
 --
 ALTER TABLE `product_categories`
@@ -1036,7 +1068,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -1073,6 +1105,12 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `post_categories`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_categories`

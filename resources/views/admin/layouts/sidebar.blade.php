@@ -54,11 +54,14 @@
             </li>
 
 
-            <li class="nav-item dropdown {{ Route::is('admin.product-category.*') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Route::is('admin.product-category.*')||Route::is('admin.product.*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-box"></i><span>Product</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Route::is('admin.product-category.*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.product-category.index') }}""><i class="fas fa-angle-right"></i> Product Category</a>
+                    </li>
+                    <li class="{{ Route::is('admin.product.*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.product.index') }}""><i class="fas fa-angle-right"></i> Product</a>
                     </li>
                 </ul>
             </li>
