@@ -33,7 +33,7 @@ Mobile Menu
                     </ul>
                 </li>
                 <li>
-                    <a href="shop.html">Shop</a>
+                    <a href="{{ route('products') }}">Shop</a>
                 </li>
                 <li>
                     <a href="{{ route('portfolios') }}">Portfolio</a>

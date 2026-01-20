@@ -12,6 +12,7 @@ use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\Front\PortfolioController;
 use App\Http\Controllers\Front\PostController;
+use App\Http\Controllers\Front\ProductController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -44,6 +45,8 @@ Route::get('/tag/{tag_name}', [PostController::class, 'post_by_tag'])->name('pos
 Route::get('/search', [PostController::class, 'search'])->name('search');
 Route::post('/comment-store', [PostController::class, 'comment_store'])->name('comment_store');
 Route::post('/reply-store', [PostController::class, 'reply_store'])->name('reply_store');
+
+Route::get('/products', [ProductController::class, 'index'])->name('products');
 
 // Route::get('/secret', [HomeController::class, 'secret'])->name('secret')->middleware(['auth','password.confirm']);
 

@@ -49,7 +49,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="shop.html">
+                                    <a href="{{ route('products') }}">
                                         <span class="link-effect">
                                             <span class="effect-1">SHOP</span>
                                             <span class="effect-1">SHOP</span>

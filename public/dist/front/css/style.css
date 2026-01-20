@@ -13031,3 +13031,58 @@ blockquote p {
 .modal .form-control {
     border: 1px solid #d1d1d1!important;
 }
+
+/* Radio styled as checkbox */
+.sidebar__cat-list .form-check {
+    margin-bottom: 10px;
+    padding-left: 0;
+}
+
+.sidebar__cat-list .form-check-input {
+    display: none;
+}
+
+/* Style the label to look like a checkbox */
+.sidebar__cat-list .form-check-label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* Create the checkbox box */
+.sidebar__cat-list .form-check-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #333;
+    border-radius: 3px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+/* Background for checked state */
+.sidebar__cat-list .form-check-input:checked + .form-check-label::before {
+    background-color: #333;
+    border-color: #333;
+}
+
+/* Create the checkmark when radio is checked */
+.sidebar__cat-list .form-check-input:checked + .form-check-label::after {
+    content: "\2713";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.shop__sidebar .sidebar__search input {
+    border-bottom: 1px solid #d1d1d1!important;
+}
