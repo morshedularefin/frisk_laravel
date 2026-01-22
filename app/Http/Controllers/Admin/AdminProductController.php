@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductPhoto;
 
 class AdminProductController extends Controller
 {
@@ -88,13 +89,13 @@ class AdminProductController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        // $all_portfolio_photos = PortfolioPhoto::where('portfolio_id', $id)->get();
-        // foreach($all_portfolio_photos as $portfolio_photo) {
-        //     if($portfolio_photo->photo && file_exists(public_path('uploads/'.$portfolio_photo->photo))) {
-        //         unlink(public_path('uploads/'.$portfolio_photo->photo));
-        //     }
-        //     $portfolio_photo->delete();
-        // }
+        $all_product_photos = ProductPhoto::where('product_id', $id)->get();
+        foreach($all_product_photos as $product_photo) {
+            if($product_photo->photo && file_exists(public_path('uploads/'.$product_photo->photo))) {
+                unlink(public_path('uploads/'.$product_photo->photo));
+            }
+            $product_photo->delete();
+        }
 
         $product = Product::where('id', $id)->first();
 
@@ -107,58 +108,58 @@ class AdminProductController extends Controller
         return redirect()->route('admin.product.index')->with('success', 'Product deleted successfully.');
     }
 
-    // public function photos($id)
-    // {
-    //     $portfolio = Portfolio::where('id', $id)->first();
-    //     $portfolio_photos = PortfolioPhoto::orderBy('id','asc')->where('portfolio_id', $id)->get();
-    //     return view('admin.portfolio.photo', compact('portfolio', 'portfolio_photos'));
-    // }
+    public function photos($id)
+    {
+        $product = Product::where('id', $id)->first();
+        $product_photos = ProductPhoto::orderBy('id','asc')->where('product_id', $id)->get();
+        return view('admin.product.photo', compact('product', 'product_photos'));
+    }
 
-    // public function photo_store(Request $request)
-    // {
-    //     $request->validate([
-    //         'photo' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //     ]);
+    public function photo_store(Request $request)
+    {
+        $request->validate([
+            'photo' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    //     $final_name = 'portfolio_photo_'.time().'.'.$request->photo->getClientOriginalExtension();
-    //     $request->photo->move(public_path('uploads/'), $final_name);
+        $final_name = 'product_photo_'.time().'.'.$request->photo->getClientOriginalExtension();
+        $request->photo->move(public_path('uploads/'), $final_name);
 
-    //     $portfolio_photo = new PortfolioPhoto();
-    //     $portfolio_photo->portfolio_id = $request->portfolio_id;
-    //     $portfolio_photo->photo = $final_name;
-    //     $portfolio_photo->save();
+        $product_photo = new ProductPhoto();
+        $product_photo->product_id = $request->product_id;
+        $product_photo->photo = $final_name;
+        $product_photo->save();
 
-    //     return redirect()->back()->with('success', 'Photo added successfully.');
-    // }
+        return redirect()->back()->with('success', 'Photo added successfully.');
+    }
 
-    // public function photo_update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'photo' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //     ]);
+    public function photo_update(Request $request, $id)
+    {
+        $request->validate([
+            'photo' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    //     $portfolio_photo = PortfolioPhoto::where('id', $id)->first();
+        $product_photo = ProductPhoto::where('id', $id)->first();
 
-    //     $final_name = 'portfolio_photo_'.time().'.'.$request->photo->getClientOriginalExtension();
-    //     if($portfolio_photo->photo && file_exists(public_path('uploads/'.$portfolio_photo->photo))) {
-    //         unlink(public_path('uploads/'.$portfolio_photo->photo));
-    //     }
-    //     $request->photo->move(public_path('uploads/'), $final_name);
+        $final_name = 'product_photo_'.time().'.'.$request->photo->getClientOriginalExtension();
+        if($product_photo->photo && file_exists(public_path('uploads/'.$product_photo->photo))) {
+            unlink(public_path('uploads/'.$product_photo->photo));
+        }
+        $request->photo->move(public_path('uploads/'), $final_name);
 
-    //     $portfolio_photo->photo = $final_name;
-    //     $portfolio_photo->save();
+        $product_photo->photo = $final_name;
+        $product_photo->save();
         
-    //     return redirect()->back()->with('success', 'Photo updated successfully.');
-    // }
+        return redirect()->back()->with('success', 'Photo updated successfully.');
+    }
 
-    // public function photo_destroy(Request $request, $id)
-    // {
-    //     $portfolio_photo = PortfolioPhoto::where('id', $id)->first();
-    //     if($portfolio_photo->photo && file_exists(public_path('uploads/'.$portfolio_photo->photo))) {
-    //         unlink(public_path('uploads/'.$portfolio_photo->photo));
-    //     }
-    //     $portfolio_photo->delete();
+    public function photo_destroy(Request $request, $id)
+    {
+        $product_photo = ProductPhoto::where('id', $id)->first();
+        if($product_photo->photo && file_exists(public_path('uploads/'.$product_photo->photo))) {
+            unlink(public_path('uploads/'.$product_photo->photo));
+        }
+        $product_photo->delete();
 
-    //     return redirect()->back()->with('success', 'Photo deleted successfully.');
-    // }
+        return redirect()->back()->with('success', 'Photo deleted successfully.');
+    }
 }

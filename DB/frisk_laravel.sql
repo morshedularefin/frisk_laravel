@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2026 at 05:14 AM
+-- Generation Time: Jan 22, 2026 at 05:50 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -358,7 +358,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (21, '2026_01_19_082034_create_comments_table', 19),
 (22, '2026_01_19_101802_create_replies_table', 20),
 (23, '2026_01_20_015012_create_product_categories_table', 21),
-(24, '2026_01_20_034302_create_products_table', 22);
+(24, '2026_01_20_034302_create_products_table', 22),
+(25, '2026_01_22_053902_create_product_photos_table', 23);
 
 -- --------------------------------------------------------
 
@@ -631,6 +632,32 @@ INSERT INTO `product_categories` (`id`, `name`, `created_at`, `updated_at`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_photos`
+--
+
+CREATE TABLE `product_photos` (
+  `id` bigint UNSIGNED NOT NULL,
+  `product_id` bigint UNSIGNED NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_photos`
+--
+
+INSERT INTO `product_photos` (`id`, `product_id`, `photo`, `created_at`, `updated_at`) VALUES
+(1, 1, 'product_photo_1769060699.png', '2026-01-21 23:44:59', '2026-01-21 23:44:59'),
+(2, 1, 'product_photo_1769060707.png', '2026-01-21 23:45:07', '2026-01-21 23:45:07'),
+(3, 1, 'product_photo_1769060727.png', '2026-01-21 23:45:27', '2026-01-21 23:45:27'),
+(5, 2, 'product_photo_1769060807.png', '2026-01-21 23:46:47', '2026-01-21 23:46:47'),
+(6, 2, 'product_photo_1769060824.png', '2026-01-21 23:47:04', '2026-01-21 23:47:04'),
+(7, 2, 'product_photo_1769060832.png', '2026-01-21 23:47:12', '2026-01-21 23:47:12');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `replies`
 --
 
@@ -710,7 +737,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('MVDfaosz2i15PHfJCJCYM4HQK9ZTQMBRgfl4tu94', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiU0tyeTNTQUF1QzAzSFZ6eDhudFI0bTY3ZXd3dlY0SVEzR0xFWjJQOCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0L2luZGV4IjtzOjU6InJvdXRlIjtzOjE5OiJhZG1pbi5wcm9kdWN0LmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1769058833);
+('MVDfaosz2i15PHfJCJCYM4HQK9ZTQMBRgfl4tu94', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiU0tyeTNTQUF1QzAzSFZ6eDhudFI0bTY3ZXd3dlY0SVEzR0xFWjJQOCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0L2luZGV4IjtzOjU6InJvdXRlIjtzOjE5OiJhZG1pbi5wcm9kdWN0LmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1769060966);
 
 -- --------------------------------------------------------
 
@@ -978,6 +1005,12 @@ ALTER TABLE `product_categories`
   ADD UNIQUE KEY `product_categories_name_unique` (`name`);
 
 --
+-- Indexes for table `product_photos`
+--
+ALTER TABLE `product_photos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `replies`
 --
 ALTER TABLE `replies`
@@ -1086,7 +1119,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -1128,13 +1161,19 @@ ALTER TABLE `post_categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `product_photos`
+--
+ALTER TABLE `product_photos`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `replies`
