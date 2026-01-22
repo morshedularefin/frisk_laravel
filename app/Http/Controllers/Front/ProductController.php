@@ -13,6 +13,16 @@ class ProductController extends Controller
     {
         $product_categories = ProductCategory::orderBy('name')->get();
         $products = Product::orderBy('id','asc')->paginate(10);
-        return view('front.product', compact('product_categories', 'products'));
+        return view('front.shop', compact('product_categories', 'products'));
+    }
+
+    public function product($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        $related_products = Product::where('product_category_id', $product->product_category_id)
+                                    ->where('id', '!=', $product->id)
+                                    ->inRandomOrder()
+                                    ->get();
+        return view('front.product', compact('product', 'related_products'));
     }
 }

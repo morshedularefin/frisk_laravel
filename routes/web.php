@@ -46,7 +46,8 @@ Route::get('/search', [PostController::class, 'search'])->name('search');
 Route::post('/comment-store', [PostController::class, 'comment_store'])->name('comment_store');
 Route::post('/reply-store', [PostController::class, 'reply_store'])->name('reply_store');
 
-Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/shop', [ProductController::class, 'index'])->name('shop');
+Route::get('/product/{slug}', [ProductController::class, 'product'])->name('product');
 
 // Route::get('/secret', [HomeController::class, 'secret'])->name('secret')->middleware(['auth','password.confirm']);
 

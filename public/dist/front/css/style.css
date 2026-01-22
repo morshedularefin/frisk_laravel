@@ -13091,3 +13091,11 @@ blockquote p {
     height: 250px;
     object-fit: cover;
 }
+.product-small-img .slide-thumb img {
+    height: 125px;
+    object-fit: cover;
+}
+.product-big-img .img img {
+    height: 400px;
+    object-fit: cover;
+}

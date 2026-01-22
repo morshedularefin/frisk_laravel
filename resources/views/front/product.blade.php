@@ -2,155 +2,209 @@
 
 @section('main_content')
 
-<div class="breadcumb-wrapper " data-bg-src="{{ asset('dist/front/img/bg/breadcumb-bg1-9.jpg') }}">
-    <div class="container">
+<div class="breadcumb-wrapper style2 bg-smoke">
+    <div class="container-fluid">
         <div class="breadcumb-content">
-            <h1 class="breadcumb-title">Shop</h1>
+            <ul class="breadcumb-menu">
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ route('shop') }}">Shop</a></li>
+                <li>{{ $product->name }}</li>
+            </ul>
         </div>
     </div>
 </div>
 
-<form action="" method="post">
-@csrf
 <section class="shop__area space">
     <div class="container">
-        <div class="shop__inner-wrap">
-            <div class="row">
-                <div class="col-70">
-                    <div class="shop-sort-bar">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-sm-auto">
-                                <p class="woocommerce-result-count">Showing 1–12 of 27 results</p>
-                            </div>
-
-                            <div class="col-sm-auto">
-                                <form class="woocommerce-ordering" method="get">
-                                    <select name="orderby" class="orderby" aria-label="Shop order">
-                                        <option value="menu_order" selected="selected">Short by latest</option>
-                                        <option value="popularity">Sort by popularity</option>
-                                        <option value="rating">Sort by average rating</option>
-                                        <option value="price">Sort by price: low to high</option>
-                                        <option value="price-desc">Sort by price: high to low</option>
-                                    </select>
-                                </form>
-                            </div>
+        <div class="row gx-60 gy-60">
+            <div class="col-xl-6">
+                <div class="product-big-img">
+                    <div class="global-carousel product-thumb-slider" data-slide-show="1" data-asnavfor=".product-small-img" data-loop="true">
+                        <div class="slide">
+                            <div class="img"><img src="{{ asset('uploads/'.$product->photo) }}" alt="Product Image"></div>
                         </div>
-                    </div>
-                    <div class="row gy-60">
-                        @foreach($products as $product)
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('uploads/'.$product->photo) }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">{{ $product->name }}</a></h3>
-                                    <span class="price">
-                                        @if($product->regular_price != $product->sale_price)
-                                            <del>${{ $product->regular_price }}</del>
-                                        @endif
-                                        ${{ $product->sale_price }}</span>
-                                </div>
-                            </div>
+                        @foreach($product->photos as $image)
+                        <div class="slide">
+                            <div class="img"><img src="{{ asset('uploads/'.$image->photo) }}" alt="Product Image"></div>
                         </div>
                         @endforeach
-
-                        @if ($products->hasPages())
-                        <div class="col-lg-12">
-                            <div class="pagination-wrap mt-50">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination list-wrap">
-                                        {{-- Previous Page Link --}}
-                                        @if (!$products->onFirstPage())
-                                            <li class="page-item">
-                                                <a class="page-link" href="{{ $products->previousPageUrl() }}">
-                                                    <i class="fas fa-arrow-left"></i>
-                                                </a>
-                                            </li>
-                                        @endif
-
-                                        {{-- Pagination Elements --}}
-                                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
-                                            <li class="page-item {{ ($page == $products->currentPage()) ? 'active' : '' }}">
-                                                <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                                            </li>
-                                        @endforeach
-
-                                        {{-- Next Page Link --}}
-                                        @if ($products->hasMorePages())
-                                            <li class="page-item next-page">
-                                                <a class="page-link" href="{{ $products->nextPageUrl() }}">
-                                                    <i class="fas fa-arrow-right"></i>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        @endif
                     </div>
                 </div>
-                <div class="col-30">
-                    <aside class="shop__sidebar">
-                        <div class="sidebar__widget sidebar__widget-two">
-                            <div class="sidebar__search">
-                                <input type="text" placeholder="Search . . .">
-                            </div>
+                <div class="row global-carousel product-small-img" data-slide-show="3" data-md-slide-show="3" data-sm-slide-show="3" data-xs-slide-show="2" data-asnavfor=".product-thumb-slider" data-loop="true">
+                    <div class="col-lg-4 slide-thumb">
+                        <div class="img"><img src="{{ asset('uploads/'.$product->photo) }}" alt="Product Image"></div>
+                    </div>
+                    @foreach($product->photos as $image)
+                    <div class="col-lg-4 slide-thumb">
+                        <div class="img"><img src="{{ asset('uploads/'.$image->photo) }}" alt="Product Image"></div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="product-about">
+                    <h2 class="product-title">{{ $product->name }}</h2>
+                    
+                    <div class="product-rating">
+                        <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5 based on <span class="rating">1</span> customer rating</span></div>
+                        <a href="shop-details.html" class="woocommerce-review-link">(<span class="count">1</span> customer reviews)</a>
+                    </div>
+                    <p class="price">
+                        @if($product->regular_price != $product->sale_price)
+                            <del>${{ $product->regular_price }}</del>
+                        @endif
+                        ${{ $product->sale_price }}
+                    </p>
+                    <div class="text">
+                        {!! nl2br($product->short_description) !!}
+                    </div>
+                    <div class="actions">
+                        <a href="cart.html" class="btn">
+                            <span class="link-effect">
+                                <span class="effect-1">ADD TO CART</span>
+                                <span class="effect-1">ADD TO CART</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="product_meta">
+                        <span class="posted_in">Category: <a href="shop.html" rel="tag">{{ $product->product_category->name }}</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="nav product-tab-style1" id="productTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link th-btn active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+            </li>
+            @if($product->features->count() > 0)
+            <li class="nav-item" role="presentation">
+                <a class="nav-link th-btn" id="info-tab" data-bs-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Information</a>
+            </li>
+            @endif
+            <li class="nav-item" role="presentation">
+                <a class="nav-link th-btn" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews(1)</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="productTabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                <p>
+                    {!! $product->description !!}
+                </p>                    
+            </div>
+            @if($product->features->count() > 0)
+            <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+                <table class="woocommerce-table">
+                    <tbody>
+                        @foreach($product->features as $feature)
+                        <tr>
+                            <th>{{ $feature->name }}</th>
+                            <td>{{ $feature->value }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            @endif
+            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                <div class="woocommerce-Reviews mb-25">
+                    <div class="comments-wrap">
+                        <div class="latest-comments">
+                            <ul class="list-wrap">
+                                <li>
+                                    <div class="comments-box">
+                                        <div class="comments-avatar">
+                                            <img src="assets/img/blog/comment01.png" alt="img">
+                                        </div>
+                                        <div class="comments-text">
+                                            <div class="avatar-name">
+                                                <span class="date">March 26, 2024</span>
+                                                <h6 class="name">Parker Strong</h6>
+                                            </div>
+                                            <p>But in order that you may see whence all this born error of those who accuse pleasure and praise pain will open the whole matter explain</p>
+                                            <a href="blog-details.html" class="link-btn">
+                                                <span class="link-effect">
+                                                    <span class="effect-1">REPLY</span>
+                                                    <span class="effect-1">REPLY</span>
+                                                </span>
+                                                <img src="assets/img/icon/arrow-left-top.svg" alt="icon">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="sidebar__widget">
-                            <h4 class="sidebar__widget-title">Categories</h4>
-                            <div class="sidebar__cat-list">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="category" id="radio_item_0" checked>
-                                    <label class="form-check-label" for="radio_item_0">
-                                        All Categories
-                                    </label>
+                    </div>
+                        <div class="comment-respond">
+                        <h3 class="comment-reply-title">Leave a Reply</h3>
+                        <form action="#" class="comment-form">
+                            <p class="comment-notes">Your email address will not be published. Required fields are marked *</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control style-border" name="name" id="name" placeholder="Full name*">
+                                    </div>
                                 </div>
-                                @foreach($product_categories as $product_category)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="category" id="radio_item_{{ $loop->iteration }}">
-                                    <label class="form-check-label" for="radio_item_{{ $loop->iteration }}">
-                                        {{ $product_category->name }}
-                                    </label>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control style-border" name="email" id="email" placeholder="Email address*">
+                                    </div>
                                 </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="sidebar__widget">
-                            <h4 class="sidebar__widget-title">Filter by Price</h4>
-                            <div class="widget_price_filter">
-                                <div class="price_slider_wrapper">
-                                    <div class="price_slider"></div>
-                                    <div class="price_label">
-                                        Price: <span class="from">$0</span> — <span class="to">$70</span>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <textarea name="message" placeholder="Write your comment *" id="contactForm" class="form-control style-border style2"></textarea>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="sidebar__widget">
-                            <button type="submit" class="btn">
-                                <span class="link-effect">
-                                    <span class="effect-1">FILTER</span>
-                                    <span class="effect-1">FILTER</span>
-                                </span>
-                            </button>
-                        </div>
-                    </aside>
+                            <div class="form-btn col-12">
+                                <button type="submit" class="btn mt-25">
+                                    <span class="link-effect">
+                                        <span class="effect-1">POST COMMENT</span>
+                                        <span class="effect-1">POST COMMENT</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="space-top">
+            <h3 class="fw-semibold mb-30 mt-n2">Related Products</h3>
+            <div class="row global-carousel" data-slide-show="3" data-md-slide-show="2" data-sm-slide-show="2">
+
+                @foreach($related_products as $related_product)
+                <div class="col-sm-6">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="{{ asset('uploads/' . $related_product->photo) }}" alt="Product Image">
+                            <div class="actions">
+                                <a href="cart.html" class="btn">
+                                    <span class="link-effect">
+                                        <span class="effect-1">ADD TO CART</span>
+                                        <span class="effect-1">ADD TO CART</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title"><a href="{{ route('product', $related_product->slug) }}">{{ $related_product->name }}</a></h3>
+                            <span class="price">
+                                @if($related_product->regular_price != $related_product->sale_price)
+                                    <del>${{ $related_product->regular_price }}</del>
+                                @endif
+                                ${{ $related_product->sale_price }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+                
+                
             </div>
         </div>
     </div>
 </section>
-</form>
 
 @include('front.layouts.marquee')
 
