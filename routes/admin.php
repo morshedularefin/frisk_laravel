@@ -159,4 +159,8 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('product/store', [AdminProductController::class, 'store'])->name('product.store');
     Route::post('product/update/{id}', [AdminProductController::class, 'update'])->name('product.update');
     Route::post('product/destroy/{id}', [AdminProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('product/photos/{id}', [AdminProductController::class, 'photos'])->name('product.photos');
+    Route::post('product/photo_store', [AdminProductController::class, 'photo_store'])->name('product.photo_store');
+    Route::post('product/photo_update/{id}', [AdminProductController::class, 'photo_update'])->name('product.photo_update');
+    Route::post('product/photo_destroy/{id}', [AdminProductController::class, 'photo_destroy'])->name('product.photo_destroy');
 });
