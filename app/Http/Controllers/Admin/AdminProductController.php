@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductPhoto;
+use App\Models\ProductFeature;
 
 class AdminProductController extends Controller
 {
@@ -97,6 +98,8 @@ class AdminProductController extends Controller
             $product_photo->delete();
         }
 
+        ProductFeature::where('product_id', $id)->delete();
+
         $product = Product::where('id', $id)->first();
 
         if($product->photo && file_exists(public_path('uploads/'.$product->photo))) {
@@ -161,5 +164,51 @@ class AdminProductController extends Controller
         $product_photo->delete();
 
         return redirect()->back()->with('success', 'Photo deleted successfully.');
+    }
+
+    public function features($id)
+    {
+        $product = Product::where('id', $id)->first();
+        $product_features = ProductFeature::orderBy('id','asc')->where('product_id', $id)->get();
+        return view('admin.product.feature', compact('product', 'product_features'));
+    }
+
+    public function feature_store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'value' => 'required|string|max:255',
+        ]);
+
+        $product_feature = new ProductFeature();
+        $product_feature->product_id = $request->product_id;
+        $product_feature->name = $request->name;
+        $product_feature->value = $request->value;
+        $product_feature->save();
+
+        return redirect()->back()->with('success', 'Feature added successfully.');
+    }
+
+    public function feature_update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'value' => 'required|string|max:255',
+        ]);
+
+        $product_feature = ProductFeature::where('id', $id)->first();
+        $product_feature->name = $request->name;
+        $product_feature->value = $request->value;
+        $product_feature->save();
+        
+        return redirect()->back()->with('success', 'Feature updated successfully.');
+    }
+
+    public function feature_destroy(Request $request, $id)
+    {
+        $product_feature = ProductFeature::where('id', $id)->first();
+        $product_feature->delete();
+
+        return redirect()->back()->with('success', 'Feature deleted successfully.');
     }
 }

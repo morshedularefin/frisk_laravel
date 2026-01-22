@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2026 at 05:50 AM
+-- Generation Time: Jan 22, 2026 at 06:16 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -359,7 +359,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2026_01_19_101802_create_replies_table', 20),
 (23, '2026_01_20_015012_create_product_categories_table', 21),
 (24, '2026_01_20_034302_create_products_table', 22),
-(25, '2026_01_22_053902_create_product_photos_table', 23);
+(25, '2026_01_22_053902_create_product_photos_table', 23),
+(26, '2026_01_22_060604_create_product_features_table', 24);
 
 -- --------------------------------------------------------
 
@@ -632,6 +633,36 @@ INSERT INTO `product_categories` (`id`, `name`, `created_at`, `updated_at`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_features`
+--
+
+CREATE TABLE `product_features` (
+  `id` bigint UNSIGNED NOT NULL,
+  `product_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_features`
+--
+
+INSERT INTO `product_features` (`id`, `product_id`, `name`, `value`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Technology', 'PHP, Laravel', '2026-01-22 00:13:29', '2026-01-22 00:13:29'),
+(2, 1, 'Architecture', 'MVC', '2026-01-22 00:14:18', '2026-01-22 00:14:18'),
+(3, 1, 'Authentication', 'Laravel Breeze', '2026-01-22 00:14:28', '2026-01-22 00:14:28'),
+(4, 1, 'Payment Gateway', 'PayPal, Stripe', '2026-01-22 00:14:38', '2026-01-22 00:14:38'),
+(5, 2, 'Technology', 'PHP, Laravel', '2026-01-22 00:15:00', '2026-01-22 00:15:00'),
+(6, 2, 'Authentication', 'Laravel Breeze', '2026-01-22 00:15:10', '2026-01-22 00:15:10'),
+(7, 2, 'Frontend', 'Blade Templates, Tailwind CSS', '2026-01-22 00:15:21', '2026-01-22 00:15:21'),
+(8, 2, 'Admin Dashboard', 'Responsive Custom Panel', '2026-01-22 00:15:34', '2026-01-22 00:15:34'),
+(9, 2, 'Deployment', 'Docker & Shared Hosting Ready', '2026-01-22 00:15:45', '2026-01-22 00:15:45');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product_photos`
 --
 
@@ -737,7 +768,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('MVDfaosz2i15PHfJCJCYM4HQK9ZTQMBRgfl4tu94', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiU0tyeTNTQUF1QzAzSFZ6eDhudFI0bTY3ZXd3dlY0SVEzR0xFWjJQOCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0L2luZGV4IjtzOjU6InJvdXRlIjtzOjE5OiJhZG1pbi5wcm9kdWN0LmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1769060966);
+('MVDfaosz2i15PHfJCJCYM4HQK9ZTQMBRgfl4tu94', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiU0tyeTNTQUF1QzAzSFZ6eDhudFI0bTY3ZXd3dlY0SVEzR0xFWjJQOCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0L2luZGV4IjtzOjU6InJvdXRlIjtzOjE5OiJhZG1pbi5wcm9kdWN0LmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1769062564);
 
 -- --------------------------------------------------------
 
@@ -1005,6 +1036,12 @@ ALTER TABLE `product_categories`
   ADD UNIQUE KEY `product_categories_name_unique` (`name`);
 
 --
+-- Indexes for table `product_features`
+--
+ALTER TABLE `product_features`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `product_photos`
 --
 ALTER TABLE `product_photos`
@@ -1119,7 +1156,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -1168,6 +1205,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_categories`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `product_features`
+--
+ALTER TABLE `product_features`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_photos`

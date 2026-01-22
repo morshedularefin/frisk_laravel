@@ -85,7 +85,8 @@
                                             <th>Category</th>
                                             <th>Regular Price</th>
                                             <th>Sale Price</th>
-                                            <th>Photo Gallery</th>
+                                            <th class="w_100">Photo Gallery</th>
+                                            <th>Feature</th>
                                             <th class="w_100">Action</th>
                                         </tr>
                                     </thead>
@@ -102,6 +103,9 @@
                                             <td>${{ $product->sale_price }}</td>
                                             <td>
                                                 <a href="{{ route('admin.product.photos', $product->id) }}" class="btn btn-primary btn-sm">Photo Gallery</a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.product.features', $product->id) }}" class="btn btn-success btn-sm">Feature</a>
                                             </td>
                                             <td class="pt_10 pb_10">
                                                 <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal_edit_{{ $product->id }}"><i class="fas fa-edit"></i></a>
