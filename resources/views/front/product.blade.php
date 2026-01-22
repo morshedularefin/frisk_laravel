@@ -37,174 +37,66 @@
                         </div>
                     </div>
                     <div class="row gy-60">
+                        @foreach($products as $product)
+                        <div class="col-sm-6">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="{{ asset('uploads/'.$product->photo) }}" alt="Product Image">
+                                    <div class="actions">
+                                        <a href="" class="btn">
+                                            <span class="link-effect">
+                                                <span class="effect-1">ADD TO CART</span>
+                                                <span class="effect-1">ADD TO CART</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title"><a href="shop-details.html">{{ $product->name }}</a></h3>
+                                    <span class="price">
+                                        @if($product->regular_price != $product->sale_price)
+                                            <del>${{ $product->regular_price }}</del>
+                                        @endif
+                                        ${{ $product->sale_price }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
 
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('dist/front/img/product/product_1_1.jpg') }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="cart.html" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="tag">SALE</div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">Printed T-Shirt</a></h3>
-                                    <span class="price"><del>€29.50</del>€20.50</span>
-                                </div>
+                        @if ($products->hasPages())
+                        <div class="col-lg-12">
+                            <div class="pagination-wrap mt-50">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination list-wrap">
+                                        {{-- Previous Page Link --}}
+                                        @if (!$products->onFirstPage())
+                                            <li class="page-item">
+                                                <a class="page-link" href="{{ $products->previousPageUrl() }}">
+                                                    <i class="fas fa-arrow-left"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+
+                                        {{-- Pagination Elements --}}
+                                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                                            <li class="page-item {{ ($page == $products->currentPage()) ? 'active' : '' }}">
+                                                <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                            </li>
+                                        @endforeach
+
+                                        {{-- Next Page Link --}}
+                                        @if ($products->hasMorePages())
+                                            <li class="page-item next-page">
+                                                <a class="page-link" href="{{ $products->nextPageUrl() }}">
+                                                    <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('dist/front/img/product/product_1_2.jpg') }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="cart.html" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">Card Wallet</a></h3>
-                                    <span class="price">€52.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('dist/front/img/product/product_1_3.jpg') }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="cart.html" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">Kinto Tumbler</a></h3>
-                                    <span class="price">€38.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('dist/front/img/product/product_1_4.jpg') }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="cart.html" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">Ripple Crewneck</a></h3>
-                                    <span class="price">€160.90</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('dist/front/img/product/product_1_5.jpg') }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="cart.html" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">Herman Miller</a></h3>
-                                    <span class="price">€44.50</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('dist/front/img/product/product_1_6.jpg') }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="cart.html" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="tag">SALE</div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">Knit Beanie</a></h3>
-                                    <span class="price"><del>€50.00</del> €30.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('dist/front/img/product/product_1_7.jpg') }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="cart.html" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="tag">SALE</div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">Bifold Wallet</a></h3>
-                                    <span class="price"><del>€110.80</del> €84.80</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="product-card">
-                                <div class="product-img">
-                                    <img src="{{ asset('dist/front/img/product/product_1_8.jpg') }}" alt="Product Image">
-                                    <div class="actions">
-                                        <a href="cart.html" class="btn">
-                                            <span class="link-effect">
-                                                <span class="effect-1">ADD TO CART</span>
-                                                <span class="effect-1">ADD TO CART</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="product-title"><a href="shop-details.html">Pillars Tee</a></h3>
-                                    <span class="price">€26.90</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pagination-wrap mt-80">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination list-wrap">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item next-page"><a class="page-link" href="#"><i class="fas fa-arrow-right"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
+                        @endif
                     </div>
                 </div>
                 <div class="col-30">
