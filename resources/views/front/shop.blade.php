@@ -10,8 +10,7 @@
     </div>
 </div>
 
-<form action="" method="post">
-@csrf
+<form action="{{ route('shop') }}" method="get">
 <section class="shop__area space">
     <div class="container">
         <div class="shop__inner-wrap">
@@ -24,7 +23,7 @@
                             </div>
 
                             <div class="col-sm-auto">
-                                <form class="woocommerce-ordering" method="get">
+                                <div class="woocommerce-ordering">
                                     <select name="orderby" class="orderby" aria-label="Shop order">
                                         <option value="menu_order" selected="selected">Short by latest</option>
                                         <option value="popularity">Sort by popularity</option>
@@ -32,7 +31,7 @@
                                         <option value="price">Sort by price: low to high</option>
                                         <option value="price-desc">Sort by price: high to low</option>
                                     </select>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,14 +110,14 @@
                             <h4 class="sidebar__widget-title">Categories</h4>
                             <div class="sidebar__cat-list">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="category" id="radio_item_0" checked>
+                                    <input class="form-check-input" type="radio" name="category" id="radio_item_0" value="" {{ request('category') == null ? 'checked' : '' }}>
                                     <label class="form-check-label" for="radio_item_0">
                                         All Categories
                                     </label>
                                 </div>
                                 @foreach($product_categories as $product_category)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="category" id="radio_item_{{ $loop->iteration }}">
+                                    <input class="form-check-input" type="radio" name="category" id="radio_item_{{ $loop->iteration }}" value="{{ $product_category->id }}" {{ request('category') == $product_category->id ? 'checked' : '' }}>
                                     <label class="form-check-label" for="radio_item_{{ $loop->iteration }}">
                                         {{ $product_category->name }}
                                     </label>
@@ -132,10 +131,30 @@
                                 <div class="price_slider_wrapper">
                                     <div class="price_slider"></div>
                                     <div class="price_label">
-                                        Price: <span class="from">$0</span> — <span class="to">$70</span>
+                                        Price: <span class="from">${{ request('price_min') ? request('price_min') : 150 }}</span> — <span class="to">${{ request('price_max') ? request('price_max') : 800 }}</span>
                                     </div>
+                                    <input type="hidden" name="price_min" id="price_min" value="{{ request('price_min') ? request('price_min') : 150 }}">
+                                    <input type="hidden" name="price_max" id="price_max" value="{{ request('price_max') ? request('price_max') : 800 }}">
                                 </div>
                             </div>
+                            <script>
+                                $(".price_slider").slider({
+                                    range: true,
+                                    min: 0,
+                                    max: 1000,
+                                    values: [{{ request('price_min') ? request('price_min') : 150 }}, {{ request('price_max') ? request('price_max') : 800 }}],
+                                    slide: function (event, ui) {
+                                        $(".from").text("$" + ui.values[0]);
+                                        $(".to").text("$" + ui.values[1]);
+                                        $("#price_min").val(ui.values[0]);
+                                        $("#price_max").val(ui.values[1]);
+                                    }
+                                });
+                                $(".from").text("$" + $(".price_slider").slider("values", 0));
+                                $(".to").text("$" + $(".price_slider").slider("values", 1));
+                                $("#price_min").val($(".price_slider").slider("values", 0));
+                                $("#price_max").val($(".price_slider").slider("values", 1));
+                            </script>
                         </div>
                         <div class="sidebar__widget">
                             <button type="submit" class="btn">

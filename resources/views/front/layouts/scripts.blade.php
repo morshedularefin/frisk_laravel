@@ -14,4 +14,3 @@
 <script src="{{ asset('dist/front/js/waypoints.js') }}"></script>
 <script src="{{ asset('dist/front/js/wow.js') }}"></script>
 <script src="{{ asset('dist/admin/js/iziToast.min.js') }}"></script>
-<script src="{{ asset('dist/front/js/main.js') }}"></script>

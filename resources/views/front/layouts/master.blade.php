@@ -30,6 +30,7 @@
     @endif
 
     @include('front.layouts.styles')
+    @include('front.layouts.scripts')
 
 </head>
 
@@ -57,7 +58,7 @@
         </svg>
     </div>
 
-    @include('front.layouts.scripts')
+    @include('front.layouts.scripts_footer')
 
     @if(session('success'))
     <script>
