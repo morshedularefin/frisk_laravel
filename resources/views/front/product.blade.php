@@ -45,9 +45,13 @@
                 <div class="product-about">
                     <h2 class="product-title">{{ $product->name }}</h2>
                     
-                    <div class="product-rating">
-                        <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5 based on <span class="rating">1</span> customer rating</span></div>
-                        <a href="shop-details.html" class="woocommerce-review-link">(<span class="count">1</span> customer reviews)</a>
+                    <div class="product-rating mb-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        (5 Customer Reviews)
                     </div>
                     <p class="price">
                         @if($product->regular_price != $product->sale_price)
@@ -97,7 +101,7 @@
                     <tbody>
                         @foreach($product->features as $feature)
                         <tr>
-                            <th>{{ $feature->name }}</th>
+                            <th class="w_40_p">{{ $feature->name }}</th>
                             <td>{{ $feature->value }}</td>
                         </tr>
                         @endforeach
@@ -113,57 +117,28 @@
                                 <li>
                                     <div class="comments-box">
                                         <div class="comments-avatar">
-                                            <img src="assets/img/blog/comment01.png" alt="img">
+                                            <img src="{{ asset('dist/front/img/blog/comment01.png') }}" alt="img">
                                         </div>
                                         <div class="comments-text">
                                             <div class="avatar-name">
                                                 <span class="date">March 26, 2024</span>
                                                 <h6 class="name">Parker Strong</h6>
                                             </div>
-                                            <p>But in order that you may see whence all this born error of those who accuse pleasure and praise pain will open the whole matter explain</p>
-                                            <a href="blog-details.html" class="link-btn">
-                                                <span class="link-effect">
-                                                    <span class="effect-1">REPLY</span>
-                                                    <span class="effect-1">REPLY</span>
-                                                </span>
-                                                <img src="assets/img/icon/arrow-left-top.svg" alt="icon">
-                                            </a>
+                                            <div class="product-rating mb-2">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <p>
+                                                But in order that you may see whence all this born error of those who accuse pleasure and praise pain will open the whole matter explain
+                                            </p>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                        <div class="comment-respond">
-                        <h3 class="comment-reply-title">Leave a Reply</h3>
-                        <form action="#" class="comment-form">
-                            <p class="comment-notes">Your email address will not be published. Required fields are marked *</p>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control style-border" name="name" id="name" placeholder="Full name*">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control style-border" name="email" id="email" placeholder="Email address*">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <textarea name="message" placeholder="Write your comment *" id="contactForm" class="form-control style-border style2"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-btn col-12">
-                                <button type="submit" class="btn mt-25">
-                                    <span class="link-effect">
-                                        <span class="effect-1">POST COMMENT</span>
-                                        <span class="effect-1">POST COMMENT</span>
-                                    </span>
-                                </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -172,7 +147,7 @@
             <h3 class="fw-semibold mb-30 mt-n2">Related Products</h3>
             <div class="row global-carousel" data-slide-show="3" data-md-slide-show="2" data-sm-slide-show="2">
 
-                @foreach($related_products as $related_product)
+                @forelse($related_products as $related_product)
                 <div class="col-sm-6">
                     <div class="product-card">
                         <div class="product-img">
@@ -197,7 +172,9 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <p class="text-danger">No related products found.</p>
+                @endforelse
 
                 
                 

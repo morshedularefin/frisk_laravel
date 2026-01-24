@@ -19,17 +19,20 @@
                     <div class="shop-sort-bar">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-sm-auto">
-                                <p class="woocommerce-result-count">Showing 1–12 of 27 results</p>
+                                <p class="woocommerce-result-count">
+                                    Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of {{ $products->total() }} results
+                                </p>
                             </div>
 
                             <div class="col-sm-auto">
                                 <div class="woocommerce-ordering">
-                                    <select name="orderby" class="orderby" aria-label="Shop order">
-                                        <option value="menu_order" selected="selected">Short by latest</option>
-                                        <option value="popularity">Sort by popularity</option>
-                                        <option value="rating">Sort by average rating</option>
-                                        <option value="price">Sort by price: low to high</option>
-                                        <option value="price-desc">Sort by price: high to low</option>
+                                    <select name="order" class="orderby">
+                                        <option value="latest" {{ request('order') == 'latest' ? 'selected' : '' }}>Sort by latest</option>
+                                        <option value="oldest" {{ request('order') == 'oldest' ? 'selected' : '' }}>Sort by oldest</option>
+                                        <option value="popularity" {{ request('order') == 'popularity' ? 'selected' : '' }}>Sort by popularity</option>
+                                        <option value="rating" {{ request('order') == 'rating' ? 'selected' : '' }}>Sort by average rating</option>
+                                        <option value="price_asc" {{ request('order') == 'price_asc' ? 'selected' : '' }}>Sort by price: low to high</option>
+                                        <option value="price_desc" {{ request('order') == 'price_desc' ? 'selected' : '' }}>Sort by price: high to low</option>
                                     </select>
                                 </div>
                             </div>
@@ -52,6 +55,15 @@
                                 </div>
                                 <div class="product-content">
                                     <h3 class="product-title"><a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a></h3>
+                                    
+                                    <div class="product-rating mb-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+
                                     <span class="price">
                                         @if($product->regular_price != $product->sale_price)
                                             <del>${{ $product->regular_price }}</del>
@@ -71,14 +83,14 @@
                                         {{-- Previous Page Link --}}
                                         @if (!$products->onFirstPage())
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $products->previousPageUrl() }}">
+                                                <a class="page-link" href="{{ $products->appends($_GET)->previousPageUrl() }}">
                                                     <i class="fas fa-arrow-left"></i>
                                                 </a>
                                             </li>
                                         @endif
 
                                         {{-- Pagination Elements --}}
-                                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                                        @foreach ($products->appends($_GET)->getUrlRange(1, $products->lastPage()) as $page => $url)
                                             <li class="page-item {{ ($page == $products->currentPage()) ? 'active' : '' }}">
                                                 <a class="page-link" href="{{ $url }}">{{ $page }}</a>
                                             </li>
@@ -87,7 +99,7 @@
                                         {{-- Next Page Link --}}
                                         @if ($products->hasMorePages())
                                             <li class="page-item next-page">
-                                                <a class="page-link" href="{{ $products->nextPageUrl() }}">
+                                                <a class="page-link" href="{{ $products->appends($_GET)->nextPageUrl() }}">
                                                     <i class="fas fa-arrow-right"></i>
                                                 </a>
                                             </li>
@@ -103,7 +115,7 @@
                     <aside class="shop__sidebar">
                         <div class="sidebar__widget sidebar__widget-two">
                             <div class="sidebar__search">
-                                <input type="text" placeholder="Search . . .">
+                                <input type="text" placeholder="Search . . ." name="search" value="{{ request('search') }}">
                             </div>
                         </div>
                         <div class="sidebar__widget">
@@ -131,10 +143,10 @@
                                 <div class="price_slider_wrapper">
                                     <div class="price_slider"></div>
                                     <div class="price_label">
-                                        Price: <span class="from">${{ request('price_min') ? request('price_min') : 150 }}</span> — <span class="to">${{ request('price_max') ? request('price_max') : 800 }}</span>
+                                        Price: <span class="from">${{ request('price_min') ? request('price_min') : 1 }}</span> — <span class="to">${{ request('price_max') ? request('price_max') : 999 }}</span>
                                     </div>
-                                    <input type="hidden" name="price_min" id="price_min" value="{{ request('price_min') ? request('price_min') : 150 }}">
-                                    <input type="hidden" name="price_max" id="price_max" value="{{ request('price_max') ? request('price_max') : 800 }}">
+                                    <input type="hidden" name="price_min" id="price_min" value="{{ request('price_min') ? request('price_min') : 1 }}">
+                                    <input type="hidden" name="price_max" id="price_max" value="{{ request('price_max') ? request('price_max') : 999 }}">
                                 </div>
                             </div>
                             <script>
@@ -142,7 +154,7 @@
                                     range: true,
                                     min: 0,
                                     max: 1000,
-                                    values: [{{ request('price_min') ? request('price_min') : 150 }}, {{ request('price_max') ? request('price_max') : 800 }}],
+                                    values: [{{ request('price_min') ? request('price_min') : 1 }}, {{ request('price_max') ? request('price_max') : 999 }}],
                                     slide: function (event, ui) {
                                         $(".from").text("$" + ui.values[0]);
                                         $(".to").text("$" + ui.values[1]);
