@@ -67,6 +67,9 @@ class ProductController extends Controller
 
     public function cart()
     {
+        if(!session()->has('cart') || count(session()->get('cart')) == 0) {
+            return redirect()->route('shop')->with('error', 'Your cart is empty. Please add products to cart.');
+        }
         return view('front.cart');
     }
 
@@ -94,6 +97,17 @@ class ProductController extends Controller
         session()->put('cart', $cart);
 
         return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
+    public function remove_from_cart($product_id)
+    {
+        //session()->forget('cart');
+        // I want to delete only particular item from cart. I have product id.
+        $cart = session()->get('cart', []);
+        unset($cart[$product_id]);
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product removed from cart successfully!');
     }
 
     public function checkout()

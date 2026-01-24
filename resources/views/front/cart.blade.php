@@ -26,20 +26,20 @@
                     $cart = session()->get('cart', []);
                     $total = 0;
                     @endphp
-                    @foreach($cart as $item)
+                    @foreach($cart as $id => $item)
                     <tr class="cart_item">
-                        <td data-title="Remove">
-                            <a href="#" class="remove"><i class="fas fa-times"></i></a>
+                        <td>
+                            <a href="{{ route('remove_from_cart', $id) }}" class="remove"><i class="fas fa-times"></i></a>
                         </td>
-                        <td data-title="Product">
-                            <a class="cart-productimage" href="{{ route('product', $item['slug']) }}"><img src="{{ asset('uploads/'.$item['photo']) }}" alt="Image"></a>
+                        <td>
+                            <a class="cart-productimage" href="{{ route('product', $item['slug']) }}"><img src="{{ asset('uploads/'.$item['photo']) }}" alt="Image" style="width:200px;"></a>
                         </td>
-                        <td data-title="Name">
+                        <td>
                             <a class="cart-productname" href="{{ route('product', $item['slug']) }}">
                                 {{ $item['name'] }}
                             </a>
                         </td>
-                        <td data-title="Total">
+                        <td>
                             <span class="amount"><bdi><span>$</span>{{ $item['price'] }}</bdi></span>
                         </td>
                     </tr>

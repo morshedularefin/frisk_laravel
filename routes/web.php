@@ -49,6 +49,7 @@ Route::post('/reply-store', [PostController::class, 'reply_store'])->name('reply
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/product/{slug}', [ProductController::class, 'product'])->name('product');
 Route::get('/add-to-cart/{product_id}', [ProductController::class, 'add_to_cart'])->name('add_to_cart');
+Route::get('/remove-from-cart/{product_id}', [ProductController::class, 'remove_from_cart'])->name('remove_from_cart');
 Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
 Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
 
