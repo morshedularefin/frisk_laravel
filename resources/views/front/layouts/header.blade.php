@@ -90,11 +90,18 @@
                         </div>
                     </div>
                     <div class="col-auto d-none d-lg-block">
+                        @php
+                        $cart_count = 0;
+                        if(session()->has('cart')) {
+                            $cart = session()->get('cart', []);
+                            $cart_count = count($cart);
+                        }
+                        @endphp
                         <div class="header-button">
                             <button type="button" class="header-cart sideMenuToggler" href="cart.html"><img src="{{ asset('dist/front/img/icon/shopping-cart.svg') }}" alt="img">
                                 <span class="link-effect header-cart-text">
-                                    <span class="effect-1">CART <span>(02)</span></span>
-                                    <span class="effect-1">CART <span>(02)</span></span>
+                                    <span class="effect-1">CART @if($cart_count > 0)<span>({{ $cart_count }})</span>@endif</span>
+                                    <span class="effect-1">CART @if($cart_count > 0)<span>({{ $cart_count }})</span>@endif</span>
                                 </span>
                             </button>
                             @if(Auth::guard('web')->check())

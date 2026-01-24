@@ -52,6 +52,7 @@ Route::get('/add-to-cart/{product_id}', [ProductController::class, 'add_to_cart'
 Route::get('/remove-from-cart/{product_id}', [ProductController::class, 'remove_from_cart'])->name('remove_from_cart');
 Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
 Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+Route::post('/apply-coupon', [ProductController::class, 'apply_coupon'])->name('apply_coupon');
 
 // Route::get('/secret', [HomeController::class, 'secret'])->name('secret')->middleware(['auth','password.confirm']);
 

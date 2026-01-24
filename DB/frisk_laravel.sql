@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 24, 2026 at 09:38 AM
+-- Generation Time: Jan 24, 2026 at 10:20 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -207,7 +207,7 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `code`, `type`, `value`, `start_date`, `expiry_date`, `use_limit`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'SPECIAL', 'Percentage', 20.00, '2026-01-26', '2026-01-29', 10, 'Active', '2026-01-24 03:35:20', '2026-01-24 03:35:20'),
+(1, 'SPECIAL', 'Percentage', 20.00, '2026-01-21', '2026-01-29', 10, 'Active', '2026-01-24 03:35:20', '2026-01-24 04:01:48'),
 (2, 'GENERAL', 'Fixed', 5.00, '2026-01-22', '2026-01-31', 30, 'Active', '2026-01-24 03:35:43', '2026-01-24 03:35:43');
 
 -- --------------------------------------------------------
@@ -774,7 +774,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('iTtuhhER7lcf3uCXPj9lRYc0EcGrWmZzj43eZumn', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiMVppZnNnSTBPN1NCNGNHZjRXTXc3VFpZZU5uT0ZnU2xMdUt5RndyTiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9jb3Vwb24vaW5kZXgiO3M6NToicm91dGUiO3M6MTg6ImFkbWluLmNvdXBvbi5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo0OiJjYXJ0IjthOjM6e2k6MTI7YTo0OntzOjQ6Im5hbWUiO3M6MzA6IkFmZmlsaWF0ZVRyYWNrIFJlZmVycmFsIFN5c3RlbSI7czo0OiJzbHVnIjtzOjMxOiJhZmZpbGlhdGUtdHJhY2stcmVmZXJyYWwtc3lzdGVtIjtzOjU6InByaWNlIjtzOjU6Ijc5LjAwIjtzOjU6InBob3RvIjtzOjIyOiJwcm9kdWN0XzE3NjkwNTg2MzUucG5nIjt9aToxMTthOjQ6e3M6NDoibmFtZSI7czoyNjoiSm9iSHVudCBSZWNydWl0bWVudCBQb3J0YWwiO3M6NDoic2x1ZyI7czoyNzoiam9iLWh1bnQtcmVjcnVpdG1lbnQtcG9ydGFsIjtzOjU6InByaWNlIjtzOjU6IjE0LjAwIjtzOjU6InBob3RvIjtzOjIyOiJwcm9kdWN0XzE3NjkwNTg1OTkucG5nIjt9aTo5O2E6NDp7czo0OiJuYW1lIjtzOjI4OiJIb3NwaWNhcmUgUGF0aWVudCBNYW5hZ2VtZW50IjtzOjQ6InNsdWciO3M6Mjg6Imhvc3BpY2FyZS1wYXRpZW50LW1hbmFnZW1lbnQiO3M6NToicHJpY2UiO3M6NToiMzAuMDAiO3M6NToicGhvdG8iO3M6MjI6InByb2R1Y3RfMTc2OTA1ODUxNS5wbmciO319fQ==', 1769247407);
+('iTtuhhER7lcf3uCXPj9lRYc0EcGrWmZzj43eZumn', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiMVppZnNnSTBPN1NCNGNHZjRXTXc3VFpZZU5uT0ZnU2xMdUt5RndyTiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jaGVja291dCI7czo1OiJyb3V0ZSI7czo4OiJjaGVja291dCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo0OiJjYXJ0IjthOjQ6e2k6MTI7YTo0OntzOjQ6Im5hbWUiO3M6MzA6IkFmZmlsaWF0ZVRyYWNrIFJlZmVycmFsIFN5c3RlbSI7czo0OiJzbHVnIjtzOjMxOiJhZmZpbGlhdGUtdHJhY2stcmVmZXJyYWwtc3lzdGVtIjtzOjU6InByaWNlIjtzOjU6Ijc5LjAwIjtzOjU6InBob3RvIjtzOjIyOiJwcm9kdWN0XzE3NjkwNTg2MzUucG5nIjt9aTo5O2E6NDp7czo0OiJuYW1lIjtzOjI4OiJIb3NwaWNhcmUgUGF0aWVudCBNYW5hZ2VtZW50IjtzOjQ6InNsdWciO3M6Mjg6Imhvc3BpY2FyZS1wYXRpZW50LW1hbmFnZW1lbnQiO3M6NToicHJpY2UiO3M6NToiMzAuMDAiO3M6NToicGhvdG8iO3M6MjI6InByb2R1Y3RfMTc2OTA1ODUxNS5wbmciO31pOjQ7YTo0OntzOjQ6Im5hbWUiO3M6MTQ6IkVkdU1hbmFnZXIgUHJvIjtzOjQ6InNsdWciO3M6MTU6ImVkdS1tYW5hZ2VyLXBybyI7czo1OiJwcmljZSI7czo1OiIyNC4wMCI7czo1OiJwaG90byI7czoyMjoicHJvZHVjdF8xNzY5MDU4MjAwLnBuZyI7fWk6MTE7YTo0OntzOjQ6Im5hbWUiO3M6MjY6IkpvYkh1bnQgUmVjcnVpdG1lbnQgUG9ydGFsIjtzOjQ6InNsdWciO3M6Mjc6ImpvYi1odW50LXJlY3J1aXRtZW50LXBvcnRhbCI7czo1OiJwcmljZSI7czo1OiIxNC4wMCI7czo1OiJwaG90byI7czoyMjoicHJvZHVjdF8xNzY5MDU4NTk5LnBuZyI7fX1zOjY6ImNvdXBvbiI7YTo0OntzOjQ6ImNvZGUiO3M6NzoiU1BFQ0lBTCI7czo0OiJ0eXBlIjtzOjEwOiJQZXJjZW50YWdlIjtzOjU6InZhbHVlIjtzOjU6IjIwLjAwIjtzOjE1OiJkaXNjb3VudF9hbW91bnQiO2Q6MjQuNjt9fQ==', 1769249923);
 
 -- --------------------------------------------------------
 

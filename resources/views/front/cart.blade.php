@@ -24,7 +24,7 @@
                 <tbody>
                     @php
                     $cart = session()->get('cart', []);
-                    $total = 0;
+                    $subtotal = 0;
                     @endphp
                     @foreach($cart as $id => $item)
                     <tr class="cart_item">
@@ -44,7 +44,7 @@
                         </td>
                     </tr>
                     @php
-                    $total += $item['price'];
+                    $subtotal += $item['price'];
                     @endphp
                     @endforeach
                 </tbody>
@@ -52,15 +52,18 @@
         </form>
         <div class="row gy-30 justify-content-between">
             <div class="col-xl-4 col-lg-6">
-                <div class="cart-coupon">
-                    <input type="text" class="form-control" placeholder="Coupon Code...">
-                    <button type="submit" class="btn">
-                        <span class="link-effect">
-                            <span class="effect-1">APPLY</span>
-                            <span class="effect-1">APPLY</span>
-                        </span>
-                    </button>
-                </div>
+                <form action="{{ route('apply_coupon') }}" method="post">
+                    @csrf
+                    <div class="cart-coupon">
+                        <input type="text" class="form-control" placeholder="Coupon Code..." name="code">
+                        <button type="submit" class="btn">
+                            <span class="link-effect">
+                                <span class="effect-1">APPLY</span>
+                                <span class="effect-1">APPLY</span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn">
@@ -78,28 +81,42 @@
                     <tbody>
                         <tr>
                             <td>SUBTOTAL</td>
-                            <td data-title="Cart Subtotal">
-                                <span class="amount"><bdi><span>$</span>{{ number_format($total, 2) }}</bdi></span>
+                            <td>
+                                <span class="amount"><bdi><span>$</span>{{ number_format($subtotal, 2) }}</bdi></span>
                             </td>
                         </tr>
                         <tr>
-                            <td>COUPON</td>
-                            <td data-title="Cart Subtotal">
-                                <span class="amount"><bdi><span>$10.00</span></bdi></span>
+                            <td>
+                                COUPON
+                                @if(session()->has('coupon'))
+                                <br>
+                                Code: "{{ session('coupon.code') }}" is applied.
+                                @endif
+                            </td>
+                            <td>
+                                @php
+                                if(session()->has('coupon')) {
+                                    $discount_amount = session('coupon.discount_amount');    
+                                } else {
+                                    $discount_amount = 0.00;
+                                }
+                                $total = $subtotal - $discount_amount;
+                                @endphp
+                                <span class="amount"><bdi><span>${{ number_format($discount_amount, 2) }}</span></bdi></span>
                             </td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr class="order-total">
                             <td>TOTAL</td>
-                            <td data-title="Total">
+                            <td>
                                 <strong><span class="amount"><bdi><span>$</span>{{ number_format($total, 2) }}</bdi></span></strong>
                             </td>
                         </tr>
                     </tfoot>
                 </table>
                 <div class="wc-proceed-to-checkout mb-30">
-                    <a href="checkout.html" class="btn">
+                    <a href="{{ route('checkout') }}" class="btn">
                         <span class="link-effect">
                             <span class="effect-1">PROCEED TO CHECKOUT</span>
                             <span class="effect-1">PROCEED TO CHECKOUT</span>

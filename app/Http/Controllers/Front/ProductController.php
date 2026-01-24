@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
 use App\Models\Product;
+use App\Models\Coupon;
 
 class ProductController extends Controller
 {
@@ -113,5 +114,49 @@ class ProductController extends Controller
     public function checkout()
     {
         return view('front.checkout');
+    }
+
+    public function apply_coupon(Request $request)
+    {
+        $coupon = Coupon::where('code', $request->code)->first();
+        if(!$coupon) {
+            return redirect()->back()->with('error', 'Invalid coupon code.');
+        }
+
+        if($coupon->status == 'Inactive') {
+            return redirect()->back()->with('error', 'This coupon is inactive.');
+        }
+
+        if($coupon->start_date > date('Y-m-d')) {
+            return redirect()->back()->with('error', 'This coupon is not valid yet.');
+        }
+
+        if($coupon->expiry_date < date('Y-m-d')) {
+            return redirect()->back()->with('error', 'This coupon has expired.');
+        }
+
+        // Check USE LIMIT
+        // LATER
+
+        // Apply Coupon and save into a session variable
+        if($coupon->type == 'Fixed') {
+            $discount_amount = $coupon->value;
+        } elseif($coupon->type == 'Percentage') {
+            $cart = session()->get('cart', []);
+            $total_amount = 0;
+            foreach($cart as $item) {
+                $total_amount += $item['price'];
+            }
+            $discount_amount = ($total_amount * $coupon->value) / 100;
+        }
+        session()->put('coupon', [
+            'code' => $coupon->code,
+            'type' => $coupon->type,
+            'value' => $coupon->value,
+            'discount_amount' => $discount_amount
+        ]);
+
+        return redirect()->back()->with('success', 'Coupon applied successfully!');
+        
     }
 }
