@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 24, 2026 at 09:00 AM
+-- Generation Time: Jan 24, 2026 at 09:38 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.4.1
 
@@ -186,6 +186,33 @@ INSERT INTO `counters` (`id`, `number1`, `title1`, `text1`, `number2`, `title2`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `coupons`
+--
+
+CREATE TABLE `coupons` (
+  `id` bigint UNSIGNED NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('Fixed','Percentage') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Percentage',
+  `value` decimal(10,2) NOT NULL,
+  `start_date` date NOT NULL,
+  `expiry_date` date NOT NULL,
+  `use_limit` int DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `coupons`
+--
+
+INSERT INTO `coupons` (`id`, `code`, `type`, `value`, `start_date`, `expiry_date`, `use_limit`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'SPECIAL', 'Percentage', 20.00, '2026-01-26', '2026-01-29', 10, 'Active', '2026-01-24 03:35:20', '2026-01-24 03:35:20'),
+(2, 'GENERAL', 'Fixed', 5.00, '2026-01-22', '2026-01-31', 30, 'Active', '2026-01-24 03:35:43', '2026-01-24 03:35:43');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -338,7 +365,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (23, '2026_01_20_015012_create_product_categories_table', 21),
 (24, '2026_01_20_034302_create_products_table', 22),
 (25, '2026_01_22_053902_create_product_photos_table', 23),
-(26, '2026_01_22_060604_create_product_features_table', 24);
+(26, '2026_01_22_060604_create_product_features_table', 24),
+(27, '2026_01_24_091454_create_coupons_table', 25);
 
 -- --------------------------------------------------------
 
@@ -746,7 +774,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('iTtuhhER7lcf3uCXPj9lRYc0EcGrWmZzj43eZumn', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiMVppZnNnSTBPN1NCNGNHZjRXTXc3VFpZZU5uT0ZnU2xMdUt5RndyTiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXJ0IjtzOjU6InJvdXRlIjtzOjQ6ImNhcnQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NDoiY2FydCI7YTozOntpOjEyO2E6NDp7czo0OiJuYW1lIjtzOjMwOiJBZmZpbGlhdGVUcmFjayBSZWZlcnJhbCBTeXN0ZW0iO3M6NDoic2x1ZyI7czozMToiYWZmaWxpYXRlLXRyYWNrLXJlZmVycmFsLXN5c3RlbSI7czo1OiJwcmljZSI7czo1OiI3OS4wMCI7czo1OiJwaG90byI7czoyMjoicHJvZHVjdF8xNzY5MDU4NjM1LnBuZyI7fWk6MTE7YTo0OntzOjQ6Im5hbWUiO3M6MjY6IkpvYkh1bnQgUmVjcnVpdG1lbnQgUG9ydGFsIjtzOjQ6InNsdWciO3M6Mjc6ImpvYi1odW50LXJlY3J1aXRtZW50LXBvcnRhbCI7czo1OiJwcmljZSI7czo1OiIxNC4wMCI7czo1OiJwaG90byI7czoyMjoicHJvZHVjdF8xNzY5MDU4NTk5LnBuZyI7fWk6OTthOjQ6e3M6NDoibmFtZSI7czoyODoiSG9zcGljYXJlIFBhdGllbnQgTWFuYWdlbWVudCI7czo0OiJzbHVnIjtzOjI4OiJob3NwaWNhcmUtcGF0aWVudC1tYW5hZ2VtZW50IjtzOjU6InByaWNlIjtzOjU6IjMwLjAwIjtzOjU6InBob3RvIjtzOjIyOiJwcm9kdWN0XzE3NjkwNTg1MTUucG5nIjt9fX0=', 1769245095);
+('iTtuhhER7lcf3uCXPj9lRYc0EcGrWmZzj43eZumn', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiMVppZnNnSTBPN1NCNGNHZjRXTXc3VFpZZU5uT0ZnU2xMdUt5RndyTiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9jb3Vwb24vaW5kZXgiO3M6NToicm91dGUiO3M6MTg6ImFkbWluLmNvdXBvbi5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo0OiJjYXJ0IjthOjM6e2k6MTI7YTo0OntzOjQ6Im5hbWUiO3M6MzA6IkFmZmlsaWF0ZVRyYWNrIFJlZmVycmFsIFN5c3RlbSI7czo0OiJzbHVnIjtzOjMxOiJhZmZpbGlhdGUtdHJhY2stcmVmZXJyYWwtc3lzdGVtIjtzOjU6InByaWNlIjtzOjU6Ijc5LjAwIjtzOjU6InBob3RvIjtzOjIyOiJwcm9kdWN0XzE3NjkwNTg2MzUucG5nIjt9aToxMTthOjQ6e3M6NDoibmFtZSI7czoyNjoiSm9iSHVudCBSZWNydWl0bWVudCBQb3J0YWwiO3M6NDoic2x1ZyI7czoyNzoiam9iLWh1bnQtcmVjcnVpdG1lbnQtcG9ydGFsIjtzOjU6InByaWNlIjtzOjU6IjE0LjAwIjtzOjU6InBob3RvIjtzOjIyOiJwcm9kdWN0XzE3NjkwNTg1OTkucG5nIjt9aTo5O2E6NDp7czo0OiJuYW1lIjtzOjI4OiJIb3NwaWNhcmUgUGF0aWVudCBNYW5hZ2VtZW50IjtzOjQ6InNsdWciO3M6Mjg6Imhvc3BpY2FyZS1wYXRpZW50LW1hbmFnZW1lbnQiO3M6NToicHJpY2UiO3M6NToiMzAuMDAiO3M6NToicGhvdG8iO3M6MjI6InByb2R1Y3RfMTc2OTA1ODUxNS5wbmciO319fQ==', 1769247407);
 
 -- --------------------------------------------------------
 
@@ -915,6 +943,13 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `counters`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coupons`
+--
+ALTER TABLE `coupons`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `coupons_code_unique` (`code`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -1107,6 +1142,12 @@ ALTER TABLE `counters`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `coupons`
+--
+ALTER TABLE `coupons`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -1134,7 +1175,7 @@ ALTER TABLE `marquees`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `packages`

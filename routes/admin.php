@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\AdminPostCategoryController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProductCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminCouponController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -167,4 +168,9 @@ Route::middleware(['auth:admin', 'verified'])
     Route::post('product/feature_store', [AdminProductController::class, 'feature_store'])->name('product.feature_store');
     Route::post('product/feature_update/{id}', [AdminProductController::class, 'feature_update'])->name('product.feature_update');
     Route::post('product/feature_destroy/{id}', [AdminProductController::class, 'feature_destroy'])->name('product.feature_destroy');
+
+    Route::get('coupon/index', [AdminCouponController::class, 'index'])->name('coupon.index');
+    Route::post('coupon/store', [AdminCouponController::class, 'store'])->name('coupon.store');
+    Route::post('coupon/update/{id}', [AdminCouponController::class, 'update'])->name('coupon.update');
+    Route::post('coupon/destroy/{id}', [AdminCouponController::class, 'destroy'])->name('coupon.destroy');
 });
