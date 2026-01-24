@@ -38,14 +38,13 @@
                                         </span>
                                     </a>
                                     <ul class="sub-menu">
-                                        <li><a href="{{ route('about') }}">About Page</a></li>
-                                        <li><a href="{{ route('services') }}">Service Page</a></li>
+                                        <li><a href="{{ route('about') }}">About</a></li>
+                                        <li><a href="{{ route('services') }}">Service</a></li>
                                         <li><a href="{{ route('team_members') }}">Team Members</a></li>
-                                        <li><a href="{{ route('pricing') }}">Pricing Page</a></li>
-                                        <li><a href="cart.html">Cart Page</a></li>
-                                        <li><a href="checkout.html">Checkout Page</a></li>
-                                        <li><a href="{{ route('faq') }}">FAQ Page</a></li>
-                                        <li><a href="error.html">Error Page</a></li>
+                                        <li><a href="{{ route('pricing') }}">Pricing</a></li>
+                                        <li><a href="{{ route('cart') }}">Cart</a></li>
+                                        <li><a href="{{ route('checkout') }}">Checkout</a></li>
+                                        <li><a href="{{ route('faq') }}">FAQ</a></li>
                                     </ul>
                                 </li>
                                 <li>

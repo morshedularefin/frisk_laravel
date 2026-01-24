@@ -64,4 +64,40 @@ class ProductController extends Controller
 
         return view('front.product', compact('product', 'related_products'));
     }
+
+    public function cart()
+    {
+        return view('front.cart');
+    }
+
+    public function add_to_cart($product_id)
+    {
+        $product = Product::find($product_id);
+        if(!$product) {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
+
+        $cart = session()->get('cart', []);
+        
+        // If cart already has this product
+        if(isset($cart[$product_id])) {
+            return redirect()->back()->with('error', 'Product already in cart.');
+        }
+
+        // I do not have any quantity implemented in this system as this is a digital product
+        $cart[$product_id] = [
+            "name" => $product->name,
+            "slug" => $product->slug,
+            "price" => $product->sale_price,
+            "photo" => $product->photo
+        ];
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
+    public function checkout()
+    {
+        return view('front.checkout');
+    }
 }

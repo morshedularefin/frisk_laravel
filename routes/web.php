@@ -48,7 +48,9 @@ Route::post('/reply-store', [PostController::class, 'reply_store'])->name('reply
 
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/product/{slug}', [ProductController::class, 'product'])->name('product');
-// Route::get('/product-search', [ProductController::class, 'product_search'])->name('product_search');
+Route::get('/add-to-cart/{product_id}', [ProductController::class, 'add_to_cart'])->name('add_to_cart');
+Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
+Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
 
 // Route::get('/secret', [HomeController::class, 'secret'])->name('secret')->middleware(['auth','password.confirm']);
 

@@ -63,7 +63,7 @@
                         {!! nl2br($product->short_description) !!}
                     </div>
                     <div class="actions">
-                        <a href="cart.html" class="btn">
+                        <a href="{{ route('add_to_cart', $product->id) }}" class="btn">
                             <span class="link-effect">
                                 <span class="effect-1">ADD TO CART</span>
                                 <span class="effect-1">ADD TO CART</span>
@@ -153,7 +153,7 @@
                         <div class="product-img">
                             <img src="{{ asset('uploads/' . $related_product->photo) }}" alt="Product Image">
                             <div class="actions">
-                                <a href="cart.html" class="btn">
+                                <a href="{{ route('add_to_cart', $related_product->id) }}" class="btn">
                                     <span class="link-effect">
                                         <span class="effect-1">ADD TO CART</span>
                                         <span class="effect-1">ADD TO CART</span>

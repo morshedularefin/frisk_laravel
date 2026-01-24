@@ -45,7 +45,7 @@
                                 <div class="product-img">
                                     <img src="{{ asset('uploads/'.$product->photo) }}" alt="Product Image">
                                     <div class="actions">
-                                        <a href="" class="btn">
+                                        <a href="{{ route('add_to_cart', $product->id) }}" class="btn">
                                             <span class="link-effect">
                                                 <span class="effect-1">ADD TO CART</span>
                                                 <span class="effect-1">ADD TO CART</span>
